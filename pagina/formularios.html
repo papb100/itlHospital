@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Administración</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- bootstrap 4-->
+	<link rel="stylesheet" type="text/css" href="../plugins/bootstrap/css/bootstrap.min.css">
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="../plugins/fontawesome-free-5.8.1-web/css/all.min.css">
+	<!-- Estilo personalizado -->
+	<link rel="stylesheet" type="text/css" href="../css/estilos.css">
+	<!-- bootstrap-toggle-master -->
+	<link href="../plugins/bootstrap-toggle-master/css/bootstrap-toggle.css" rel="stylesheet">
+	<link href="../plugins/bootstrap-toggle-master/stylesheet.css" rel="stylesheet">
+	<!-- alertify -->
+	<link href="../plugins/alertifyjs/css/alertify.css" rel="stylesheet">	
+	<link href="../plugins/alertifyjs/css/themes/default.css" rel="stylesheet">
+	<!-- DataTables -->	
+	<link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">	
+	<!-- animate -->
+	<link rel="stylesheet" href="../plugins/animate/animate.css">
+	<!-- select2 -->
+	<link rel="stylesheet" href="../plugins/select2/select2.css">
+</head>
+<body>
+	<header>
+		<!-- encabezado -->
+		<section class="contenedor iconos fondo">
+
+			<ul class="nav-pills pull-right menu-bar">
+				<li class="list-unstyled">
+					<a href="#" class="color  borde animated bounceIn" id="menuV">
+						<i class="fas fa-bars"></i>
+					</a>
+				</li>
+				<li class="list-unstyled espIco">
+					<a href="#" class="color borde animated bounceIn" data-toggle="modal" data-target="#miModal">
+						<i class="far fa-user-circle"></i>
+					</a>
+				</li>
+				<li class="list-unstyled espIco">
+					<a href="#" class="color borde animated bounceIn">
+						<i class="fas fa-unlock-alt"></i>
+					</a>
+				</li>
+				<li class="list-unstyled espIco " id="icoSalir">
+					<a href="#" onclick="salir();" class="color borde animated bounceIn">
+						<i class="fas fa-sign-out-alt"></i>
+					</a>
+				</li>
+
+				<h2 class="fondo  usuario">Nombre de Usuario</h2>
+
+			</ul>
+
+			<h2 class="fondo  empresa">Empresa / Institución</h2>
+				
+		</section>
+		<!-- encabezado -->
+	</header><!-- /header -->	
+	<div class="container-fluid tamContenido" >
+		<div class="row">
+			<div class="col-xs-0 col-sm-3 col-md-2 col-lg-2 vertical">
+			<!-- sidebar -->
+				<div class="sidebar fondo borde  sombra  animated bounceIn" id="mnuLateral">
+					<h2 class="fondo mLateral">Menú</h2>
+					<ul class="menuv">
+						<li class="list-unstyled icoMedia">
+							<a href="../pagina/cajas.html" class="fasLink">
+								<i class="fas fa-square fa-lg fasIco"></i> <label class="lblIco"> Cajas</label>
+							</a>
+						</li>
+						<li class="list-unstyled icoMedia">
+							<a href="../pagina/formularios.html" class="activo fasLink">
+								<i class="fas fa-object-group fa-lg fasIco"></i> <label class="lblIco">	Formularios
+								</label>
+							</a>
+						</li>
+						<li class="list-unstyled icoMedia">
+							<a href="../pagina/tablas.html" class="fasLink">
+								<i class="fas fa-table fa-lg fasIco"></i> <label class="lblIco"> Tablas
+								</label>
+							</a>
+						</li >
+						<li class="list-unstyled icoMedia">
+							<a href="#" class="fasLink" onclick="salir();">
+								<i class="fas fa-sign-out-alt fa-lg fasIco"></i> <label class="lblIco">	Salir
+								</label>
+							</a>
+						</li >
+					</ul>
+				</div>
+			<!-- sidebar -->
+			</div>
+			<div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 cont">
+			   <div class="titulo borde sombra">
+			        <h3 class="animated zoomIn tPrincipal">Elementos de formularios</h3>
+			   </div>	
+			   <div class="contenido borde sombra" style="padding-right:18px;">
+				   <div class="container-fluid">
+					<!-- Elementos -->
+					<div class="formulario animated  slideInUp">
+						<form role="form" class="interno">
+
+							<div class="encabezado">
+								Elementos Especiales
+							</div>
+
+							<div class="cuerpo">
+								<div class="row">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+										<div class="form-group">
+											<label>Selector de opciones :</label>
+											<select class="select2 form-control " style="width: 100%">
+												<option value="opcion1">Opcion #1</option>
+												<option value="opcion2">Opcion #2</option>
+												<option value="opcion3">Opcion #3</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-xs-6 col-sm-3 col-md-2 col-lg-2">
+										<div class="form-group">
+											<label style="display:block" >primary :</label>
+											<input type="checkbox" checked data-toggle="toggle" data-onstyle="primary">
+										</div>
+									</div>
+									<div class="col-xs-6 col-sm-3 col-md-2 col-lg-2">
+										<div class="form-group">
+											<label style="display:block" >success :</label>
+											<input type="checkbox" checked data-toggle="toggle" data-onstyle="success">
+										</div>
+									</div>
+									<div class="col-xs-6 col-sm-3 col-md-2 col-lg-2">
+										<div class="form-group">
+												<label style="display:block" >info :</label>
+												<input type="checkbox" checked data-toggle="toggle" data-onstyle="info">
+											</div>
+										</div>
+									<div class="col-xs-6 col-sm-3 col-md-2 col-lg-2">
+										<div class="form-group">
+											<label style="display:block" >warning :</label>
+											<input type="checkbox" checked data-toggle="toggle" data-onstyle="warning">
+										</div>
+									</div>
+									<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+										<div class="form-group">
+												<label style="display:block" >danger :</label>
+												<input type="checkbox" checked data-toggle="toggle" data-onstyle="danger">
+											</div>
+										</div>
+									<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+										<div class="form-group">
+											<label style="display:block" >default :</label>
+											<input type="checkbox" checked data-toggle="toggle" data-onstyle="primary">
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+										<div class="form-group">
+											<label style="display:block" >Personalizado cambiar color:</label>
+											<input type="checkbox" checked data-toggle="toggle" data-onstyle="default" data-style="colorPrimario">
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+										<div class="form-group">
+											<label style="display:block" >Personalizado tipo android:</label>
+											<input type="checkbox" checked data-toggle="toggle" data-onstyle="primary" data-style="android">
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+										<div class="form-group">
+											<label style="display:block" >Personalizado tipo ios:</label>
+											<input type="checkbox" checked data-toggle="toggle" data-onstyle="primary" data-style="ios">
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="pie">
+								<button type="submit" class="btn btn-form">Guardar Datos</button>
+							</div>
+
+						</form>
+					</div>
+
+					<div class="formulario animated  slideInUp">
+						<form role="form" class="interno">
+
+							<div class="encabezado">
+								Ejemplo de formulario
+							</div>
+
+							<div class="cuerpo">
+								<div class="row">
+									<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+										<div class="form-group">
+											<label>Nombre :</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+										<div class="form-group">
+											<label>Apellido Paterno :</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+										<div class="form-group">
+											<label>Apellido Materno :</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+										<div class="form-group">
+											<label>Nacimiento :</label>
+											<input type="date" class="form-control">
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+										<div class="form-group">
+											<label>Estado Civil :</label>
+											<select class="select2 form-control " style="width: 100%">
+												<option value="opcion1">Soltero</option>
+												<option value="opcion2">Casado</option>
+												<option value="opcion3">Divorciado</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+										<div class="form-group">
+											<label>Edad :</label>
+											<input type="number" class="form-control">
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+										<div class="form-group">
+											<label >Genero :</label>
+											<input type="checkbox" checked data-toggle="toggle" data-onstyle="default" data-style="colorSecundario" data-width="100%" data-on="Hombre" data-off="Mujer">
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+										<div class="form-group">
+											<label >Observaciones :</label>
+											<textarea></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="pie">
+									<button type="submit" class="btn btn-form">Guardar Datos</button>
+							</div>
+
+						</form>
+					</div>
+					<!-- Elementos -->
+					</div>
+			   </div>	
+			</div>			
+		</div>
+	</div>
+	<footer class="fondo">
+		<div class="copyright">
+				@ 2019 Perez Briseño | <a href="" class="linkf">ISC/MGTI</a>
+			</div>
+			<div class="information">
+				Politicas y privacidad | <a href="" class="linkf">ISC/MGTI</a>
+		</div>	
+	</footer>
+
+	<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h3 class="modal-title  tPrincipal">Información de usuario</h3>
+				</div>
+				<div class="modal-body animated flipInX">
+						<img src="../imagenes/avatar.jpg" class="img-thumbnail mImg">
+						<h4 class="tPrincipal colorLetra centrar">
+							Plantilla base
+						</h4>
+
+						<h4 class="tPrincipal colorLetra centrar">
+							MGTI. Pablo Adrián Perez Briseño
+						</h4>
+
+						<h4 class="tPrincipal colorLetra centrar">
+							Empresa / Institución
+						</h4>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- SCRIPT JAVASCRIPT -->
+
+	<!-- jquery -->
+	<script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+	<!-- alertify -->
+	<script src="../plugins/alertifyjs/alertify.js"></script>
+	<!-- bootstrap -->
+	<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+	<!-- preloaders -->
+	<script src="../plugins/Preloaders/jquery.preloaders.js"></script>
+	<!-- bootstrap-toggle-master -->
+	<script src="../plugins/bootstrap-toggle-master/doc/script.js"></script>
+	<script src="../plugins/bootstrap-toggle-master/js/bootstrap-toggle.js"></script>
+	<!-- Scripts personalizados -->
+	<script src="../js/menu.js"></script>
+	<script src="../js/precarga.js"></script>
+	<script src="../js/salir.js"></script>
+	<!-- DataTables -->
+	<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+	<script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
+	<!-- dataTableButtons -->
+	<script type="text/javascript" src="../plugins/dataTableButtons/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" src="../plugins/dataTableButtons/buttons.flash.min.js"></script>
+	<script type="text/javascript" src="../plugins/dataTableButtons/buttons.colVis.min.js"></script>
+	<script type="text/javascript" src="../plugins/dataTableButtons/jszip.min.js"></script>
+	<script type="text/javascript" src="../plugins/dataTableButtons/pdfmake.min.js"></script>
+	<script type="text/javascript" src="../plugins/dataTableButtons/vfs_fonts.js"></script>
+	<script type="text/javascript" src="../plugins/dataTableButtons/buttons.html5.min.js"></script>
+	<script type="text/javascript" src="../plugins/dataTableButtons/buttons.print.min.js"></script>
+    <!-- Select2 -->
+	<script src="../plugins/select2/select2.full.min.js"></script>
+	
+	<script type= "text/javascript">
+		$(document).ready(function() {
+			$('#example1').DataTable( {
+				"language"                : {
+						// "url"          : "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+						"url"             : "../plugins/datatables/langauge/Spanish.json"
+					},
+				"order"                   : [[ 0, "asc" ]],
+				"paging"                  : true,
+				"ordering"                : true,
+				"info"                    : true,
+				"responsive"              : true,
+				"searching"               : true,
+				"pagingType"              : "full_numbers",
+				stateSave                 : false,
+				dom                      : 'Bfrtip',
+				lengthMenu               : [
+					[ 10, 25, 50, -1 ],
+					[ '10 Registros', '25 Registros', '50 Registros', 'Todos' ],
+				],
+				columnDefs                : [ {
+					// targets           : 0,
+					// visible           : false
+				}],
+				buttons                  : [
+
+						{
+							extend       : 'excel',
+							text         : "<i class='far fa-file-excel'></i> Exportar a Excel",
+							className    : 'btn btn-form  btn-flat',
+							title        : 'Lista',
+							exportOptions: {
+								columns  : ':visible'
+							}
+						},
+						{
+							extend       : 'pdf',
+							text         : "<i class='far fa-file-pdf'></i> Crear PDF",
+							className    : 'btn btn-form  btn-flat',
+							title        : 'Lista',
+							exportOptions: {
+								columns  : ':visible'
+							}
+						},
+						{
+							text         : "<i class='far fa-file'></i> Nuevo Registro",
+							className    : 'btn btn-form  btn-flat',
+							action       : function (  ) {
+								window.location="nuevo.php"
+							},
+							counter      : 1
+						},
+				]
+			} );
+		} );
+	</script>
+
+	<script>
+		$(function () {
+			$(".select2").select2();
+			
+		});
+	</script> 
+
+</body>
+</html>

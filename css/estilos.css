@@ -1,0 +1,619 @@
+/*-------------Inicio Selecciona color-------------*/
+	:root {
+		--colorPrimario  : #182C61;
+		--colorSecundario: #576574;
+		--colorTerciario : #ffffff;
+	}
+/*-------------Fin Selecciona color-------------*/
+/*-------------Inicio General-------------*/
+	*{
+		margin : 0px;
+		padding: 0px;
+	}
+
+	html, body {
+		font-family: Verdana,Consolas;
+		height:100%;
+		/* gradiente */
+		background: #fff; /* fallback for old browsers */
+		background: -webkit-linear-gradient(to right, var(--colorTerciario), var(--colorPrimario),var(--colorTerciario)); /* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(to right, var(--colorTerciario), var(--colorPrimario),var(--colorTerciario)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	}
+
+	.sombra{
+		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+	}
+
+	textarea:focus, input:focus, input[type]:focus,select:focus {
+		border-color: var(--colorSecundario);
+		box-shadow  : 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px var(--colorSecundario);
+		outline     : 0 none;
+	}
+
+	.borde{
+		border: 2px solid var(--colorPrimario);
+	}
+
+	.centrar{
+		text-align: center;
+	}
+
+	h3{
+		margin-top : 14px;
+		font-size  : 20px;
+		font-weight: bold; 
+		color      : var(--colorPrimario);
+	}
+
+	.fondo{
+		background: var(--colorPrimario);
+	}
+
+	div.titulo{
+		margin-top : 12px;
+		font-weight: normal;
+	}
+
+	.borde{
+		border: 2px solid var(--colorPrimario);
+	}
+
+	h3.tPrincipal{
+		font-weight:normal; 
+	}
+
+	@media (max-width: 768px) {
+		h3.tPrincipal{
+			text-align: center;
+			font-size : 16px; 
+		}
+	}
+/*-------------Fin General-------------*/
+
+/*---------------Inicio login---------------*/
+	.hLogin{
+		background: var(--colorPrimario);
+	}
+
+	.hLogin p {
+		color      : var(--colorTerciario);
+		padding    : 4px;
+		font-weight: bold;
+	}
+
+	.tLogin{
+		text-align   : center;
+		background   : var(--colorPrimario);
+		margin       : 0px;
+		color        : var(--colorTerciario);
+		padding      : 10px;
+		margin-bottom: 25px;
+	}
+
+	.espLetra{
+		margin-top   : 10px;
+		margin-bottom: 10px; 
+	}
+
+	.login-box{
+		background   : var(--colorTerciario);
+		padding      : 0px 0px 20px 0px;
+		width        : 500px;
+		margin       : 7% auto;
+		border-radius: 2;	
+	}
+
+	.colorLetra{
+		color: var(--colorPrimario);
+	}
+
+	.formLogin{
+		margin:0px 20px 0px 20px;
+	}
+
+	.btn-form{
+		border-radius     : 0;
+		background        : var(--colorPrimario);
+		color             : #fff;
+		-webkit-transition: all 0.8s;
+		transition        : all 0.8s;
+		margin            : 10px 0px 10px 0px;
+	}
+
+	.btn-form:hover{
+		background: var(--colorSecundario);
+		border    :1px solid var(--colorSecundario);
+		color     :var(--colorTerciario);
+	}
+
+	.btn-form:hover:focus{
+		background: var(--colorSecundario);
+		border    :1px solid var(--colorSecundario);
+		color     :var(--colorTerciario);
+	}
+
+	.btn-form:focus{
+		background: var(--colorPrimario);
+		border    :1px solid var(--colorTerciario);
+		color     :var(--colorTerciario);
+		box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px var(--colorSecundario);
+	}
+
+	.wave{
+		position: absolute;
+		width   : 100%;
+		bottom  : 0;
+		height  : 150px; 
+		overflow: hidden;
+	}
+
+	.onda{
+		height: 100%; 
+		width: 100%;
+	}
+
+	.estiloOnda{
+		stroke: none; 
+		fill  : var(--colorPrimario);
+	}
+
+	@media (max-width: 768px) {
+		.login-box{
+			width     : 90%;
+			margin-top: 80px; 
+		}
+		.formLogin{
+			margin:0px 10px 0px 10px;
+		}
+		
+		.btn-form{
+			display: block;
+			width  : 100%;
+		}
+
+		span.cContra{
+			display   : block;
+			align     : center;
+			text-align: center;
+			margin    : 10px;
+		}	
+	}
+/*---------------Fin login---------------*/
+
+/*--------Inicio Pagina----------*/
+/* Encabezado */
+	section.iconos ul li a{
+		font-size    : 26px;
+		margin       : 4px;
+		padding      : 4px;
+		border-radius: 5px;
+		margin-top   : 2px;
+		color        : var(--colorPrimario);
+	}
+
+	.espIco{
+		padding-left: 9px;
+	}
+
+	.contenedor{
+		padding      : 0px;
+		margin       : 0px;
+		border       : 10px solid var(--colorTerciario);
+		border-top   : 5px solid var(--colorSecundario);
+		border-right : 0px solid var(--colorTerciario);   
+		border-bottom: 0px solid var(--colorSecundario);
+		border-left  : 0px solid var(--colorTerciario);
+		height       : 40px;
+	}
+
+	a.color{
+		border            : solid 2px var(--colorPrimario);
+		-webkit-transition: all .5s ease;
+		-moz-transition   : all .5s ease;
+		-o-transition     : all .5s ease;
+		background        : var(--colorTerciario);
+	}
+
+	a.color:hover{
+		color     : var(--colorTerciario);
+		background: var(--colorSecundario);
+		border    : solid 2px var(--colorSecundario);	
+	}
+
+
+	h2.empresa , h2.usuario{
+		display       : initial;
+		text-align    : center;
+		display       : block;
+		font-size     : 16px;
+		/* font-weight: bold; */
+		padding       : 8px;
+		color         : var(--colorTerciario);
+		margin        : 0px;
+	}
+
+	h2.empresa{
+		text-transform: uppercase;
+		letter-spacing: 1pt; 
+		word-spacing  : 3pt; 
+	}
+
+	h2.usuario{
+		display: inline-block;
+	}
+
+	@media screen and (max-width: 774px) {
+
+		h2.usuario {
+			display: none;
+		}
+
+		h2.empresa{
+			display: none;
+		}
+
+		#icoSalir{
+			display: none;
+		}
+
+	}
+/* Encabezado */
+/* Sidebar */
+	.sidebar{
+		margin-top   : 14px;
+		width        : 100%;
+		height       : 100%;
+		border-radius: 0px;
+	}
+
+	.sidebar li {
+		list-style: none;
+		background: var(--colorTerciario);
+	}
+
+	.sidebar a {
+		-webkit-transition: all .5s ease;
+		-moz-transition   : all .5s ease;
+		-o-transition     : all .5s ease;
+		text-decoration   : none;
+		display           : block;
+		padding           : 10px;
+		font-size         : 15px;
+		font-weight       : normal;
+		color             : var(--colorPrimario);
+		border-left       : 8px solid var(--colorPrimario);
+	}
+
+	li .activo{
+		color      : var(--colorTerciario);
+		background : var(--colorSecundario);
+		border-left: 8px solid var(--colorPrimario);
+	}
+
+	.lblIco{
+		cursor     : pointer;
+		font-weight: normal;
+	}
+
+	.sidebar a:hover{
+		background : var(--colorSecundario);
+		color      : var(--colorTerciario);
+		border-left: 8px solid var(--colorSecundario);
+	}
+
+	.sidebar h2{
+		font-size    : 16px;
+		text-align   : center;
+		margin       : 0px;
+		padding      : 10px;
+		color        : var(--colorTerciario);
+		border-bottom: solid 5px var(--colorTerciario);
+		font-weight  : bold;
+	}
+
+	.sidebar ul{
+		list-style: none;
+		padding   : 0px;
+		margin    : 0px;
+	}
+
+	.sidebar h2{
+		font-size    : 16px;
+		text-align   : center;
+		margin       : 0px;
+		padding      : 10px;
+		color        : var(--colorTerciario);
+		border-bottom: solid 5px var(--colorTerciario);
+		font-weight  : bold;
+	}
+
+
+	h2.mLateral{
+		font-weight: normal; 
+	}
+
+	@media screen and (max-width: 774px) {
+
+		.sidebar li a{
+			padding  : 2px;
+			font-size: 15px;
+		}
+		
+		.lblIco{
+			display: none;
+		}
+
+		li .activo{
+			color      : var(--colorSecundario);
+			background : var(--colorTerciario);
+		}
+
+		li.icoMedia{
+			display      : inline-block;
+			font-size    : 26px;
+			margin       : 0px;
+			border-radius: 5px;
+			color        : var(--colorPrimario);
+			border       : 2px solid var(--colorPrimario);
+			min-width    : 40px;
+			margin-bottom: 4px;
+		}
+
+		.fasLink{
+			height:30px;
+		}
+
+		.fasIco{
+			padding-top:2px;
+		}
+
+		li.icoMedia:hover{
+			color      : var(--colorTerciario);
+			background : var(--colorPrimario);	
+			border-left: 0px;
+		}
+		
+		li.icoMedia a:hover{	
+			border-left: 0px;
+		}
+
+		li.icoMedia a{	
+			border-left: 0px;
+		}
+
+		ul.menuv{
+			background: var(--colorTerciario);
+			text-align: center;
+		}
+		
+		.sidebar  h2.fondo{
+			padding    : 6px;
+			font-size  : 15px;
+			font-weight: bold;
+		}
+		
+		li.icoMedia a i{
+			font-size:28px;
+		}
+
+	}
+/* sidebar */
+/* cuerpo */
+	.contenido,.titulo{
+		margin-bottom: 10px;
+		height       : 100%;
+		display      : block;
+		min-width    : 100%;
+		padding      : 10px;
+		min-height   : 400px;
+		border-radius: 0px;
+		background   : var(--colorTerciario);
+	}
+
+	.tamContenido{
+		height: 81%;
+	}
+
+	.titulo{
+		min-height   : 0px;
+	}
+
+/* cuerpo */
+/* footer */
+	footer{
+		max-width      : 100%;
+		margin         : auto;
+		display        : flex;
+		justify-content: space-between;
+		padding-left   : 40px;
+		padding-right  : 40px;
+		height         : 60px;
+		color          :var(--colorTerciario);
+		padding-top    : 10px;
+		border-top     : 0px solid var(--colorSecundario);
+		border-right   : 0px solid var(--colorTerciario);   
+		border-bottom  : 5px solid var(--colorSecundario);
+		border-left    : 0px solid var(--colorTerciario);
+		position       : relative;
+		margin-top     : 25px; 
+		height         : 50px; 
+	
+	}
+
+	.copyright a, .information a{
+		text-decoration: none;
+		font-weight    : bold;
+		color          : var(--colorTerciario);
+	}
+
+	footer.fondo .copyright ,footer.fondo .information{
+		font-size: 14px;
+	}
+
+	@media screen and (max-width: 774px) {
+		footer.fondo .copyright ,footer.fondo .information{
+			font-size: 10px;
+		}
+	}
+
+	a.linkf:hover{
+		color:var(--colorSecundario);
+	}
+/* footer */
+/*----------Fin Pagina-----------*/
+
+/*----------Inicio complementos-----------*/
+/* Caja de iconos */
+	div.caja{
+		width           : 100%;
+		border          : solid 2px var(--colorSecundario);
+		text-align      : center;
+		background-color: var(--colorPrimario);
+		box-shadow      : 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+		margin          : 5px;
+		min-height      : 133px; 
+	}
+
+	div.caja i{
+		font-size          : 60px;
+		-webkit-text-stroke: 2px var(--colorTerciario);
+		color              : var(--colorSecundario);
+		font-weight        : bold;
+		margin-top         : 20px;
+	}
+
+	div.caja p{
+		font-size  : 13px;
+		color      : var(--colorTerciario);
+		font-weight: bold;
+		margin-top : 14px;
+	}
+
+
+	a.cenlace{
+		font-weight: normal;
+		font-size  : 13px;
+		color      : var(--colorTerciario);
+	}
+
+	a.cenlace:hover{
+		text-decoration: none;
+		color          : var(--colorSecundario);
+	}
+/* Caja de iconos */
+/* modal */
+img.mImg{
+    width: 150px;
+    margin-left:20px;
+    float: left;
+}
+
+div.modal-body{
+    min-height: 180px;
+}
+/* modal */
+/* Tablas */
+	table thead tr ,table tfoot tr{
+		color             : var(--colorTerciario);
+		background        : var(--colorPrimario);
+		-webkit-transition: all 0.8s;
+		transition        : all 0.8s;
+	}
+
+	table thead tr:hover {
+		color     : var(--colorTerciario);
+		background: var(--colorSecundario);
+	}
+
+	table tbody {
+		color: var(--colorPrimario);
+	}
+
+	.pagination > li > a, .pagination > li > span{
+
+		color:var(--colorPrimario);
+	}
+	.pagination > li.active > a, .pagination > li.active > span{
+		background-color: var(--colorPrimario);
+		border-color    : var(--colorPrimario);
+		color           : var(--colorTerciario);
+	}
+/* Tablas */
+/* Formularios */
+	div.formulario{
+		min-height: 80px;
+		margin    : 15px 0px 15px 5px;
+		color     : var(--colorPrimario);
+		background: var(--colorTerciario);
+	}
+
+	div.formulario > form > div.encabezado{
+		margin    : 0px,0px,7px;
+		padding   : 7px 0px 7px 7px;
+		border    : 1px solid var(--colorPrimario);
+		background: var(--colorPrimario);
+		color     : var(--colorTerciario);
+		font-size : 15px;
+	}
+
+	div.formulario > form > div.cuerpo{
+		border-left : 1px solid #ccc;
+		border-right: 1px solid #ccc;
+		padding     : 12px;
+	}
+
+	div.formulario > form > div.pie{
+		border    : 1px solid #ccc;
+		margin    : 0px,0px,0px,10px;
+		padding   : 0px 10px 0px 12px;
+		text-align: right;
+	}
+
+	div.formulario label {
+		font-weight: normal;
+	}
+
+	textarea{
+		width        : 100%;
+		border-radius: 5px;
+		border       : solid 1px #ccc;
+		resize       : vertical;
+		min-height   : 70px;
+		max-height   : 300px;
+		padding      : 8px;
+	}
+/* Formularios */
+/* dataToggle */
+	.toggle.ios, .toggle-on.ios, .toggle-off.ios { border-radius: 20px; }
+	.toggle.ios .toggle-handle { border-radius: 20px; }
+
+	.toggle.android { border-radius: 0px;}
+	.toggle.android .toggle-handle { border-radius: 0px; }
+
+	.toggle.colorPrimario {background: var(--colorPrimario);}
+	.toggle.colorPrimario .toggle-handle {background: var(--colorPrimario);}
+
+	.toggle.colorSecundario {background: var(--colorSecundario);}
+	.toggle.colorSecundario .toggle-handle {background: var(--colorSecundario);}
+/* dataToggle */
+
+/* accordeon */
+.panel-default > .panel-heading {
+	background-color:var(--colorPrimario);
+	color:var(--colorTerciario);
+}
+/* accordeon */
+/* texto status */
+.desactivado{
+	color:#7f8c8d;
+}
+/* texto status */
+/* enlaces de iconos */
+a.enlace{
+	color:var(--colorPrimario);
+}
+a.enlace:hover{
+	color:var(--colorSecundario);
+}
+/*----------Fin complementos-----------*/
+

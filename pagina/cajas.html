@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Administración</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- bootstrap 4-->
+	<link rel="stylesheet" type="text/css" href="../plugins/bootstrap/css/bootstrap.min.css">
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="../plugins/fontawesome-free-5.8.1-web/css/all.min.css">
+	<!-- Estilo personalizado -->
+	<link rel="stylesheet" type="text/css" href="../css/estilos.css">
+	<!-- bootstrap-toggle-master -->
+	<link href="../plugins/bootstrap-toggle-master/css/bootstrap-toggle.css" rel="stylesheet">
+	<link href="../plugins/bootstrap-toggle-master/stylesheet.css" rel="stylesheet">
+	<!-- alertify -->
+	<link href="../plugins/alertifyjs/css/alertify.css" rel="stylesheet">	
+	<link href="../plugins/alertifyjs/css/themes/default.css" rel="stylesheet">	
+	<!-- animate -->
+	<link rel="stylesheet" href="../plugins/animate/animate.css">
+</head>
+<body>
+	<header>
+		<!-- encabezado -->
+		<section class="contenedor iconos fondo">
+
+			<ul class="nav-pills pull-right menu-bar">
+				<li class="list-unstyled">
+					<a href="#" class="color  borde animated bounceIn" id="menuV">
+						<i class="fas fa-bars"></i>
+					</a>
+				</li>
+				<li class="list-unstyled espIco">
+					<a href="#" class="color borde animated bounceIn" data-toggle="modal" data-target="#miModal">
+						<i class="far fa-user-circle"></i>
+					</a>
+				</li>
+				<li class="list-unstyled espIco">
+					<a href="#" class="color borde animated bounceIn">
+						<i class="fas fa-unlock-alt"></i>
+					</a>
+				</li>
+				<li class="list-unstyled espIco" id="icoSalir">
+					<a href="#" onclick="salir();" class="color borde animated bounceIn">
+						<i class="fas fa-sign-out-alt"></i>
+					</a>
+				</li>
+
+				<h2 class="fondo usuario">Nombre de Usuario</h2>
+
+			</ul>
+
+			<h2 class="fondo  empresa">Empresa / Institución</h2>
+				
+		</section>
+		<!-- encabezado -->
+	</header><!-- /header -->	
+	<div class="container-fluid tamContenido" >
+		<div class="row">
+			<div class="col-xs-0 col-sm-3 col-md-2 col-lg-2 vertical">
+			<!-- sidebar -->
+				<div class="sidebar fondo borde sombra animated bounceIn" id="mnuLateral">
+					<h2 class="fondo mLateral">Menú</h2>
+					<ul class="menuv">
+						<li class="list-unstyled icoMedia">
+							<a href="../pagina/cajas.html" class="activo fasLink">
+								<i class="fas fa-square fa-lg fasIco"></i> <label class="lblIco"> Cajas</label>
+							</a>
+						</li>
+						<li class="list-unstyled icoMedia">
+							<a href="../pagina/formularios.html" class="fasLink">
+								<i class="fas fa-object-group fa-lg fasIco"></i> <label class="lblIco">	Formularios
+								</label>
+							</a>
+						</li>
+						<li class="list-unstyled icoMedia">
+							<a href="../pagina/tablas.html" class="fasLink">
+								<i class="fas fa-table fa-lg fasIco"></i> <label class="lblIco"> Tablas
+								</label>
+							</a>
+						</li >
+						<li class="list-unstyled icoMedia">
+							<a href="#" class="fasLink" onclick="salir();">
+								<i class="fas fa-sign-out-alt fa-lg fasIco"></i> <label class="lblIco">	Salir
+								</label>
+							</a>
+						</li >
+					</ul>
+				</div>
+			<!-- sidebar -->
+			</div>
+			<div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 cont">
+			   <div class="titulo borde sombra">
+			        <h3 class="animated zoomIn tPrincipal">Cajas de enlaces</h3>
+			   </div>	
+			   <div class="contenido borde sombra" style="padding-right:18px;">
+				   <div class="row">
+						<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+							<div class="caja animated slideInUp">
+								<i class="fas fa-adjust"></i>
+								<p><a href="#" class="cenlace">Nombre modulo 1</a></p>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+							<div class="caja animated slideInUp">
+								<i class="fab fa-aws"></i>
+								<p><a href="#" class="cenlace">Nombre modulo 2</a></p>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+							<div class="caja animated slideInUp">
+								<i class="fas fa-basketball-ball"></i>
+								<p><a href="#" class="cenlace">Nombre modulo 3</a></p>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+							<div class="caja animated slideInUp">
+								<i class="fas fa-cheese"></i>
+								<p><a href="#" class="cenlace">Nombre modulo 4</a></p>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+							<div class="caja animated slideInUp">
+								<i class="fas fa-bomb"></i>
+								<p><a href="#" class="cenlace">Nombre modulo 5</a></p>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+							<div class="caja animated slideInUp">
+								<i class="fab fa-accusoft"></i>
+								<p><a href="#" class="cenlace">Nombre modulo 6</a></p>
+							</div>
+						</div>
+					</div>
+			   </div>	
+			</div>			
+		</div>
+	</div>
+	<footer class="fondo">
+		<div class="copyright">
+				@ 2019 Perez Briseño | <a href="" class="linkf">ISC/MGTI</a>
+			</div>
+			<div class="information">
+				Politicas y privacidad | <a href="" class="linkf">ISC/MGTI</a>
+		</div>	
+	</footer>
+
+	<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h3 class="modal-title  tPrincipal">Información de usuario</h3>
+				</div>
+				<div class="modal-body animated flipInX">
+						<img src="../imagenes/avatar.jpg" class="img-thumbnail mImg">
+						<h4 class="tPrincipal colorLetra centrar">
+							Plantilla base
+						</h4>
+
+						<h4 class="tPrincipal colorLetra centrar">
+							MGTI. Pablo Adrián Perez Briseño
+						</h4>
+
+						<h4 class="tPrincipal colorLetra centrar">
+							Empresa / Institución
+						</h4>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- SCRIPT JAVASCRIPT -->
+
+	<!-- jquery -->
+	<script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+	<!-- alertify -->
+	<script src="../plugins/alertifyjs/alertify.js"></script>
+	<!-- bootstrap -->
+	<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+	<!-- preloaders -->
+	<script src="../plugins/Preloaders/jquery.preloaders.js"></script>
+	<!-- bootstrap-toggle-master -->
+	<script src="../plugins/bootstrap-toggle-master/doc/script.js"></script>
+	<script src="../plugins/bootstrap-toggle-master/js/bootstrap-toggle.js"></script>
+	<!-- Scripts personalizados -->
+	<script src="../js/menu.js"></script>
+	<script src="../js/precarga.js"></script>
+	<script src="../js/salir.js"></script>
+
+</body>
+</html>
