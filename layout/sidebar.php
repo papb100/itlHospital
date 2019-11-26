@@ -7,13 +7,13 @@
 							</a>
 						</li>
 						<li class="list-unstyled icoMedia">
-							<a href="../eMisdatos/index.php" class="fasLink">
-								<i class="fas fa-edit fa-lg fasIco"></i> <label class="lblIco">	Mis datos
+							<a href="#" class="fasLink" data-toggle="modal" data-target="#modalDatos">
+								<i class="fas fa-pencil-alt fa-lg fasIco"></i> <label class="lblIco">	Mis datos
 								</label>
 							</a>
 						</li>
 						<li class="list-unstyled icoMedia">
-							<a href="../eCambioContra/index.php" class="fasLink">
+							<a href="#" class="fasLink" data-toggle="modal" data-target="#modalContra">
 								<i class="fas fa-key fa-lg fasIco"></i> <label class="lblIco"> Contraseña
 								</label>
 							</a>

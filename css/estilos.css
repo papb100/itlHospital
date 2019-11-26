@@ -352,9 +352,7 @@
 			display      : inline-block;
 			font-size    : 26px;
 			margin       : 0px;
-			border-radius: 5px;
 			color        : var(--colorPrimario);
-			border       : 2px solid var(--colorPrimario);
 			min-width    : 40px;
 			margin-bottom: 4px;
 		}
@@ -366,6 +364,7 @@
 		.fasIco{
 			padding-top:2px;
 		}
+
 
 		li.icoMedia:hover{
 			color      : var(--colorTerciario);

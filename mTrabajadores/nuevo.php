@@ -194,6 +194,7 @@ $opa="B";
 	<script src="../js/menu.js"></script>
 	<script src="../js/precarga.js"></script>
 	<script src="../js/salir.js"></script>
+	<script src="../js/contra.js"></script>
 	<!-- DataTables -->
 	<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
 	<script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
@@ -209,69 +210,10 @@ $opa="B";
     <!-- Select2 -->
 	<script src="../plugins/select2/select2.full.min.js"></script>
 	
-	<script type= "text/javascript">
-		$(document).ready(function() {
-			$('#example1').DataTable( {
-				"language"                : {
-						// "url"          : "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-						"url"             : "../plugins/datatables/langauge/Spanish.json"
-					},
-				"order"                   : [[ 0, "asc" ]],
-				"paging"                  : true,
-				"ordering"                : true,
-				"info"                    : true,
-				"responsive"              : true,
-				"searching"               : true,
-				"pagingType"              : "full_numbers",
-				stateSave                 : false,
-				dom                      : 'Bfrtip',
-				lengthMenu               : [
-					[ 10, 25, 50, -1 ],
-					[ '10 Registros', '25 Registros', '50 Registros', 'Todos' ],
-				],
-				columnDefs                : [ {
-					// targets           : 0,
-					// visible           : false
-				}],
-				buttons                  : [
-
-						{
-							extend       : 'excel',
-							text         : "<i class='far fa-file-excel'></i> Exportar a Excel",
-							className    : 'btn btn-form  btn-flat',
-							title        : 'Lista',
-							exportOptions: {
-								columns  : ':visible'
-							}
-						},
-						{
-							extend       : 'pdf',
-							text         : "<i class='far fa-file-pdf'></i> Crear PDF",
-							className    : 'btn btn-form  btn-flat',
-							title        : 'Lista',
-							exportOptions: {
-								columns  : ':visible'
-							}
-						},
-						{
-							text         : "<i class='far fa-file'></i> Nuevo Registro",
-							className    : 'btn btn-form  btn-flat',
-							action       : function (  ) {
-								window.location="nuevo.php"
-							},
-							counter      : 1
-						},
-				]
-			} );
-		} );
-	</script>
-
 	<script>
 		$(function () {
 			$(".select2").select2();
-			
 		});
 	</script> 
-
-</body>
+	</body>
 </html>

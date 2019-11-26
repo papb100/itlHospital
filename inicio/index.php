@@ -256,33 +256,6 @@
 	<?php include'../layout/pie.php';?>
 	</footer>
 
-	<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h3 class="modal-title  tPrincipal">Información de usuario</h3>
-				</div>
-				<div class="modal-body animated flipInX">
-						<img src="../imagenes/avatar.jpg" class="img-thumbnail mImg">
-						<h4 class="tPrincipal colorLetra centrar">
-							Plantilla base
-						</h4>
-
-						<h4 class="tPrincipal colorLetra centrar">
-						<?php echo $nLargo ?>
-						</h4>
-
-						<h4 class="tPrincipal colorLetra centrar">
-							Empresa / Institución
-						</h4>
-				</div>
-			</div>
-		</div>
-	</div>
-
 	<!-- SCRIPT JAVASCRIPT -->
 
 	<!-- jquery -->
@@ -300,6 +273,7 @@
 	<script src="../js/menu.js"></script>
 	<script src="../js/precarga.js"></script>
 	<script src="../js/salir.js"></script>
+	<script src="../js/contra.js"></script>
 
 </body>
 </html>

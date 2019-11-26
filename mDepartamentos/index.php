@@ -125,33 +125,6 @@ $opa="A";
 	<?php include'../layout/pie.php';?>
 	</footer>
 
-	<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h3 class="modal-title  tPrincipal">Información de usuario</h3>
-				</div>
-				<div class="modal-body animated flipInX">
-						<img src="../imagenes/avatar.jpg" class="img-thumbnail mImg">
-						<h4 class="tPrincipal colorLetra centrar">
-							Plantilla base
-						</h4>
-
-						<h4 class="tPrincipal colorLetra centrar">
-							MGTI. Pablo Adrián Perez Briseño
-						</h4>
-
-						<h4 class="tPrincipal colorLetra centrar">
-							Empresa / Institución
-						</h4>
-				</div>
-			</div>
-		</div>
-	</div>
-
 	<!-- SCRIPT JAVASCRIPT -->
 
 	<!-- jquery -->
@@ -169,6 +142,7 @@ $opa="A";
 	<script src="../js/menu.js"></script>
 	<script src="../js/precarga.js"></script>
 	<script src="../js/salir.js"></script>
+	<script src="../js/contra.js"></script>
 	<!-- DataTables -->
 	<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
 	<script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
@@ -182,81 +156,5 @@ $opa="A";
 	<script type="text/javascript" src="../plugins/dataTableButtons/buttons.html5.min.js"></script>
 	<script type="text/javascript" src="../plugins/dataTableButtons/buttons.print.min.js"></script>
 
-	<script type= "text/javascript">
-		$(document).ready(function() {
-			$('#example1').DataTable( {
-				"language"                : {
-												"sProcessing":     "Procesando...",
-												"sLengthMenu":     "Mostrar _MENU_ registros",
-												"sZeroRecords":    "No se encontraron resultados",
-												"sEmptyTable":     "Ningún dato disponible en esta tabla",
-												"sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-												"sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-												"sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-												"sInfoPostFix":    "",
-												"sSearch":         "Buscar:",
-												"sUrl":            "",
-												"sInfoThousands":  ",",
-												"sLoadingRecords": "Cargando...",
-												"oPaginate": {
-													"sFirst":    "Primero",
-													"sLast":     "Último",
-													"sNext":     "Siguiente",
-													"sPrevious": "Anterior"
-												},
-												"oAria": {
-													"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-													"sSortDescending": ": Activar para ordenar la columna de manera descendente"
-												}
-											},
-				"order"                   : [[ 0, "asc" ]],
-				"paging"                  : true,
-				"ordering"                : true,
-				"info"                    : true,
-				"responsive"              : true,
-				"searching"               : true,
-				"pagingType"              : "full_numbers",
-				stateSave                 : false,
-				dom                      : 'Bfrtip',
-				lengthMenu               : [
-					[ 10, 25, 50, -1 ],
-					[ '10 Registros', '25 Registros', '50 Registros', 'Todos' ],
-				],
-				columnDefs                : [ {
-					// targets           : 0,
-					// visible           : false
-				}],
-				buttons                  : [
-
-						{
-							extend       : 'excel',
-							text         : "<i class='far fa-file-excel'></i> Exportar a Excel",
-							className    : 'btn btn-form',
-							title        : 'Lista',
-							exportOptions: {
-								columns  : ':visible'
-							}
-						},
-						// {
-						// 	extend       : 'pdf',
-						// 	text         : "<i class='far fa-file-pdf'></i> Crear PDF",
-						// 	className    : 'btn btn-form',
-						// 	title        : 'Lista',
-						// 	exportOptions: {
-						// 		columns  : ':visible'
-						// 	}
-						// },
-						// {
-						// 	text         : "<i class='far fa-file'></i> Nuevo Registro",
-						// 	className    : 'btn btn-form',
-						// 	action       : function (  ) {
-						// 		window.location="nuevo.php"
-						// 	},
-						// 	counter      : 1
-						// },
-				]
-			} );
-		} );
-    </script>
 </body>
 </html>

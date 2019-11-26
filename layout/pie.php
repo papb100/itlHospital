@@ -4,3 +4,7 @@
     <div class="information">
         Politicas y privacidad | <a href="" class="linkf">ISC/MGTI</a>
 </div>	
+
+<!-- Ventanas modales -->
+<?php include'../layout/modales.php';?>
+<!-- Ventanas modales -->
