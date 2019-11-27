@@ -45,7 +45,7 @@ $opa="B";
 			</div>
 			<div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 cont">
 			   <div class="titulo borde sombra">
-			        <h3 class="animated zoomIn tPrincipal">Nuevo Trabajador</h3>
+			        <h3 class="animated zoomIn tPrincipal">Nueva Cama</h3>
 			   </div>	
 			   <div class="contenido borde sombra" style="padding-right:18px;">
 				   <div class="container-fluid">
@@ -54,84 +54,33 @@ $opa="B";
 						<form role="form" class="interno" method="post" action="guardar.php">
 
 							<div class="encabezado">
-								Trabajadores
+								Camas
 							</div>
 
 							<div class="cuerpo">
 								<div class="row">
 									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-7">
 										<div class="form-group">
-											<label>Persona :</label>
-											<select name="idPersona" class="form-control select2" style="width: 100%;">
+											<label>Especialidad :</label>
+											<select name="espe" class="form-control select2" style="width: 100%;">
 											<?
 												for($i=0;$i<$num1;$i++) 
 												{
-												$id=mysql_result($combo1,$i,'idPersona');
-												$usuario=mysql_result($combo1,$i,'Persona');
+												$id=mysql_result($combo1,$i,'id_especialidad');
+												$usuario=mysql_result($combo1,$i,'nombre_especialidad');
 												echo "<option value=\"$id\" >$usuario</option>";
 												}
 											?> 
 											</select>
 										</div>
 									</div>
-									<div class="col-xs-12 col-sm-8 col-md-4 col-lg-5">
+									
+									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-5">
 										<div class="form-group">
-											<label>Fecha de Ingreso :</label>
-											<input type="date" name="fingreso" class="form-control" required>
+											<label>Numero de cama :</label>
+											<input type="text" name="num_cama" class="form-control" required autofocus placeholder="# Cama">
 										</div>
 									</div>
-									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
-										<div class="form-group">
-											<label>Clave :</label>
-											<input type="text" name="clave" class="form-control" required autofocus placeholder="# Trabajador">
-										</div>
-									</div>
-									<div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
-										<div class="form-group">
-											<label>Tipo :</label>
-											<select name="idTipoTrabajador" class="form-control select2" style="width: 100%;">
-											<?
-												for($i=0;$i<$num2;$i++) 
-												{
-												$id=mysql_result($combo2,$i,'id_tipo_trabajador');
-												$usuario=mysql_result($combo2,$i,'descripcion');
-												echo "<option value=\"$id\" >$usuario</option>";
-												}
-											?> 
-											</select>
-										</div>
-									</div>
-									<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-										<div class="form-group">
-											<label>Departamento :</label>
-											<select name="idDepartamento" class="form-control select2" style="width: 100%;">
-											<?
-												for($i=0;$i<$num3;$i++) 
-												{
-												$id=mysql_result($combo3,$i,'id_departamento');
-												$usuario=mysql_result($combo3,$i,'nombre_departamento');
-												echo "<option value=\"$id\" >$usuario</option>";
-												}
-											?> 
-											</select>
-										</div>
-									</div>
-									<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-										<div class="form-group">
-											<label>Puesto :</label>
-											<select name="idPuesto" class="form-control select2" style="width: 100%;">
-											<?
-												for($i=0;$i<$num4;$i++) 
-												{
-												$id=mysql_result($combo4,$i,'id_puesto');
-												$usuario=mysql_result($combo4,$i,'nombre_puesto');
-												echo "<option value=\"$id\" >$usuario</option>";
-												}
-											?> 
-											</select>
-										</div>
-									</div>
-
 								</div>
 							</div>
 
@@ -194,15 +143,84 @@ $opa="B";
 	<script src="../js/menu.js"></script>
 	<script src="../js/precarga.js"></script>
 	<script src="../js/salir.js"></script>
-	<script src="../js/contra.js"></script>
-
+	<!-- DataTables -->
+	<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+	<script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
+	<!-- dataTableButtons -->
+	<script type="text/javascript" src="../plugins/dataTableButtons/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" src="../plugins/dataTableButtons/buttons.flash.min.js"></script>
+	<script type="text/javascript" src="../plugins/dataTableButtons/buttons.colVis.min.js"></script>
+	<script type="text/javascript" src="../plugins/dataTableButtons/jszip.min.js"></script>
+	<script type="text/javascript" src="../plugins/dataTableButtons/pdfmake.min.js"></script>
+	<script type="text/javascript" src="../plugins/dataTableButtons/vfs_fonts.js"></script>
+	<script type="text/javascript" src="../plugins/dataTableButtons/buttons.html5.min.js"></script>
+	<script type="text/javascript" src="../plugins/dataTableButtons/buttons.print.min.js"></script>
     <!-- Select2 -->
 	<script src="../plugins/select2/select2.full.min.js"></script>
 	
+	<script type= "text/javascript">
+		$(document).ready(function() {
+			$('#example1').DataTable( {
+				"language"                : {
+						// "url"          : "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+						"url"             : "../plugins/datatables/langauge/Spanish.json"
+					},
+				"order"                   : [[ 0, "asc" ]],
+				"paging"                  : true,
+				"ordering"                : true,
+				"info"                    : true,
+				"responsive"              : true,
+				"searching"               : true,
+				"pagingType"              : "full_numbers",
+				stateSave                 : false,
+				dom                      : 'Bfrtip',
+				lengthMenu               : [
+					[ 10, 25, 50, -1 ],
+					[ '10 Registros', '25 Registros', '50 Registros', 'Todos' ],
+				],
+				columnDefs                : [ {
+					// targets           : 0,
+					// visible           : false
+				}],
+				buttons                  : [
+
+						{
+							extend       : 'excel',
+							text         : "<i class='far fa-file-excel'></i> Exportar a Excel",
+							className    : 'btn btn-form  btn-flat',
+							title        : 'Lista',
+							exportOptions: {
+								columns  : ':visible'
+							}
+						},
+						{
+							extend       : 'pdf',
+							text         : "<i class='far fa-file-pdf'></i> Crear PDF",
+							className    : 'btn btn-form  btn-flat',
+							title        : 'Lista',
+							exportOptions: {
+								columns  : ':visible'
+							}
+						},
+						{
+							text         : "<i class='far fa-file'></i> Nuevo Registro",
+							className    : 'btn btn-form  btn-flat',
+							action       : function (  ) {
+								window.location="nuevo.php"
+							},
+							counter      : 1
+						},
+				]
+			} );
+		} );
+	</script>
+
 	<script>
 		$(function () {
 			$(".select2").select2();
+			
 		});
 	</script> 
-	</body>
+
+</body>
 </html>

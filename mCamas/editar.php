@@ -1,6 +1,28 @@
 <?php
 include'../conexion/conexion.php';
-// variable que establece el menu activo.
+include'combos.php';
+$id=$_GET['id'];
+
+mysql_query("SET NAMES utf8");
+$consulta=mysql_query("SELECT
+							id_cama,
+							camas.id_especialiadad,
+							especialidades.nombre_especialidad,
+							camas.no_cama,
+							camas.activo
+						FROM
+							camas
+						INNER JOIN especialidades ON especialidades.id_especialidad=camas.id_especialiadad
+						WHERE id_cama=$id",$conexion) or die (mysql_error());
+
+$row=mysql_fetch_row($consulta);
+
+$id      = $row[0];
+$idespe  = $row[1];
+$espe    = $row[2];
+$nomcama = $row[3];
+$activo  = $row[4];
+
 $opa="A";
 ?>
 <!DOCTYPE html>
@@ -25,6 +47,8 @@ $opa="A";
 	<link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">	
 	<!-- animate -->
 	<link rel="stylesheet" href="../plugins/animate/animate.css">
+	<!-- select2 -->
+	<link rel="stylesheet" href="../plugins/select2/select2.css">
 </head>
 <body>
 	<header>
@@ -41,81 +65,56 @@ $opa="A";
 			</div>
 			<div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 cont">
 			   <div class="titulo borde sombra">
-			        <h3 class="animated zoomIn tPrincipal">Lista de departamentos</h3>
+			        <h3 class="animated zoomIn tPrincipal">Editar Camas</h3>
 			   </div>	
 			   <div class="contenido borde sombra" style="padding-right:18px;">
 				   <div class="container-fluid">
-					<!-- Inicio de tabla -->
-					<div class="table-responsive">
-						<table id="example1" class="table table-responsive table-condensed table-bordered table-hover">
-							<thead>
-								<tr>
-									<th>#</th>
-									<th>Ficha</th>
-									<th>Editar</th>
-									<th>Departamento</th>
-									<th>Estatus</th>
-								</tr>
-							</thead>
-							<tbody>
-							<?php
-							mysql_query("SET NAMES utf8");
-							$consulta=mysql_query("SELECT
-														id_departamento,
-														nombre_departamento,
-														activo
-													FROM
-														departamentos
-													ORDER BY id_departamento DESC",$conexion) or die (mysql_error());
-							$n=1;
-							while ($row=mysql_fetch_row($consulta))
-							{
+					<!-- Elementos -->
+					<div class="formulario animated  slideInUp">
+						<form role="form" class="interno" method="post" action="actualizar.php">
 
-								$activo=$row[2];
-								$id=$row[0];
-								$status=($row[2]==1)?"<i class='far fa-check-square fa-lg fasIco'></i>":"<i class='far fa-square fa-lg fasIco'></i>";
-								$desabilita=($row[2]==0)?"desactivado":"";
-							?>
-								<tr class="centrar">
-									<td>
-										<p class="<?php echo $desabilita?>"><?php echo $n?></p>
-									</td>
-									<td>
-										<a class="enlace" target="_blank" href="pdfFicha.php?id=<?php echo $id?>">
-											<i class="fas fa-print fa-lg fasIco"></i>
-										</a>
-									</td>
-									<td>
-										<a class="enlace" href="editar.php?id=<?php echo $id?>">
-											<i class="fas fa-edit fa-lg fasIco"></i>
-										</a>
-									</td>
-									<td>
-										<p class="<?php echo $desabilita?>"><?php echo $row[1]?></p>
-									</td>
-									<td>
-										<a class="enlace" href="status.php?valor=<?php echo $activo?>&id=<?php echo $id?>">
-											<?php echo $status?>
-										</a>	
-									</td>
-								</tr>
-							<?php
-							$n++;
-							}
-							?>
-							</tbody>
-							<tfoot>
-								<tr>
-									<th>#</th>
-									<th>Ficha</th>
-									<th>Editar</th>
-									<th>Departamento</th>
-									<th>Estatus</th>
-								</tr>
-							</tfoot>
-						</table>
+							<div class="encabezado">
+								Camas
+							</div>
+
+							<input type="hidden" name="ide" value="<?php echo $id?>">
+
+							<div class="cuerpo">
+								<div class="row">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-7">
+										<div class="form-group">
+											<label>Especialidad :</label>
+											<select disabled name="espe" class="form-control select2" style="width: 100%;">
+											<option value="<?php echo $idespe?>"><?php echo $espe?></option>
+												<?
+													for($i=0;$i<$num1;$i++) 
+													{
+													$id=mysql_result($combo1,$i,'id_especialiadad');
+													$usuario=mysql_result($combo1,$i,'nombre_especialidad');
+													echo "<option value=\"$id\" >$usuario</option>";
+													}
+												?> 
+											</select>
+										</div>
+									</div>
+								
+									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-5">
+										<div class="form-group">
+											<label>Numero de cama :</label>
+											<input type="text" name="num_cama" class="form-control" required autofocus placeholder="# Cama" value="<?php echo $nomcama?>">
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="pie">
+									<button type="submit" class="btn btn-form">Actualizar Datos</button>
+							</div>
+
+						</form>
 					</div>
-					<!-- Fin de tabla -->
+					<!-- Elementos -->
 					</div>
 			   </div>	
 			</div>			
@@ -125,6 +124,32 @@ $opa="A";
 	<?php include'../layout/pie.php';?>
 	</footer>
 
+	<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h3 class="modal-title  tPrincipal">Información de usuario</h3>
+				</div>
+				<div class="modal-body animated flipInX">
+						<img src="../imagenes/avatar.jpg" class="img-thumbnail mImg">
+						<h4 class="tPrincipal colorLetra centrar">
+							Plantilla base
+						</h4>
+
+						<h4 class="tPrincipal colorLetra centrar">
+							MGTI. Pablo Adrián Perez Briseño
+						</h4>
+
+						<h4 class="tPrincipal colorLetra centrar">
+							Empresa / Institución
+						</h4>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- SCRIPT JAVASCRIPT -->
 
 	<!-- jquery -->
@@ -142,7 +167,6 @@ $opa="A";
 	<script src="../js/menu.js"></script>
 	<script src="../js/precarga.js"></script>
 	<script src="../js/salir.js"></script>
-	<script src="../js/contra.js"></script>
 	<!-- DataTables -->
 	<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
 	<script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
@@ -155,34 +179,16 @@ $opa="A";
 	<script type="text/javascript" src="../plugins/dataTableButtons/vfs_fonts.js"></script>
 	<script type="text/javascript" src="../plugins/dataTableButtons/buttons.html5.min.js"></script>
 	<script type="text/javascript" src="../plugins/dataTableButtons/buttons.print.min.js"></script>
-
+    <!-- Select2 -->
+	<script src="../plugins/select2/select2.full.min.js"></script>
+	
 	<script type= "text/javascript">
 		$(document).ready(function() {
 			$('#example1').DataTable( {
 				"language"                : {
-												"sProcessing":     "Procesando...",
-												"sLengthMenu":     "Mostrar _MENU_ registros",
-												"sZeroRecords":    "No se encontraron resultados",
-												"sEmptyTable":     "Ningún dato disponible en esta tabla",
-												"sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-												"sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-												"sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-												"sInfoPostFix":    "",
-												"sSearch":         "Buscar:",
-												"sUrl":            "",
-												"sInfoThousands":  ",",
-												"sLoadingRecords": "Cargando...",
-												"oPaginate": {
-													"sFirst":    "Primero",
-													"sLast":     "Último",
-													"sNext":     "Siguiente",
-													"sPrevious": "Anterior"
-												},
-												"oAria": {
-													"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-													"sSortDescending": ": Activar para ordenar la columna de manera descendente"
-												}
-											},
+						// "url"          : "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+						"url"             : "../plugins/datatables/langauge/Spanish.json"
+					},
 				"order"                   : [[ 0, "asc" ]],
 				"paging"                  : true,
 				"ordering"                : true,
@@ -205,32 +211,40 @@ $opa="A";
 						{
 							extend       : 'excel',
 							text         : "<i class='far fa-file-excel'></i> Exportar a Excel",
-							className    : 'btn btn-form',
+							className    : 'btn btn-form  btn-flat',
 							title        : 'Lista',
 							exportOptions: {
 								columns  : ':visible'
 							}
 						},
-						// {
-						// 	extend       : 'pdf',
-						// 	text         : "<i class='far fa-file-pdf'></i> Crear PDF",
-						// 	className    : 'btn btn-form',
-						// 	title        : 'Lista',
-						// 	exportOptions: {
-						// 		columns  : ':visible'
-						// 	}
-						// },
-						// {
-						// 	text         : "<i class='far fa-file'></i> Nuevo Registro",
-						// 	className    : 'btn btn-form',
-						// 	action       : function (  ) {
-						// 		window.location="nuevo.php"
-						// 	},
-						// 	counter      : 1
-						// },
+						{
+							extend       : 'pdf',
+							text         : "<i class='far fa-file-pdf'></i> Crear PDF",
+							className    : 'btn btn-form  btn-flat',
+							title        : 'Lista',
+							exportOptions: {
+								columns  : ':visible'
+							}
+						},
+						{
+							text         : "<i class='far fa-file'></i> Nuevo Registro",
+							className    : 'btn btn-form  btn-flat',
+							action       : function (  ) {
+								window.location="nuevo.php"
+							},
+							counter      : 1
+						},
 				]
 			} );
 		} );
-    </script>
+	</script>
+
+	<script>
+		$(function () {
+			$(".select2").select2();
+			
+		});
+	</script> 
+
 </body>
 </html>

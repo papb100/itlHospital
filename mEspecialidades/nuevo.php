@@ -1,21 +1,9 @@
-<?php
-include'../conexion/conexion.php';
+<?php  
+include'../sesiones/verificar_sesion.php';
+include'../funciones/menuActivo.php';
 
-$id=$_GET['id'];
-
-mysql_query("SET NAMES utf8");
-$consulta=mysql_query("SELECT
-						id_departamento,
-						nombre_departamento,
-						activo
-					FROM
-						departamentos WHERE id_departamento=$id",$conexion) or die (mysql_error());
-
-$row=mysql_fetch_row($consulta);
-
-$id=$row[0];
-$nomDepa=$row[1];
-$opa="A";
+// variable que establece el menu activo.
+$opa="B";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,33 +45,31 @@ $opa="A";
 			</div>
 			<div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 cont">
 			   <div class="titulo borde sombra">
-			        <h3 class="animated zoomIn tPrincipal">Editar departamento</h3>
+			        <h3 class="animated zoomIn tPrincipal">Nueva Especialidad</h3>
 			   </div>	
 			   <div class="contenido borde sombra" style="padding-right:18px;">
 				   <div class="container-fluid">
 					<!-- Elementos -->
 					<div class="formulario animated  slideInUp">
-						<form role="form" class="interno" method="post" action="actualizar.php">
+						<form role="form" class="interno" method="post" action="guardar.php">
 
 							<div class="encabezado">
-								Departamentos
+								Especialidades
 							</div>
-
-							<input type="hidden" name="ide" value="<?php echo $id?>">
 
 							<div class="cuerpo">
 								<div class="row">
 									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
-											<label>Departamento :</label>
-											<input type="text" name="depa" value="<?php echo $nomDepa?>" class="form-control" required autofocus placeholder="Escribe un nuevo departamento">									
+											<label>Especialidad :</label>
+											<input type="text" name="espe" class="form-control" required autofocus placeholder="Escribe una nueva especialidad...">
 										</div>
 									</div>
 								</div>
 							</div>
 
 							<div class="pie">
-									<button type="submit" class="btn btn-form">Actualizar Datos</button>
+									<button type="submit" class="btn btn-form">Guardar Datos</button>
 							</div>
 
 						</form>
@@ -98,6 +84,7 @@ $opa="A";
 	<?php include'../layout/pie.php';?>
 	</footer>
 
+	
 	<!-- SCRIPT JAVASCRIPT -->
 
 	<!-- jquery -->
@@ -119,6 +106,63 @@ $opa="A";
     <!-- Select2 -->
 	<script src="../plugins/select2/select2.full.min.js"></script>
 	
+	<script type= "text/javascript">
+		$(document).ready(function() {
+			$('#example1').DataTable( {
+				"language"                : {
+						// "url"          : "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+						"url"             : "../plugins/datatables/langauge/Spanish.json"
+					},
+				"order"                   : [[ 0, "asc" ]],
+				"paging"                  : true,
+				"ordering"                : true,
+				"info"                    : true,
+				"responsive"              : true,
+				"searching"               : true,
+				"pagingType"              : "full_numbers",
+				stateSave                 : false,
+				dom                      : 'Bfrtip',
+				lengthMenu               : [
+					[ 10, 25, 50, -1 ],
+					[ '10 Registros', '25 Registros', '50 Registros', 'Todos' ],
+				],
+				columnDefs                : [ {
+					// targets           : 0,
+					// visible           : false
+				}],
+				buttons                  : [
+
+						{
+							extend       : 'excel',
+							text         : "<i class='far fa-file-excel'></i> Exportar a Excel",
+							className    : 'btn btn-form  btn-flat',
+							title        : 'Lista',
+							exportOptions: {
+								columns  : ':visible'
+							}
+						},
+						{
+							extend       : 'pdf',
+							text         : "<i class='far fa-file-pdf'></i> Crear PDF",
+							className    : 'btn btn-form  btn-flat',
+							title        : 'Lista',
+							exportOptions: {
+								columns  : ':visible'
+							}
+						},
+						{
+							text         : "<i class='far fa-file'></i> Nuevo Registro",
+							className    : 'btn btn-form  btn-flat',
+							action       : function (  ) {
+								window.location="nuevo.php"
+							},
+							counter      : 1
+						},
+				]
+			} );
+		} );
+	</script>
+
 	<script>
 		$(function () {
 			$(".select2").select2();

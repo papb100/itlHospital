@@ -1,21 +1,9 @@
-<?php
-include'../conexion/conexion.php';
+<?php  
+include'../sesiones/verificar_sesion.php';
+include'../funciones/menuActivo.php';
 
-$id=$_GET['id'];
-
-mysql_query("SET NAMES utf8");
-$consulta=mysql_query("SELECT
-						id_departamento,
-						nombre_departamento,
-						activo
-					FROM
-						departamentos WHERE id_departamento=$id",$conexion) or die (mysql_error());
-
-$row=mysql_fetch_row($consulta);
-
-$id=$row[0];
-$nomDepa=$row[1];
-$opa="A";
+// variable que establece el menu activo.
+$opa="B";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,33 +45,40 @@ $opa="A";
 			</div>
 			<div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 cont">
 			   <div class="titulo borde sombra">
-			        <h3 class="animated zoomIn tPrincipal">Editar departamento</h3>
+			        <h3 class="animated zoomIn tPrincipal">Nuevo Consultorio</h3>
 			   </div>	
 			   <div class="contenido borde sombra" style="padding-right:18px;">
 				   <div class="container-fluid">
 					<!-- Elementos -->
 					<div class="formulario animated  slideInUp">
-						<form role="form" class="interno" method="post" action="actualizar.php">
+						<form role="form" class="interno" method="post" action="guardar.php">
 
 							<div class="encabezado">
-								Departamentos
+								Consultorios
 							</div>
-
-							<input type="hidden" name="ide" value="<?php echo $id?>">
 
 							<div class="cuerpo">
 								<div class="row">
-									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 										<div class="form-group">
-											<label>Departamento :</label>
-											<input type="text" name="depa" value="<?php echo $nomDepa?>" class="form-control" required autofocus placeholder="Escribe un nuevo departamento">									
+											<label>Consultorio :</label>
+											<input type="text" name="consu" class="form-control" required autofocus placeholder="Escribe consultorio">
+										</div>										
+									</div>
+									<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+										<div class="form-group">
+											<label>Área :</label>
+											<select name="area" class="form-control select2" style="width: 100%;">
+                                                <option value="Urgencias">Urgencias</option>
+                                                <option value="Consulta Externa">Consulta Externa</option>
+                                            </select>
 										</div>
 									</div>
 								</div>
 							</div>
 
 							<div class="pie">
-									<button type="submit" class="btn btn-form">Actualizar Datos</button>
+									<button type="submit" class="btn btn-form">Guardar Datos</button>
 							</div>
 
 						</form>
@@ -118,7 +113,7 @@ $opa="A";
 	<script src="../js/contra.js"></script>
     <!-- Select2 -->
 	<script src="../plugins/select2/select2.full.min.js"></script>
-	
+
 	<script>
 		$(function () {
 			$(".select2").select2();

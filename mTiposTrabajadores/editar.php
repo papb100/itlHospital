@@ -5,16 +5,16 @@ $id=$_GET['id'];
 
 mysql_query("SET NAMES utf8");
 $consulta=mysql_query("SELECT
-						id_departamento,
-						nombre_departamento,
+						id_tipo_trabajador,
+						descripcion,
 						activo
 					FROM
-						departamentos WHERE id_departamento=$id",$conexion) or die (mysql_error());
+						tipos_trabajador WHERE 	id_tipo_trabajador=$id",$conexion) or die (mysql_error());
 
 $row=mysql_fetch_row($consulta);
 
 $id=$row[0];
-$nomDepa=$row[1];
+$Tipo=$row[1];
 $opa="A";
 ?>
 <!DOCTYPE html>
@@ -57,7 +57,7 @@ $opa="A";
 			</div>
 			<div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 cont">
 			   <div class="titulo borde sombra">
-			        <h3 class="animated zoomIn tPrincipal">Editar departamento</h3>
+			        <h3 class="animated zoomIn tPrincipal">Editar Tipo de trabajador</h3>
 			   </div>	
 			   <div class="contenido borde sombra" style="padding-right:18px;">
 				   <div class="container-fluid">
@@ -66,7 +66,7 @@ $opa="A";
 						<form role="form" class="interno" method="post" action="actualizar.php">
 
 							<div class="encabezado">
-								Departamentos
+								Tipo
 							</div>
 
 							<input type="hidden" name="ide" value="<?php echo $id?>">
@@ -75,8 +75,8 @@ $opa="A";
 								<div class="row">
 									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
-											<label>Departamento :</label>
-											<input type="text" name="depa" value="<?php echo $nomDepa?>" class="form-control" required autofocus placeholder="Escribe un nuevo departamento">									
+											<label>Tipo :</label>
+											<input type="text" name="tip" value="<?php echo $Tipo?>" class="form-control" required autofocus placeholder="Escribe un nuevo tipo">									
 										</div>
 									</div>
 								</div>
@@ -98,6 +98,7 @@ $opa="A";
 	<?php include'../layout/pie.php';?>
 	</footer>
 
+	
 	<!-- SCRIPT JAVASCRIPT -->
 
 	<!-- jquery -->
@@ -118,7 +119,7 @@ $opa="A";
 	<script src="../js/contra.js"></script>
     <!-- Select2 -->
 	<script src="../plugins/select2/select2.full.min.js"></script>
-	
+
 	<script>
 		$(function () {
 			$(".select2").select2();

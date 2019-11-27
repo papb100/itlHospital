@@ -212,18 +212,7 @@ $opa="A";
 	<script src="../js/precarga.js"></script>
 	<script src="../js/salir.js"></script>
 	<script src="../js/contra.js"></script>
-	<!-- DataTables -->
-	<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
-	<script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
-	<!-- dataTableButtons -->
-	<script type="text/javascript" src="../plugins/dataTableButtons/dataTables.buttons.min.js"></script>
-	<script type="text/javascript" src="../plugins/dataTableButtons/buttons.flash.min.js"></script>
-	<script type="text/javascript" src="../plugins/dataTableButtons/buttons.colVis.min.js"></script>
-	<script type="text/javascript" src="../plugins/dataTableButtons/jszip.min.js"></script>
-	<script type="text/javascript" src="../plugins/dataTableButtons/pdfmake.min.js"></script>
-	<script type="text/javascript" src="../plugins/dataTableButtons/vfs_fonts.js"></script>
-	<script type="text/javascript" src="../plugins/dataTableButtons/buttons.html5.min.js"></script>
-	<script type="text/javascript" src="../plugins/dataTableButtons/buttons.print.min.js"></script>
+
     <!-- Select2 -->
 	<script src="../plugins/select2/select2.full.min.js"></script>
 	

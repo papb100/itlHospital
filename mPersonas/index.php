@@ -1,5 +1,6 @@
 <?php
 include'../conexion/conexion.php';
+
 // variable que establece el menu activo.
 $opa="A";
 ?>
@@ -41,7 +42,7 @@ $opa="A";
 			</div>
 			<div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 cont">
 			   <div class="titulo borde sombra">
-			        <h3 class="animated zoomIn tPrincipal">Lista de departamentos</h3>
+			        <h3 class="animated zoomIn tPrincipal">Lista de personas</h3>
 			   </div>	
 			   <div class="contenido borde sombra" style="padding-right:18px;">
 				   <div class="container-fluid">
@@ -53,7 +54,9 @@ $opa="A";
 									<th>#</th>
 									<th>Ficha</th>
 									<th>Editar</th>
-									<th>Departamento</th>
+									<th>Persona</th>
+									<th>Teléfono</th>
+									<th>Correo</th>
 									<th>Estatus</th>
 								</tr>
 							</thead>
@@ -61,20 +64,25 @@ $opa="A";
 							<?php
 							mysql_query("SET NAMES utf8");
 							$consulta=mysql_query("SELECT
-														id_departamento,
-														nombre_departamento,
+														id_persona,
+														CONCAT(ap_paterno,' ',ap_materno,' ',nombre),
+														telefono,
+														correo,
 														activo
 													FROM
-														departamentos
-													ORDER BY id_departamento DESC",$conexion) or die (mysql_error());
+														personas
+													ORDER BY id_persona DESC",$conexion) or die (mysql_error());
 							$n=1;
 							while ($row=mysql_fetch_row($consulta))
 							{
 
-								$activo=$row[2];
+								$activo=$row[4];
 								$id=$row[0];
-								$status=($row[2]==1)?"<i class='far fa-check-square fa-lg fasIco'></i>":"<i class='far fa-square fa-lg fasIco'></i>";
-								$desabilita=($row[2]==0)?"desactivado":"";
+								$status=($row[4]==1)?"<i class='far fa-check-square fa-lg fasIco'></i>":"<i class='far fa-square fa-lg fasIco'></i>";
+								$desabilita=($row[4]==0)?"desactivado":"";
+								$persona=$row[1];
+								$telefono=$row[2];
+								$correo=$row[3];
 							?>
 								<tr class="centrar">
 									<td>
@@ -91,7 +99,13 @@ $opa="A";
 										</a>
 									</td>
 									<td>
-										<p class="<?php echo $desabilita?>"><?php echo $row[1]?></p>
+										<p class="<?php echo $desabilita?>"><?php echo $persona?></p>
+									</td>
+									<td>
+										<p class="<?php echo $desabilita?>"><?php echo $telefono?></p>
+									</td>
+									<td>
+										<p class="<?php echo $desabilita?>"><?php echo $correo?></p>
 									</td>
 									<td>
 										<a class="enlace" href="status.php?valor=<?php echo $activo?>&id=<?php echo $id?>">
@@ -109,7 +123,9 @@ $opa="A";
 									<th>#</th>
 									<th>Ficha</th>
 									<th>Editar</th>
-									<th>Departamento</th>
+									<th>Persona</th>
+									<th>Teléfono</th>
+									<th>Correo</th>
 									<th>Estatus</th>
 								</tr>
 							</tfoot>

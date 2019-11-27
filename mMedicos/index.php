@@ -1,5 +1,6 @@
 <?php
 include'../conexion/conexion.php';
+
 // variable que establece el menu activo.
 $opa="A";
 ?>
@@ -41,7 +42,7 @@ $opa="A";
 			</div>
 			<div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 cont">
 			   <div class="titulo borde sombra">
-			        <h3 class="animated zoomIn tPrincipal">Lista de departamentos</h3>
+			        <h3 class="animated zoomIn tPrincipal">Lista de Medicos</h3>
 			   </div>	
 			   <div class="contenido borde sombra" style="padding-right:18px;">
 				   <div class="container-fluid">
@@ -53,7 +54,9 @@ $opa="A";
 									<th>#</th>
 									<th>Ficha</th>
 									<th>Editar</th>
-									<th>Departamento</th>
+									<th>Cedula</th>
+									<th>Trabajador</th>
+									<th>Especialidad</th>
 									<th>Estatus</th>
 								</tr>
 							</thead>
@@ -61,20 +64,28 @@ $opa="A";
 							<?php
 							mysql_query("SET NAMES utf8");
 							$consulta=mysql_query("SELECT
-														id_departamento,
-														nombre_departamento,
-														activo
+														id_medico,
+														cedula,
+														(SELECT CONCAT(ap_paterno,' ',ap_materno,' ',nombre) FROM personas WHERE personas.id_persona=trabajadores.id_persona) as Trabajador,
+														especialidades.nombre_especialidad,
+														medicos.activo
 													FROM
-														departamentos
-													ORDER BY id_departamento DESC",$conexion) or die (mysql_error());
+														medicos
+													INNER JOIN trabajadores ON trabajadores.id_trabajador=medicos.id_trabajador
+													INNER JOIN especialidades ON especialidades.id_especialidad=medicos.id_especialidad
+													ORDER BY id_medico DESC",$conexion) or die (mysql_error());
 							$n=1;
 							while ($row=mysql_fetch_row($consulta))
 							{
 
-								$activo=$row[2];
+								$activo=$row[4];
 								$id=$row[0];
-								$status=($row[2]==1)?"<i class='far fa-check-square fa-lg fasIco'></i>":"<i class='far fa-square fa-lg fasIco'></i>";
-								$desabilita=($row[2]==0)?"desactivado":"";
+								$status=($row[4]==1)?"<i class='far fa-check-square fa-lg fasIco'></i>":"<i class='far fa-square fa-lg fasIco'></i>";
+								$desabilita=($row[4]==0)?"desactivado":"";
+								$cedula=$row[1];
+								$trabajador=$row[2];
+								$idespecialidad=$row[3];
+
 							?>
 								<tr class="centrar">
 									<td>
@@ -91,7 +102,13 @@ $opa="A";
 										</a>
 									</td>
 									<td>
-										<p class="<?php echo $desabilita?>"><?php echo $row[1]?></p>
+										<p class="<?php echo $desabilita?>"><?php echo $cedula?></p>
+									</td>
+									<td>
+										<p class="<?php echo $desabilita?>"><?php echo $trabajador?></p>
+									</td>
+									<td>
+										<p class="<?php echo $desabilita?>"><?php echo $idespecialidad?></p>
 									</td>
 									<td>
 										<a class="enlace" href="status.php?valor=<?php echo $activo?>&id=<?php echo $id?>">
@@ -109,7 +126,9 @@ $opa="A";
 									<th>#</th>
 									<th>Ficha</th>
 									<th>Editar</th>
-									<th>Departamento</th>
+									<th>Cedula</th>
+									<th>Trabajador</th>
+									<th>Especialidad</th>
 									<th>Estatus</th>
 								</tr>
 							</tfoot>
@@ -124,6 +143,8 @@ $opa="A";
 	<footer class="fondo">
 	<?php include'../layout/pie.php';?>
 	</footer>
+
+	
 
 	<!-- SCRIPT JAVASCRIPT -->
 

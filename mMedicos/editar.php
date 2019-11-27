@@ -1,9 +1,46 @@
-<?php  
-include'../sesiones/verificar_sesion.php';
-include'../funciones/menuActivo.php';
+<?php
+include'../conexion/conexion.php';
 include'combos.php';
-// variable que establece el menu activo.
-$opa="B";
+$id=$_GET['id'];
+
+mysql_query("SET NAMES utf8");
+$consulta=mysql_query("SELECT
+							id_medico,
+							cedula,
+							trabajadores.id_trabajador,
+							(SELECT CONCAT(ap_paterno,' ',ap_materno,' ',nombre) FROM personas WHERE 	personas.id_persona=trabajadores.id_persona) as Trabajador,
+							especialista,
+							especialidades.id_especialidad,
+							especialidades.nombre_especialidad
+						FROM
+							medicos
+						INNER JOIN trabajadores ON trabajadores.id_trabajador=medicos.id_trabajador
+						INNER JOIN especialidades ON especialidades.id_especialidad=medicos.id_especialidad
+						WHERE id_medico=$id",$conexion) or die (mysql_error());
+
+$row=mysql_fetch_row($consulta);
+
+$id         = $row[0];
+$cedula  = $row[1];
+$idTrabajador = $row[2];
+$trabajador   = $row[3];
+$especialista      = $row[4];
+$res=($especialista==1)?"Si":"No";
+// switch ($especialista) {
+// 	case '1':
+// 		$res = "Si";
+// 		break;
+// 	case '0':
+// 		$res = "No";
+// 		break;
+// 	default:
+// 		# code...
+// 		break;
+// }
+$idEspecialidad	    = $row[5];
+$Especialidad       = $row[6];
+
+$opa="A";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,28 +82,35 @@ $opa="B";
 			</div>
 			<div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 cont">
 			   <div class="titulo borde sombra">
-			        <h3 class="animated zoomIn tPrincipal">Nuevo Trabajador</h3>
+			        <h3 class="animated zoomIn tPrincipal">Editar Medico</h3>
 			   </div>	
 			   <div class="contenido borde sombra" style="padding-right:18px;">
 				   <div class="container-fluid">
 					<!-- Elementos -->
 					<div class="formulario animated  slideInUp">
-						<form role="form" class="interno" method="post" action="guardar.php">
+						<form role="form" class="interno" method="post" action="actualizar.php">
 
 							<div class="encabezado">
-								Trabajadores
+								Medicos
 							</div>
-
+							<input type="hidden" name="ide" value="<?php echo $id?>">
 							<div class="cuerpo">
 								<div class="row">
-									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-7">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
-											<label>Persona :</label>
-											<select name="idPersona" class="form-control select2" style="width: 100%;">
+											<label>Cedula :</label>
+											<input type="text" name="clave" class="form-control" required autofocus placeholder="# Cedula" value="<?php echo $cedula?>">
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+										<div class="form-group">
+											<label>Medico :</label>
+											<select name="idTrabajador" class="form-control select2" style="width: 100%;">
+											<option value="<?php echo $idTrabajador?>" ><?php echo $trabajador?></option>
 											<?
 												for($i=0;$i<$num1;$i++) 
 												{
-												$id=mysql_result($combo1,$i,'idPersona');
+												$id=mysql_result($combo1,$i,'idTrabajador');
 												$usuario=mysql_result($combo1,$i,'Persona');
 												echo "<option value=\"$id\" >$usuario</option>";
 												}
@@ -74,69 +118,37 @@ $opa="B";
 											</select>
 										</div>
 									</div>
-									<div class="col-xs-12 col-sm-8 col-md-4 col-lg-5">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
 										<div class="form-group">
-											<label>Fecha de Ingreso :</label>
-											<input type="date" name="fingreso" class="form-control" required>
+											<label>Especialista :</label>
+											<select name="esp" class="form-control select2" style="width: 100%;">
+											<option value="<?php echo $especialista ?>"><?php echo $res ?></option>
+											 	<option value="1">SI</option>
+											 	<option value="0">No</option>
+											</select>
 										</div>
 									</div>
-									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+									<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 										<div class="form-group">
-											<label>Clave :</label>
-											<input type="text" name="clave" class="form-control" required autofocus placeholder="# Trabajador">
-										</div>
-									</div>
-									<div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
-										<div class="form-group">
-											<label>Tipo :</label>
-											<select name="idTipoTrabajador" class="form-control select2" style="width: 100%;">
+											<label>Especialidad :</label>
+											<select name="idEspecialidad" class="form-control select2" style="width: 100%;">
+											<option value="<?php echo $idEspecialidad?>" ><?php echo $Especialidad?></option>
 											<?
 												for($i=0;$i<$num2;$i++) 
 												{
-												$id=mysql_result($combo2,$i,'id_tipo_trabajador');
-												$usuario=mysql_result($combo2,$i,'descripcion');
+												$id=mysql_result($combo2,$i,'id_especialidad');
+												$usuario=mysql_result($combo2,$i,'nombre_especialidad');
 												echo "<option value=\"$id\" >$usuario</option>";
 												}
 											?> 
 											</select>
 										</div>
 									</div>
-									<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-										<div class="form-group">
-											<label>Departamento :</label>
-											<select name="idDepartamento" class="form-control select2" style="width: 100%;">
-											<?
-												for($i=0;$i<$num3;$i++) 
-												{
-												$id=mysql_result($combo3,$i,'id_departamento');
-												$usuario=mysql_result($combo3,$i,'nombre_departamento');
-												echo "<option value=\"$id\" >$usuario</option>";
-												}
-											?> 
-											</select>
-										</div>
-									</div>
-									<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-										<div class="form-group">
-											<label>Puesto :</label>
-											<select name="idPuesto" class="form-control select2" style="width: 100%;">
-											<?
-												for($i=0;$i<$num4;$i++) 
-												{
-												$id=mysql_result($combo4,$i,'id_puesto');
-												$usuario=mysql_result($combo4,$i,'nombre_puesto');
-												echo "<option value=\"$id\" >$usuario</option>";
-												}
-											?> 
-											</select>
-										</div>
-									</div>
-
 								</div>
 							</div>
 
 							<div class="pie">
-									<button type="submit" class="btn btn-form">Guardar Datos</button>
+									<button type="submit" class="btn btn-form">Actualizar Datos</button>
 							</div>
 
 						</form>
@@ -151,32 +163,6 @@ $opa="B";
 	<?php include'../layout/pie.php';?>
 	</footer>
 
-	<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h3 class="modal-title  tPrincipal">Información de usuario</h3>
-				</div>
-				<div class="modal-body animated flipInX">
-						<img src="../imagenes/avatar.jpg" class="img-thumbnail mImg">
-						<h4 class="tPrincipal colorLetra centrar">
-							Plantilla base
-						</h4>
-
-						<h4 class="tPrincipal colorLetra centrar">
-							MGTI. Pablo Adrián Perez Briseño
-						</h4>
-
-						<h4 class="tPrincipal colorLetra centrar">
-							Empresa / Institución
-						</h4>
-				</div>
-			</div>
-		</div>
-	</div>
 	<!-- SCRIPT JAVASCRIPT -->
 
 	<!-- jquery -->
@@ -195,14 +181,15 @@ $opa="B";
 	<script src="../js/precarga.js"></script>
 	<script src="../js/salir.js"></script>
 	<script src="../js/contra.js"></script>
-
     <!-- Select2 -->
 	<script src="../plugins/select2/select2.full.min.js"></script>
-	
+
 	<script>
 		$(function () {
 			$(".select2").select2();
+			
 		});
 	</script> 
-	</body>
+
+</body>
 </html>

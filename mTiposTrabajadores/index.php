@@ -41,7 +41,7 @@ $opa="A";
 			</div>
 			<div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 cont">
 			   <div class="titulo borde sombra">
-			        <h3 class="animated zoomIn tPrincipal">Lista de departamentos</h3>
+			        <h3 class="animated zoomIn tPrincipal">Lista de Tipo Trabajador</h3>
 			   </div>	
 			   <div class="contenido borde sombra" style="padding-right:18px;">
 				   <div class="container-fluid">
@@ -53,7 +53,7 @@ $opa="A";
 									<th>#</th>
 									<th>Ficha</th>
 									<th>Editar</th>
-									<th>Departamento</th>
+									<th>Tipos</th>
 									<th>Estatus</th>
 								</tr>
 							</thead>
@@ -61,12 +61,12 @@ $opa="A";
 							<?php
 							mysql_query("SET NAMES utf8");
 							$consulta=mysql_query("SELECT
-														id_departamento,
-														nombre_departamento,
+														id_tipo_trabajador,
+														descripcion,
 														activo
 													FROM
-														departamentos
-													ORDER BY id_departamento DESC",$conexion) or die (mysql_error());
+													tipos_trabajador
+													ORDER BY id_tipo_trabajador DESC",$conexion) or die (mysql_error());
 							$n=1;
 							while ($row=mysql_fetch_row($consulta))
 							{
@@ -109,7 +109,7 @@ $opa="A";
 									<th>#</th>
 									<th>Ficha</th>
 									<th>Editar</th>
-									<th>Departamento</th>
+									<th>Tipos</th>
 									<th>Estatus</th>
 								</tr>
 							</tfoot>
@@ -125,6 +125,7 @@ $opa="A";
 	<?php include'../layout/pie.php';?>
 	</footer>
 
+
 	<!-- SCRIPT JAVASCRIPT -->
 
 	<!-- jquery -->
@@ -139,10 +140,10 @@ $opa="A";
 	<script src="../plugins/bootstrap-toggle-master/doc/script.js"></script>
 	<script src="../plugins/bootstrap-toggle-master/js/bootstrap-toggle.js"></script>
 	<!-- Scripts personalizados -->
+	<script src="../js/contra.js"></script>
 	<script src="../js/menu.js"></script>
 	<script src="../js/precarga.js"></script>
 	<script src="../js/salir.js"></script>
-	<script src="../js/contra.js"></script>
 	<!-- DataTables -->
 	<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
 	<script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>

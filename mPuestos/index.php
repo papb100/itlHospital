@@ -41,7 +41,7 @@ $opa="A";
 			</div>
 			<div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 cont">
 			   <div class="titulo borde sombra">
-			        <h3 class="animated zoomIn tPrincipal">Lista de departamentos</h3>
+			        <h3 class="animated zoomIn tPrincipal">Lista de puestos</h3>
 			   </div>	
 			   <div class="contenido borde sombra" style="padding-right:18px;">
 				   <div class="container-fluid">
@@ -53,7 +53,7 @@ $opa="A";
 									<th>#</th>
 									<th>Ficha</th>
 									<th>Editar</th>
-									<th>Departamento</th>
+									<th>Puestos</th>
 									<th>Estatus</th>
 								</tr>
 							</thead>
@@ -61,12 +61,12 @@ $opa="A";
 							<?php
 							mysql_query("SET NAMES utf8");
 							$consulta=mysql_query("SELECT
-														id_departamento,
-														nombre_departamento,
+														id_puesto,
+														nombre_puesto,
 														activo
 													FROM
-														departamentos
-													ORDER BY id_departamento DESC",$conexion) or die (mysql_error());
+														puestos
+													ORDER BY id_puesto DESC",$conexion) or die (mysql_error());
 							$n=1;
 							while ($row=mysql_fetch_row($consulta))
 							{
@@ -95,7 +95,7 @@ $opa="A";
 									</td>
 									<td>
 										<a class="enlace" href="status.php?valor=<?php echo $activo?>&id=<?php echo $id?>">
-											<?php echo $status?>
+										 <?php echo $status?>
 										</a>	
 									</td>
 								</tr>
@@ -109,7 +109,7 @@ $opa="A";
 									<th>#</th>
 									<th>Ficha</th>
 									<th>Editar</th>
-									<th>Departamento</th>
+									<th>Puesto</th>
 									<th>Estatus</th>
 								</tr>
 							</tfoot>

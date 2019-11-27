@@ -1,20 +1,23 @@
 <?php
 include'../conexion/conexion.php';
-
 $id=$_GET['id'];
 
 mysql_query("SET NAMES utf8");
 $consulta=mysql_query("SELECT
-						id_departamento,
-						nombre_departamento,
-						activo
-					FROM
-						departamentos WHERE id_departamento=$id",$conexion) or die (mysql_error());
+							id_consultorio,
+							nombre_consultorio,
+							area,
+							activo
+						FROM
+							consultorios
+						WHERE id_consultorio=$id",$conexion) or die (mysql_error());
 
 $row=mysql_fetch_row($consulta);
 
-$id=$row[0];
-$nomDepa=$row[1];
+$id         = $row[0];
+$nomConsultorio  = $row[1];
+$Area = $row[2];
+
 $opa="A";
 ?>
 <!DOCTYPE html>
@@ -57,7 +60,7 @@ $opa="A";
 			</div>
 			<div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 cont">
 			   <div class="titulo borde sombra">
-			        <h3 class="animated zoomIn tPrincipal">Editar departamento</h3>
+			        <h3 class="animated zoomIn tPrincipal">Editar Trabajador</h3>
 			   </div>	
 			   <div class="contenido borde sombra" style="padding-right:18px;">
 				   <div class="container-fluid">
@@ -66,17 +69,27 @@ $opa="A";
 						<form role="form" class="interno" method="post" action="actualizar.php">
 
 							<div class="encabezado">
-								Departamentos
+								Trabajadores
 							</div>
 
 							<input type="hidden" name="ide" value="<?php echo $id?>">
 
 							<div class="cuerpo">
 								<div class="row">
-									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 										<div class="form-group">
-											<label>Departamento :</label>
-											<input type="text" name="depa" value="<?php echo $nomDepa?>" class="form-control" required autofocus placeholder="Escribe un nuevo departamento">									
+											<label>Consultorio :</label>
+											<input type="text" name="consu" value="<?php echo $nomConsultorio?>"  class="form-control" required autofocus placeholder="Escribe consultorio">
+										</div>										
+									</div>
+									<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+										<div class="form-group">
+											<label>Área :</label>
+											<select name="area" class="form-control select2" style="width: 100%;">
+												<option value="<?php echo $Area?>"><?php echo $Area?></option>
+                                                <option value="Urgencias">Urgencias</option>
+                                                <option value="Consulta Externa">Consulta Externa</option>
+                                            </select>
 										</div>
 									</div>
 								</div>
@@ -119,6 +132,7 @@ $opa="A";
     <!-- Select2 -->
 	<script src="../plugins/select2/select2.full.min.js"></script>
 	
+
 	<script>
 		$(function () {
 			$(".select2").select2();

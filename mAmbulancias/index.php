@@ -41,7 +41,7 @@ $opa="A";
 			</div>
 			<div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 cont">
 			   <div class="titulo borde sombra">
-			        <h3 class="animated zoomIn tPrincipal">Lista de departamentos</h3>
+			        <h3 class="animated zoomIn tPrincipal">Lista de ambulancias</h3>
 			   </div>	
 			   <div class="contenido borde sombra" style="padding-right:18px;">
 				   <div class="container-fluid">
@@ -53,7 +53,9 @@ $opa="A";
 									<th>#</th>
 									<th>Ficha</th>
 									<th>Editar</th>
-									<th>Departamento</th>
+									<th>Número</th>
+									<th>Modelo</th>
+									<th>Descripción</th>
 									<th>Estatus</th>
 								</tr>
 							</thead>
@@ -61,20 +63,22 @@ $opa="A";
 							<?php
 							mysql_query("SET NAMES utf8");
 							$consulta=mysql_query("SELECT
-														id_departamento,
-														nombre_departamento,
+														id_ambulancia,
+														num_ambulancia,
+														modelo_ambulancia,
+														descripcion_ambulancia,
 														activo
 													FROM
-														departamentos
-													ORDER BY id_departamento DESC",$conexion) or die (mysql_error());
+														ambulancias
+													ORDER BY id_ambulancia DESC",$conexion) or die (mysql_error());
 							$n=1;
 							while ($row=mysql_fetch_row($consulta))
 							{
 
-								$activo=$row[2];
+								$activo=$row[4];
 								$id=$row[0];
-								$status=($row[2]==1)?"<i class='far fa-check-square fa-lg fasIco'></i>":"<i class='far fa-square fa-lg fasIco'></i>";
-								$desabilita=($row[2]==0)?"desactivado":"";
+								$status=($row[4]==1)?"<i class='far fa-check-square fa-lg fasIco'></i>":"<i class='far fa-square fa-lg fasIco'></i>";
+								$desabilita=($row[4]==0)?"desactivado":"";
 							?>
 								<tr class="centrar">
 									<td>
@@ -94,8 +98,14 @@ $opa="A";
 										<p class="<?php echo $desabilita?>"><?php echo $row[1]?></p>
 									</td>
 									<td>
+										<p class="<?php echo $desabilita?>"><?php echo $row[2]?></p>
+									</td>
+									<td>
+										<p class="<?php echo $desabilita?>"><?php echo $row[3]?></p>
+									</td>
+									<td>
 										<a class="enlace" href="status.php?valor=<?php echo $activo?>&id=<?php echo $id?>">
-											<?php echo $status?>
+										 <?php echo $status?>
 										</a>	
 									</td>
 								</tr>
@@ -109,7 +119,9 @@ $opa="A";
 									<th>#</th>
 									<th>Ficha</th>
 									<th>Editar</th>
-									<th>Departamento</th>
+									<th>Número</th>
+									<th>Modelo</th>
+									<th>Descripción</th>
 									<th>Estatus</th>
 								</tr>
 							</tfoot>

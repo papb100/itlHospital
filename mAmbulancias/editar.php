@@ -5,16 +5,20 @@ $id=$_GET['id'];
 
 mysql_query("SET NAMES utf8");
 $consulta=mysql_query("SELECT
-						id_departamento,
-						nombre_departamento,
+						id_ambulancia,
+						num_ambulancia,
+						modelo_ambulancia,
+						descripcion_ambulancia,
 						activo
 					FROM
-						departamentos WHERE id_departamento=$id",$conexion) or die (mysql_error());
+						ambulancias WHERE id_ambulancia=$id",$conexion) or die (mysql_error());
 
 $row=mysql_fetch_row($consulta);
 
 $id=$row[0];
-$nomDepa=$row[1];
+$numAmb=$row[1];
+$modAmb=$row[2];
+$descAmb=$row[3];
 $opa="A";
 ?>
 <!DOCTYPE html>
@@ -57,26 +61,36 @@ $opa="A";
 			</div>
 			<div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 cont">
 			   <div class="titulo borde sombra">
-			        <h3 class="animated zoomIn tPrincipal">Editar departamento</h3>
+			        <h3 class="animated zoomIn tPrincipal">Editar ambulancia</h3>
 			   </div>	
 			   <div class="contenido borde sombra" style="padding-right:18px;">
 				   <div class="container-fluid">
 					<!-- Elementos -->
 					<div class="formulario animated  slideInUp">
-						<form role="form" class="interno" method="post" action="actualizar.php">
-
+						<form role="hidden" action="actualizar.php" method="post">
 							<div class="encabezado">
-								Departamentos
+								Ambulancias
 							</div>
-
-							<input type="hidden" name="ide" value="<?php echo $id?>">
 
 							<div class="cuerpo">
 								<div class="row">
-									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 										<div class="form-group">
-											<label>Departamento :</label>
-											<input type="text" name="depa" value="<?php echo $nomDepa?>" class="form-control" required autofocus placeholder="Escribe un nuevo departamento">									
+											<label>Número ambulancia:</label>
+											<input type="hidden" name="ide" value="<?php echo $id?>">
+											<input type="text" name="numAmb" value="<?php echo $numAmb?>" class="form-control" required autofocus placeholder="Escribe un nuevo número de ambulancia">
+										</div>
+									</div>
+									<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+										<div class="form-group">
+											<label>Modelo ambulancia:</label>
+											<input type="text" name="modAmb" value="<?php echo $modAmb?>" class="form-control" required autofocus placeholder="Escribe un nuevo modelo de ambulancia">
+										</div>
+									</div>
+									<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+										<div class="form-group">
+											<label>Descripción ambulancia:</label>
+											<input type="text" name="descAmb" value="<?php echo $descAmb?>" class="form-control" required autofocus placeholder="Escribe una nueva descripción de ambulancia">
 										</div>
 									</div>
 								</div>
@@ -116,9 +130,10 @@ $opa="A";
 	<script src="../js/precarga.js"></script>
 	<script src="../js/salir.js"></script>
 	<script src="../js/contra.js"></script>
+	
     <!-- Select2 -->
 	<script src="../plugins/select2/select2.full.min.js"></script>
-	
+
 	<script>
 		$(function () {
 			$(".select2").select2();

@@ -41,7 +41,7 @@ $opa="A";
 			</div>
 			<div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 cont">
 			   <div class="titulo borde sombra">
-			        <h3 class="animated zoomIn tPrincipal">Lista de departamentos</h3>
+			        <h3 class="animated zoomIn tPrincipal">Lista de especialidades</h3>
 			   </div>	
 			   <div class="contenido borde sombra" style="padding-right:18px;">
 				   <div class="container-fluid">
@@ -53,7 +53,7 @@ $opa="A";
 									<th>#</th>
 									<th>Ficha</th>
 									<th>Editar</th>
-									<th>Departamento</th>
+									<th>Especialidad</th>
 									<th>Estatus</th>
 								</tr>
 							</thead>
@@ -61,12 +61,12 @@ $opa="A";
 							<?php
 							mysql_query("SET NAMES utf8");
 							$consulta=mysql_query("SELECT
-														id_departamento,
-														nombre_departamento,
+														id_especialidad,
+														nombre_especialidad,
 														activo
 													FROM
-														departamentos
-													ORDER BY id_departamento DESC",$conexion) or die (mysql_error());
+														especialidades
+													ORDER BY id_especialidad DESC",$conexion) or die (mysql_error());
 							$n=1;
 							while ($row=mysql_fetch_row($consulta))
 							{
@@ -109,7 +109,7 @@ $opa="A";
 									<th>#</th>
 									<th>Ficha</th>
 									<th>Editar</th>
-									<th>Departamento</th>
+									<th>Especialidad</th>
 									<th>Estatus</th>
 								</tr>
 							</tfoot>
@@ -124,6 +124,7 @@ $opa="A";
 	<footer class="fondo">
 	<?php include'../layout/pie.php';?>
 	</footer>
+
 
 	<!-- SCRIPT JAVASCRIPT -->
 

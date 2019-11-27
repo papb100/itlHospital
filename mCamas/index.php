@@ -1,5 +1,6 @@
 <?php
 include'../conexion/conexion.php';
+
 // variable que establece el menu activo.
 $opa="A";
 ?>
@@ -41,7 +42,7 @@ $opa="A";
 			</div>
 			<div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 cont">
 			   <div class="titulo borde sombra">
-			        <h3 class="animated zoomIn tPrincipal">Lista de departamentos</h3>
+			        <h3 class="animated zoomIn tPrincipal">Lista de camas</h3>
 			   </div>	
 			   <div class="contenido borde sombra" style="padding-right:18px;">
 				   <div class="container-fluid">
@@ -53,7 +54,8 @@ $opa="A";
 									<th>#</th>
 									<th>Ficha</th>
 									<th>Editar</th>
-									<th>Departamento</th>
+									<th>Especialidad</th>
+									<th>Numero de cama</th>
 									<th>Estatus</th>
 								</tr>
 							</thead>
@@ -61,20 +63,27 @@ $opa="A";
 							<?php
 							mysql_query("SET NAMES utf8");
 							$consulta=mysql_query("SELECT
-														id_departamento,
-														nombre_departamento,
-														activo
+											            id_cama,
+														especialidades.nombre_especialidad as Especialidad,
+														camas.no_cama as Numero_Cama,
+														camas.activo,
+														camas.fecha_registro,
+														camas.hora_registro,
+														camas.usuario_registro
 													FROM
-														departamentos
-													ORDER BY id_departamento DESC",$conexion) or die (mysql_error());
+														camas
+															INNER JOIN especialidades ON especialidades.id_especialidad=camas.id_especialiadad
+															ORDER BY id_cama DESC",$conexion) or die (mysql_error());
 							$n=1;
 							while ($row=mysql_fetch_row($consulta))
 							{
-
-								$activo=$row[2];
+								$activo=$row[3];
 								$id=$row[0];
-								$status=($row[2]==1)?"<i class='far fa-check-square fa-lg fasIco'></i>":"<i class='far fa-square fa-lg fasIco'></i>";
-								$desabilita=($row[2]==0)?"desactivado":"";
+								$status=($row[3]==1)?"<i class='far fa-check-square fa-lg fasIco'></i>":"<i class='far fa-square fa-lg fasIco'></i>";
+								$desabilita=($row[3]==0)?"desactivado":"";
+								$especialidad=$row[1];
+								$num_cama=$row[2];
+
 							?>
 								<tr class="centrar">
 									<td>
@@ -91,7 +100,10 @@ $opa="A";
 										</a>
 									</td>
 									<td>
-										<p class="<?php echo $desabilita?>"><?php echo $row[1]?></p>
+										<p class="<?php echo $desabilita?>"><?php echo $especialidad?></p>
+									</td>
+									<td>
+										<p class="<?php echo $desabilita?>"><?php echo $num_cama?></p>
 									</td>
 									<td>
 										<a class="enlace" href="status.php?valor=<?php echo $activo?>&id=<?php echo $id?>">
@@ -109,7 +121,8 @@ $opa="A";
 									<th>#</th>
 									<th>Ficha</th>
 									<th>Editar</th>
-									<th>Departamento</th>
+									<th>Especialidad</th>
+									<th>Número de cama</th>
 									<th>Estatus</th>
 								</tr>
 							</tfoot>
@@ -124,6 +137,33 @@ $opa="A";
 	<footer class="fondo">
 	<?php include'../layout/pie.php';?>
 	</footer>
+
+	<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h3 class="modal-title  tPrincipal">Información de usuario</h3>
+				</div>
+				<div class="modal-body animated flipInX">
+						<img src="../imagenes/avatar.jpg" class="img-thumbnail mImg">
+						<h4 class="tPrincipal colorLetra centrar">
+							Plantilla base
+						</h4>
+
+						<h4 class="tPrincipal colorLetra centrar">
+							MGTI. Pablo Adrián Perez Briseño
+						</h4>
+
+						<h4 class="tPrincipal colorLetra centrar">
+							Empresa / Institución
+						</h4>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- SCRIPT JAVASCRIPT -->
 
@@ -142,7 +182,6 @@ $opa="A";
 	<script src="../js/menu.js"></script>
 	<script src="../js/precarga.js"></script>
 	<script src="../js/salir.js"></script>
-	<script src="../js/contra.js"></script>
 	<!-- DataTables -->
 	<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
 	<script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
