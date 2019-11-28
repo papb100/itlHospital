@@ -201,6 +201,56 @@
 							<div class="panel-heading" role="tab" id="heading4">
 								<h4 class="panel-title">
 									<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="true" aria-controls="collapse4">
+										Urgencias
+									</a>
+								</h4>
+							</div>
+
+							<div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+						
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+											<div class="caja animated flipInX">
+												<i class="fas fa-laptop-medical"></i>
+												<p><a href="../mUrgIngresarPaciente/index.php" class="cenlace">Ingresar Paciente</a></p>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+											<div class="caja animated flipInX">
+												<i class="fas fa-comment-medical"></i>
+												<p><a href="../mUrgAtenderPaciente/index.php" class="cenlace">Atender Paciente</a></p>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+											<div class="caja animated flipInX">
+												<i class="fas fa-file-medical"></i>
+												<p><a href="../mUrgListaIngresados/index.php" class="cenlace">Ingresados</a></p>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+											<div class="caja animated flipInX">
+												<i class="fas fa-notes-medical"></i>
+												<p><a href="../mUrgFicha/index.php" class="cenlace">Ficha de Alta</a></p>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+											<div class="caja animated flipInX">
+												<i class="fas fa-notes-medical"></i>
+												<p><a href="../mUrgReportes/index.php" class="cenlace">Reportes</a></p>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<!-- Fin item del acoordeon -->
+						<!-- Inicio item del acoordeon -->
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="heading4">
+								<h4 class="panel-title">
+									<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="true" aria-controls="collapse4">
 										Módulos Especialidades
 									</a>
 								</h4>
@@ -232,12 +282,6 @@
 											<div class="caja animated flipInX">
 												<i class="fas fa-truck-moving"></i>
 												<p><a href="../mDepartamentos/index.php" class="cenlace">Traslados</a></p>
-											</div>
-										</div>
-										<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
-											<div class="caja animated flipInX">
-												<i class="fas fa-briefcase-medical"></i>
-												<p><a href="../mEspecialidades/index.php" class="cenlace">Urgencias</a></p>
 											</div>
 										</div>
 									</div>

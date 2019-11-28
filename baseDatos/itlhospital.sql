@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50051
 File Encoding         : 65001
 
-Date: 2019-11-21 19:23:47
+Date: 2019-11-27 18:22:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -52,11 +52,21 @@ CREATE TABLE `ambulancias` (
   `hora_registro` time default NULL,
   `usuario_registro` int(11) default NULL,
   PRIMARY KEY  (`id_ambulancia`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ambulancias
 -- ----------------------------
+INSERT INTO `ambulancias` VALUES ('2', '1', 'Nissan X-Trail', 'Es roja', '1', '2019-11-27', '06:06:40', '1');
+INSERT INTO `ambulancias` VALUES ('3', '2', 'Nissan NP300 Frontier', 'Es roja', '1', '2019-11-27', '06:06:55', '1');
+INSERT INTO `ambulancias` VALUES ('4', '3', 'Nissan NV300', 'Es blanca', '1', '2019-11-27', '06:07:08', '1');
+INSERT INTO `ambulancias` VALUES ('5', '4', 'Nissan NV400', 'Es blanca', '1', '2019-11-27', '06:07:29', '1');
+INSERT INTO `ambulancias` VALUES ('6', '5', 'Nissan Armada', 'Es roja', '1', '2019-11-27', '06:08:35', '1');
+INSERT INTO `ambulancias` VALUES ('7', '6', 'Nissan X-Trail', 'Es blanca', '1', '2019-11-27', '06:08:46', '1');
+INSERT INTO `ambulancias` VALUES ('8', '7', 'Nissan NP300 Frontier', 'Es roja', '1', '2019-11-27', '06:09:02', '1');
+INSERT INTO `ambulancias` VALUES ('9', '8', 'Nissan NV400', 'Es roja', '1', '2019-11-27', '06:09:26', '1');
+INSERT INTO `ambulancias` VALUES ('10', '9', 'Nissan Armada', 'Es roja', '1', '2019-11-27', '06:10:00', '1');
+INSERT INTO `ambulancias` VALUES ('11', '10', 'Nissan Armada', 'Es blanca', '1', '2019-11-27', '06:10:10', '1');
 
 -- ----------------------------
 -- Table structure for camas
@@ -71,11 +81,21 @@ CREATE TABLE `camas` (
   `hora_registro` time default NULL,
   `usuario_registro` int(11) default NULL,
   PRIMARY KEY  (`id_cama`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of camas
 -- ----------------------------
+INSERT INTO `camas` VALUES ('2', '2', '1', '1', '2019-11-27', '06:04:23', '1');
+INSERT INTO `camas` VALUES ('3', '3', '2', '1', '2019-11-27', '06:04:38', '1');
+INSERT INTO `camas` VALUES ('4', '4', '3', '1', '2019-11-27', '06:04:52', '1');
+INSERT INTO `camas` VALUES ('5', '6', '4', '1', '2019-11-27', '06:05:10', '1');
+INSERT INTO `camas` VALUES ('6', '5', '5', '1', '2019-11-27', '06:05:23', '1');
+INSERT INTO `camas` VALUES ('7', '8', '6', '1', '2019-11-27', '06:05:38', '1');
+INSERT INTO `camas` VALUES ('8', '7', '7', '1', '2019-11-27', '06:06:13', '1');
+INSERT INTO `camas` VALUES ('9', '9', '8', '1', '2019-11-27', '06:06:28', '1');
+INSERT INTO `camas` VALUES ('10', '9', '9', '1', '2019-11-27', '06:06:41', '1');
+INSERT INTO `camas` VALUES ('11', '11', '10', '1', '2019-11-27', '06:06:55', '1');
 
 -- ----------------------------
 -- Table structure for choferes
@@ -109,11 +129,21 @@ CREATE TABLE `consultorios` (
   `hora_registro` time default NULL,
   `usuario_registro` int(11) default NULL,
   PRIMARY KEY  (`id_consultorio`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of consultorios
 -- ----------------------------
+INSERT INTO `consultorios` VALUES ('1', 'Consultorio 1', 'Urgencias', '1', '2019-11-27', '06:05:07', '1');
+INSERT INTO `consultorios` VALUES ('2', 'Consultorio 2', 'Urgencias', '1', '2019-11-27', '06:05:12', '1');
+INSERT INTO `consultorios` VALUES ('3', 'Consultorio 3', 'Urgencias', '1', '2019-11-27', '06:05:17', '1');
+INSERT INTO `consultorios` VALUES ('4', 'Consultorio 4', 'Urgencias', '1', '2019-11-27', '06:05:42', '1');
+INSERT INTO `consultorios` VALUES ('5', 'Consultorio 5', 'Urgencias', '1', '2019-11-27', '06:05:50', '1');
+INSERT INTO `consultorios` VALUES ('6', 'Consultorio 6', 'Consulta Externa', '1', '2019-11-27', '06:06:07', '1');
+INSERT INTO `consultorios` VALUES ('7', 'Consultorio 7', 'Consulta Externa', '1', '2019-11-27', '06:06:16', '1');
+INSERT INTO `consultorios` VALUES ('8', 'Consultorio 8', 'Consulta Externa', '1', '2019-11-27', '06:06:24', '1');
+INSERT INTO `consultorios` VALUES ('9', 'Consultorio 9', 'Consulta Externa', '1', '2019-11-27', '06:06:31', '1');
+INSERT INTO `consultorios` VALUES ('10', 'Consultorio 10', 'Consulta Externa', '1', '2019-11-27', '06:06:41', '1');
 
 -- ----------------------------
 -- Table structure for departamentos
@@ -127,18 +157,23 @@ CREATE TABLE `departamentos` (
   `hora_registro` time default NULL,
   `usuario_registro` int(11) default NULL,
   PRIMARY KEY  (`id_departamento`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of departamentos
 -- ----------------------------
-INSERT INTO `departamentos` VALUES ('1', 'Sistemas', '1', '2019-11-19', '17:30:56', '1');
-INSERT INTO `departamentos` VALUES ('2', 'Recursos Humanos', '1', '2019-11-21', '07:59:57', '1');
-INSERT INTO `departamentos` VALUES ('3', 'Financieros', '1', '0000-00-00', '11:11:00', '1');
-INSERT INTO `departamentos` VALUES ('4', 'Sistemas y computacion', '0', '2019-11-20', '07:01:37', '1');
-INSERT INTO `departamentos` VALUES ('5', 'Biblioteca', '1', '2019-11-20', '07:01:53', '1');
-INSERT INTO `departamentos` VALUES ('6', 'Escolares', '1', '2019-11-21', '07:59:52', '1');
-INSERT INTO `departamentos` VALUES ('13', 'Vinculación', '1', '2019-11-21', '04:41:19', '1');
+INSERT INTO `departamentos` VALUES ('1', 'Sistemas', '1', '2019-11-27', '17:36:01', '1');
+INSERT INTO `departamentos` VALUES ('14', 'Administracion', '1', '2019-11-27', '05:47:06', '1');
+INSERT INTO `departamentos` VALUES ('15', 'Cuotas y subrogados', '1', '2019-11-27', '05:47:14', '1');
+INSERT INTO `departamentos` VALUES ('16', 'Recursos Financieros', '1', '2019-11-27', '05:47:22', '1');
+INSERT INTO `departamentos` VALUES ('17', 'Consulta Externa', '1', '2019-11-27', '05:47:35', '1');
+INSERT INTO `departamentos` VALUES ('18', 'Urgencias', '1', '2019-11-27', '05:47:42', '1');
+INSERT INTO `departamentos` VALUES ('19', 'Recursos Generales', '1', '2019-11-27', '05:47:55', '1');
+INSERT INTO `departamentos` VALUES ('20', 'Bienes Muebles', '1', '2019-11-27', '05:48:00', '1');
+INSERT INTO `departamentos` VALUES ('21', 'Recursos Humanos', '1', '2019-11-27', '05:48:06', '1');
+INSERT INTO `departamentos` VALUES ('22', 'Estadisticas', '1', '2019-11-27', '05:48:12', '1');
+INSERT INTO `departamentos` VALUES ('23', 'Medicina Preventiva', '1', '2019-11-27', '05:48:21', '1');
+INSERT INTO `departamentos` VALUES ('24', 'Direccion', '1', '2019-11-27', '05:48:31', '1');
 
 -- ----------------------------
 -- Table structure for descuentos
@@ -177,11 +212,21 @@ CREATE TABLE `enfermeros` (
   `hora_registro` time default NULL,
   `usuario_registro` int(11) default NULL,
   PRIMARY KEY  (`id_enfermero`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of enfermeros
 -- ----------------------------
+INSERT INTO `enfermeros` VALUES ('1', '100', '1', '1', '2019-11-27', '06:04:18', '1');
+INSERT INTO `enfermeros` VALUES ('2', '101', '6', '1', '2019-11-27', '06:04:37', '1');
+INSERT INTO `enfermeros` VALUES ('3', '102', '7', '1', '2019-11-27', '06:04:49', '1');
+INSERT INTO `enfermeros` VALUES ('4', '104', '8', '1', '2019-11-27', '06:05:06', '1');
+INSERT INTO `enfermeros` VALUES ('5', '103', '9', '1', '2019-11-27', '06:05:19', '1');
+INSERT INTO `enfermeros` VALUES ('6', '105', '10', '1', '2019-11-27', '06:06:06', '1');
+INSERT INTO `enfermeros` VALUES ('7', '106', '11', '1', '2019-11-27', '06:06:18', '1');
+INSERT INTO `enfermeros` VALUES ('8', '107', '12', '1', '2019-11-27', '06:06:46', '1');
+INSERT INTO `enfermeros` VALUES ('9', '108', '13', '1', '2019-11-27', '06:07:05', '1');
+INSERT INTO `enfermeros` VALUES ('10', '109', '14', '1', '2019-11-27', '06:07:29', '1');
 
 -- ----------------------------
 -- Table structure for especialidades
@@ -195,11 +240,21 @@ CREATE TABLE `especialidades` (
   `hora_registro` time default NULL,
   `usuario_registro` int(11) default NULL,
   PRIMARY KEY  (`id_especialidad`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of especialidades
 -- ----------------------------
+INSERT INTO `especialidades` VALUES ('2', 'Cardiologia', '1', '2019-11-27', '06:04:05', '1');
+INSERT INTO `especialidades` VALUES ('3', 'Psiquiatria', '1', '2019-11-27', '06:04:13', '1');
+INSERT INTO `especialidades` VALUES ('4', 'Traumatologia', '1', '2019-11-27', '06:04:27', '1');
+INSERT INTO `especialidades` VALUES ('5', 'Pediatra', '1', '2019-11-27', '06:04:34', '1');
+INSERT INTO `especialidades` VALUES ('6', 'Oncologia', '1', '2019-11-27', '06:04:49', '1');
+INSERT INTO `especialidades` VALUES ('7', 'Podologo', '1', '2019-11-27', '06:04:58', '1');
+INSERT INTO `especialidades` VALUES ('8', 'Ginecologo', '1', '2019-11-27', '06:05:26', '1');
+INSERT INTO `especialidades` VALUES ('9', 'Cirujano', '1', '2019-11-27', '06:05:53', '1');
+INSERT INTO `especialidades` VALUES ('10', 'Odontologo', '1', '2019-11-27', '06:06:16', '1');
+INSERT INTO `especialidades` VALUES ('11', 'Cirujano Plastico', '1', '2019-11-27', '06:06:32', '1');
 
 -- ----------------------------
 -- Table structure for estados
@@ -267,11 +322,21 @@ CREATE TABLE `hospitales` (
   `hora_registro` time default NULL,
   `usuario_registro` int(11) default NULL,
   PRIMARY KEY  (`id_hospital`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of hospitales
 -- ----------------------------
+INSERT INTO `hospitales` VALUES ('1', 'Santa Fe', 'Centro de la ciudad', '8880006102', '1', '2019-11-27', '06:06:15', '1');
+INSERT INTO `hospitales` VALUES ('2', 'Hospital General', 'Insurgentes 204', '8880006202', '1', '2019-11-27', '06:07:09', '1');
+INSERT INTO `hospitales` VALUES ('3', 'Benito Juarez', 'Hidalgo 304', '8880012102', '1', '2019-11-27', '06:08:05', '1');
+INSERT INTO `hospitales` VALUES ('4', 'Buena Vista', 'El Pedregal', '8880006110', '1', '2019-11-27', '06:08:56', '1');
+INSERT INTO `hospitales` VALUES ('5', 'Materno Infantil', 'Guadalupe Av. 203', '8880006104', '1', '2019-11-27', '06:10:00', '1');
+INSERT INTO `hospitales` VALUES ('6', 'Universitario', 'Centro de Monterrey', '8880012194', '1', '2019-11-27', '06:10:29', '1');
+INSERT INTO `hospitales` VALUES ('7', 'La Carlota', 'Col. Sambrano 506', '8880006119', '1', '2019-11-27', '06:10:57', '1');
+INSERT INTO `hospitales` VALUES ('8', 'Metropolitano', 'Santa Catarina Av. Doc. Arroyo 561', '8880506110', '1', '2019-11-27', '06:11:52', '1');
+INSERT INTO `hospitales` VALUES ('9', 'Hospital General Monetmorelos', 'Montemorelos Carretera Nacional 1263', '8880006567', '1', '2019-11-27', '06:12:42', '1');
+INSERT INTO `hospitales` VALUES ('10', 'Doctors Hospital', 'Carolina 2079 ', '8880706106', '1', '2019-11-27', '06:14:08', '1');
 
 -- ----------------------------
 -- Table structure for hospitalizados
@@ -313,11 +378,21 @@ CREATE TABLE `medicos` (
   `hora_registro` time default NULL,
   `usuario_registro` int(11) default NULL,
   PRIMARY KEY  (`id_medico`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of medicos
 -- ----------------------------
+INSERT INTO `medicos` VALUES ('1', '100', '1', '1', '2', '1', '2019-11-27', '06:15:35', '1');
+INSERT INTO `medicos` VALUES ('2', '101', '6', '1', '3', '1', '2019-11-27', '06:15:45', '1');
+INSERT INTO `medicos` VALUES ('3', '102', '7', '1', '4', '1', '2019-11-27', '06:15:54', '1');
+INSERT INTO `medicos` VALUES ('4', '103', '8', '1', '5', '1', '2019-11-27', '06:16:06', '1');
+INSERT INTO `medicos` VALUES ('5', '104', '9', '1', '7', '1', '2019-11-27', '06:16:18', '1');
+INSERT INTO `medicos` VALUES ('6', '105', '10', '1', '9', '1', '2019-11-27', '06:16:33', '1');
+INSERT INTO `medicos` VALUES ('7', '106', '11', '1', '10', '1', '2019-11-27', '06:16:47', '1');
+INSERT INTO `medicos` VALUES ('8', '107', '12', '1', '8', '1', '2019-11-27', '06:17:05', '1');
+INSERT INTO `medicos` VALUES ('9', '108', '13', '1', '8', '1', '2019-11-27', '06:17:18', '1');
+INSERT INTO `medicos` VALUES ('10', '110', '14', '1', '5', '1', '2019-11-27', '06:17:32', '1');
 
 -- ----------------------------
 -- Table structure for municipios
@@ -2811,7 +2886,7 @@ CREATE TABLE `pacientes` (
   `ap_paterno` text,
   `ap_materno` text,
   `direccion` text,
-  `telefono` int(11) default NULL,
+  `telefono` text,
   `correo` text,
   `id_religion` int(11) default NULL,
   `tipo_sangre` text,
@@ -2820,11 +2895,21 @@ CREATE TABLE `pacientes` (
   `hora_registro` time default NULL,
   `usuario_registro` int(11) default NULL,
   PRIMARY KEY  (`id_paciente`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pacientes
 -- ----------------------------
+INSERT INTO `pacientes` VALUES ('1', '101', 'Enrique ', 'Lazcano', 'Calderon', 'Fomerrey ', '8215265489', 'lazcano@gmail.com', '1', 'o+', '1', '2019-11-27', '06:08:46', '1');
+INSERT INTO `pacientes` VALUES ('2', '102', 'Jose Luis', 'Lopez', 'Sanchez', 'Gil de Leyva', '8261085051', 'joseluis@gmail.com', '5', 'o+', '1', '2019-11-27', '06:09:56', '1');
+INSERT INTO `pacientes` VALUES ('3', '103', 'Hipolito', 'Martines', 'De La Olla', 'Provileon', '8215986241', 'hipolito@gmail.com', '6', 'o+', '1', '2019-11-27', '06:11:04', '1');
+INSERT INTO `pacientes` VALUES ('4', '104', 'Dario', 'Lopez', 'Perez', 'Infonavit', '8215689534', 'dario@hotmail.com', '4', 'o+', '1', '2019-11-27', '06:11:54', '1');
+INSERT INTO `pacientes` VALUES ('5', '105', 'Ronaldo', 'Severiano', 'Reyes', 'Bugambilias', '8216987564', 'severiano@live.com', '3', 'o+', '1', '2019-11-27', '06:12:59', '1');
+INSERT INTO `pacientes` VALUES ('6', '106', 'Jesus', 'Salvador', 'Plata', 'Rincon de las Huertas', '8116983564', 'chuy@outloock.com', '2', 'o+', '1', '2019-11-27', '06:13:55', '1');
+INSERT INTO `pacientes` VALUES ('7', '107', 'Adolfo', 'Escalona', 'Rodriguez', 'Independencia', '8116548964', 'adolfazo@gmail.com', '5', 'o+', '1', '2019-11-27', '06:14:46', '1');
+INSERT INTO `pacientes` VALUES ('8', '108', 'Maleny', 'Lopez ', 'Perez', 'Infonavit', '8261051672', 'maleny@gmail.com', '1', 'o+', '1', '2019-11-27', '06:16:13', '1');
+INSERT INTO `pacientes` VALUES ('9', '109', 'Alan', 'Sandoval', 'Villa', 'Gil de Leyva', '8261056047', 'alan@hotmail.com', '6', 'o+', '1', '2019-11-27', '06:17:07', '1');
+INSERT INTO `pacientes` VALUES ('10', '110', 'Esteban', 'Ramirez', 'Cardona', 'Provileon', '8264052953', 'esteban@gmail.om', '2', 'o+', '1', '2019-11-27', '06:18:00', '1');
 
 -- ----------------------------
 -- Table structure for personas
@@ -2851,15 +2936,25 @@ CREATE TABLE `personas` (
   `hora_registro` time default NULL,
   `usuario_registro` int(11) default NULL,
   PRIMARY KEY  (`id_persona`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of personas
 -- ----------------------------
-INSERT INTO `personas` VALUES ('1', 'Pablo Adrián', 'Perez', 'Briseño', 'M', 'Casad@', '821174899', 'PBP840305BT0', 'paperez@itlinares.edu.mx', '1984-03-05', 'Provileon', 'Ahuehuete', '675', 'Linares', 'Nuevo León', '1', '2019-11-19', '17:28:58', '1');
-INSERT INTO `personas` VALUES ('2', 'Silvia', 'Muñiz', 'Tienda', 'F', 'Casad@', '847899', 'SMUT457899bg0', 'stienda@saludnl.gob.mx', '1983-05-05', 'Fovissste', 'Cactus', '1821', 'Linares', 'Nuevo León', '1', '2019-11-21', '16:21:50', '1');
-INSERT INTO `personas` VALUES ('3', 'Juan', 'Mendoza', 'Sanchez', 'M', 'Solter@', '879955', 'JMTUR458962', 'json@hotmail.com', '2019-11-19', 'Provileon', 'Alamo', '521', 'Linares', 'Nuevo León', '1', '2019-11-21', '16:56:48', '1');
-INSERT INTO `personas` VALUES ('4', 'Jose Luis', 'Plata', 'Santos', 'M', 'Soltero@', '7899522', 'SSSFAXVZ', 'J@HOTMAIL.COM', '2019-11-21', 'CENTRO', 'CENTRO', '45', 'Montemorelos', 'Nuevo León', '1', '2019-11-21', '18:02:03', '1');
+INSERT INTO `personas` VALUES ('1', 'Pablo Adrian', 'Perez', 'Briseño', 'M', 'Casad@', '8211174899', 'PEBP840305BT0', 'paperez@itlinares.edu.mx', '1984-03-05', 'Provileon', 'Ahuehuete', '512', 'Linares', 'Nuevo Leon', '1', '2019-11-27', '17:37:01', '1');
+INSERT INTO `personas` VALUES ('6', 'Adolfo', 'Viera', 'Meléndez', 'M', 'Solter@', '8211263434', 'VMA981109BT0', 'adolfo.98@live.com.mx', '1998-11-09', 'Provileon', 'Palma', '220', 'Linares', 'Nuevo León', '1', '2019-11-27', '05:47:19', '1');
+INSERT INTO `personas` VALUES ('7', 'Maleny Lizbeth', 'López', 'Pérez', 'F', 'Solter@', '8211020068', 'LPM981209VTC', 'maleny.loprez@hotmail.com', '1998-12-09', 'Riveras de San Antonio', 'Tito Guizar', '1108', 'Linares', 'Nuevo León', '1', '2019-11-27', '05:47:40', '1');
+INSERT INTO `personas` VALUES ('8', 'Dario Alfonso', 'Lopez', 'Estrada', 'M', 'Solter@', '8211003608', 'LOED1903HN', 'delgadobenito596@gmail.com', '1999-03-19', 'Fovisste', 'Cactus', '1260', '', 'Nuevo León', '1', '2019-11-27', '05:49:32', '1');
+INSERT INTO `personas` VALUES ('9', 'Eunice Estrella', 'Charles', 'Marin', 'F', 'Solter@', '8211119829', 'EUD9854741', 'eunice.970@hotmail.com', '1997-12-13', 'Provileon', 'Abeto', '585', 'Linares', 'Nuevo León', '1', '2019-11-27', '05:48:13', '1');
+INSERT INTO `personas` VALUES ('10', 'Oscar Mario', 'Lazcano', 'Enriquez', 'M', 'Solter@', '8211417858', 'OMEL950912', 'quike0116@hotmail.com', '1995-09-12', 'Rio Verde', 'M. San Charbel', '100', 'Linares', 'Nuevo León', '1', '2019-11-27', '05:48:56', '1');
+INSERT INTO `personas` VALUES ('11', 'Lesly Victoria', 'Cortés', 'González', 'F', 'Solter@', '8211211613', '1234567778', 'cortes.gonzalez.tory@gmail.com', '1999-03-06', 'San Rafael', 'Veracruz', '0', 'Linares', 'Nuevo León', '1', '2019-11-27', '05:49:11', '1');
+INSERT INTO `personas` VALUES ('12', 'José Luis', 'Olvera', 'Escalona', 'M', 'Solter@', '8261304351', '1598756328', 'jolveraescalona@gmail.com', '1997-10-10', 'Monte Real', 'Ebano', '180', 'Montemorelos', 'Nuevo León', '1', '2019-11-27', '05:49:19', '1');
+INSERT INTO `personas` VALUES ('13', 'José Luis Margarito', 'Escalona', 'Garza', 'M', 'Solter@', '8261821784', 'EGJLM971017', 'jose.luis.maguin@gmail.com', '1997-10-17', 'Monte Real', 'Mezquite', '111', 'Montemorelos', 'Nuevo León', '1', '2019-11-27', '05:49:28', '1');
+INSERT INTO `personas` VALUES ('14', 'Allan Mauricio', 'Sandoval', 'Villanueva', 'M', 'Solter@', '8211183368', '0709981234', 'allan_fv98@live.com.mx', '2019-09-07', 'Villaseca', 'Rio Pilon', '317', 'Linares', 'Nuevo León', '1', '2019-11-27', '05:52:25', '1');
+INSERT INTO `personas` VALUES ('15', 'Marco Antonio', 'Hipolito', 'Martinez', 'M', 'Solter@', '8261044870', 'HMM980216VTC', 'marcoantonio.hipolitomartinez@gmail.com', '2019-02-01', 'Gil de leyva', 'Rivera del Rio', '0', 'Montemorelos', 'Nuevo León', '1', '2019-11-27', '05:52:43', '1');
+INSERT INTO `personas` VALUES ('16', 'Alexis Daniel', 'Mejorado', 'Briseño', 'M', 'Solter@', '8211115362', 'MEBA951022', 'alexis_mejorado@hotmail.com', '1995-10-22', 'Infonavit Los Nogales', 'Abedul', '2113', 'Linares', 'Nuevo León', '1', '2019-11-27', '05:52:44', '1');
+INSERT INTO `personas` VALUES ('17', 'Jesús', 'Rodríguez', 'Oyervides', 'M', 'Casad@', '8261512001', 'ROOJ9719HNLDYS', 'jesus.salvador.ro17@gmail.com', '1997-09-17', 'Rincón de lso naranjos', '6', '200', '', 'Nuevo León', '1', '2019-11-27', '05:55:21', '1');
+INSERT INTO `personas` VALUES ('18', 'Alejandro', 'de la Rosa', 'Ramirez', 'M', 'Solter@', '2122759', 'AMD9854741', 'dlrmatias@gmail.com', '1995-05-05', 'fovissste', 'Maguey', '1545', 'Linares', 'Nuevo León', '1', '2019-11-27', '05:55:50', '1');
 
 -- ----------------------------
 -- Table structure for puestos
@@ -2873,12 +2968,17 @@ CREATE TABLE `puestos` (
   `hora_registro` time default NULL,
   `usuario_registro` int(11) default NULL,
   PRIMARY KEY  (`id_puesto`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of puestos
 -- ----------------------------
-INSERT INTO `puestos` VALUES ('1', 'Encargado', '1', '2019-11-19', '17:31:21', '1');
+INSERT INTO `puestos` VALUES ('3', 'Encargado', '1', '2019-11-27', '05:44:17', '1');
+INSERT INTO `puestos` VALUES ('4', 'Jefe de Area', '1', '2019-11-27', '05:44:23', '1');
+INSERT INTO `puestos` VALUES ('5', 'Auxiliar', '1', '2019-11-27', '05:44:29', '1');
+INSERT INTO `puestos` VALUES ('6', 'Suplente', '1', '2019-11-27', '05:44:41', '1');
+INSERT INTO `puestos` VALUES ('7', 'Cordinador', '1', '2019-11-27', '05:44:59', '1');
+INSERT INTO `puestos` VALUES ('8', 'Secretario', '1', '2019-11-27', '05:46:45', '1');
 
 -- ----------------------------
 -- Table structure for religiones
@@ -2888,14 +2988,26 @@ CREATE TABLE `religiones` (
   `id_religion` int(11) NOT NULL auto_increment,
   `nombre_religion` text,
   `fecha_registro` date default NULL,
+  `activo` int(11) default NULL,
   `hora_registro` time default NULL,
   `usuario_registro` int(11) default NULL,
   PRIMARY KEY  (`id_religion`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of religiones
 -- ----------------------------
+INSERT INTO `religiones` VALUES ('1', 'Católica', '2019-11-27', '1', '06:04:42', '1');
+INSERT INTO `religiones` VALUES ('2', 'Musulmán', '2019-11-27', '1', '06:04:51', '1');
+INSERT INTO `religiones` VALUES ('3', 'Cristiana', '2019-11-27', '1', '06:05:08', '1');
+INSERT INTO `religiones` VALUES ('4', 'Budismo', '2019-11-27', '1', '06:18:49', '1');
+INSERT INTO `religiones` VALUES ('5', 'Islam', '2019-11-27', '1', '06:06:18', '1');
+INSERT INTO `religiones` VALUES ('6', 'Hinduismo', '2019-11-27', '1', '06:06:43', '1');
+INSERT INTO `religiones` VALUES ('7', 'Ortodoxo', '2019-11-27', '1', '06:06:51', '1');
+INSERT INTO `religiones` VALUES ('8', 'Testigos de Jehová', '2019-11-27', '1', '06:07:07', '1');
+INSERT INTO `religiones` VALUES ('9', 'Adventista', '2019-11-27', '1', '06:07:28', '1');
+INSERT INTO `religiones` VALUES ('10', 'Judío', '2019-11-27', '1', '06:08:00', '1');
+INSERT INTO `religiones` VALUES ('11', 'Presbiteriano', '2019-11-27', '1', '06:08:29', '1');
 
 -- ----------------------------
 -- Table structure for tipos_trabajador
@@ -2909,12 +3021,21 @@ CREATE TABLE `tipos_trabajador` (
   `hora_registro` time default NULL,
   `usuario_registro` int(255) default NULL,
   PRIMARY KEY  (`id_tipo_trabajador`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tipos_trabajador
 -- ----------------------------
-INSERT INTO `tipos_trabajador` VALUES ('1', 'Trabajdor de Base', '1', '2019-11-19', '17:29:51', '1');
+INSERT INTO `tipos_trabajador` VALUES ('1', 'Trabajador de Base', '1', '2019-11-27', '17:35:47', '1');
+INSERT INTO `tipos_trabajador` VALUES ('2', 'Trabajador de Contrato', '1', '2019-11-27', '06:05:11', '1');
+INSERT INTO `tipos_trabajador` VALUES ('3', 'Trabajador de Reserva', '1', '2019-11-27', '06:05:22', '1');
+INSERT INTO `tipos_trabajador` VALUES ('4', 'Trabajador de Confianza', '1', '2019-11-27', '06:09:57', '1');
+INSERT INTO `tipos_trabajador` VALUES ('5', 'Trabajador Temporal', '1', '2019-11-27', '06:10:24', '1');
+INSERT INTO `tipos_trabajador` VALUES ('6', 'Trabajador Construcción', '1', '2019-11-27', '06:10:57', '1');
+INSERT INTO `tipos_trabajador` VALUES ('7', 'Trabajador Numerario', '1', '2019-11-27', '06:11:51', '1');
+INSERT INTO `tipos_trabajador` VALUES ('8', 'Trabajador Supernumerario', '1', '2019-11-27', '06:12:07', '1');
+INSERT INTO `tipos_trabajador` VALUES ('9', 'Trabajador Multitarea', '1', '2019-11-27', '06:13:53', '1');
+INSERT INTO `tipos_trabajador` VALUES ('10', 'Trabajador Equilibrado', '1', '2019-11-27', '06:14:33', '1');
 
 -- ----------------------------
 -- Table structure for trabajadores
@@ -2933,15 +3054,25 @@ CREATE TABLE `trabajadores` (
   `hora_registro` time default NULL,
   `usuario_registro` int(11) default NULL,
   PRIMARY KEY  (`id_trabajador`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of trabajadores
 -- ----------------------------
-INSERT INTO `trabajadores` VALUES ('1', '1', '115', '2019-11-19', '1', '1', '1', '0', '2019-11-19', '17:30:33', '1');
-INSERT INTO `trabajadores` VALUES ('3', '2', '112', '2019-11-14', '1', '1', '1', '1', '2019-11-21', '04:54:06', '1');
-INSERT INTO `trabajadores` VALUES ('4', '3', '600', '2019-11-20', '2', '1', '1', '1', '2019-11-21', '05:17:14', '1');
-INSERT INTO `trabajadores` VALUES ('5', '4', '789', '2019-11-14', '3', '1', '1', '1', '2019-11-21', '06:06:23', '1');
+INSERT INTO `trabajadores` VALUES ('1', '1', '115', '2019-11-27', '1', '1', '1', '1', '2019-11-27', '17:34:41', '1');
+INSERT INTO `trabajadores` VALUES ('6', '9', '101', '2019-11-27', '14', '3', '1', '1', '2019-11-27', '05:49:46', '1');
+INSERT INTO `trabajadores` VALUES ('7', '11', '102', '2019-11-27', '16', '4', '1', '1', '2019-11-27', '05:50:02', '1');
+INSERT INTO `trabajadores` VALUES ('8', '13', '103', '2019-11-27', '21', '7', '1', '1', '2019-11-27', '05:50:21', '1');
+INSERT INTO `trabajadores` VALUES ('9', '10', '104', '2019-11-27', '22', '3', '1', '1', '2019-11-27', '05:50:44', '1');
+INSERT INTO `trabajadores` VALUES ('10', '8', '105', '2019-11-20', '17', '5', '1', '1', '2019-11-27', '05:51:00', '1');
+INSERT INTO `trabajadores` VALUES ('11', '7', '106', '2019-11-27', '16', '5', '1', '1', '2019-11-27', '05:51:26', '1');
+INSERT INTO `trabajadores` VALUES ('12', '12', '107', '2019-11-27', '20', '7', '1', '1', '2019-11-27', '05:51:44', '1');
+INSERT INTO `trabajadores` VALUES ('13', '6', '108', '2019-11-19', '18', '7', '1', '1', '2019-11-27', '05:52:11', '1');
+INSERT INTO `trabajadores` VALUES ('14', '15', '101', '2019-11-26', '16', '7', '1', '1', '2019-11-27', '05:53:03', '1');
+INSERT INTO `trabajadores` VALUES ('15', '16', '109', '2019-11-27', '17', '7', '1', '1', '2019-11-27', '05:53:19', '1');
+INSERT INTO `trabajadores` VALUES ('16', '14', '110', '2019-11-27', '21', '5', '1', '1', '2019-11-27', '05:53:48', '1');
+INSERT INTO `trabajadores` VALUES ('17', '18', '111', '2019-11-27', '15', '6', '1', '1', '2019-11-27', '05:56:15', '1');
+INSERT INTO `trabajadores` VALUES ('18', '17', '112', '2019-11-27', '15', '8', '1', '1', '2019-11-27', '05:56:48', '1');
 
 -- ----------------------------
 -- Table structure for traslados
@@ -2982,10 +3113,13 @@ CREATE TABLE `urgencias` (
   `medicamento` text,
   `id_enfermero_triage` int(11) default NULL,
   `resultado_triage` text,
-  `estatus` text,
+  `costo_consulta` double default NULL,
+  `alta` text,
+  `fecha_ingreso` date default NULL,
+  `hora_ingreso` time default NULL,
+  `fecha_alta` date default NULL,
+  `hora_alta` time default NULL,
   `activo` int(11) default NULL,
-  `fecha_registro` date default NULL,
-  `hora_registro` time default NULL,
   `usuario_registro` int(11) default NULL,
   PRIMARY KEY  (`id_urgencia`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -3013,4 +3147,4 @@ CREATE TABLE `usuarios` (
 -- ----------------------------
 -- Records of usuarios
 -- ----------------------------
-INSERT INTO `usuarios` VALUES ('1', 'paperez', '1', '827ccb0eea8a706c4c34a16891f84e7b', '1', '2019-11-19', '17:32:16', '1');
+INSERT INTO `usuarios` VALUES ('1', 'paperez', '1', '827ccb0eea8a706c4c34a16891f84e7b', '1', '2019-11-27', '17:35:10', '1');
