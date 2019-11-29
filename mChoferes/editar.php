@@ -1,45 +1,31 @@
 <?php
 include'../conexion/conexion.php';
 include'combos.php';
+
 $id=$_GET['id'];
 
 mysql_query("SET NAMES utf8");
 $consulta=mysql_query("SELECT
-							id_medico,
-							cedula,
-							trabajadores.id_trabajador,
-							(SELECT CONCAT(ap_paterno,' ',ap_materno,' ',nombre) FROM personas WHERE 	personas.id_persona=trabajadores.id_persona) as Trabajador,
-							especialista,
-							especialidades.id_especialidad,
-							especialidades.nombre_especialidad
-						FROM
-							medicos
-						INNER JOIN trabajadores ON trabajadores.id_trabajador=medicos.id_trabajador
-						INNER JOIN especialidades ON especialidades.id_especialidad=medicos.id_especialidad
-						WHERE id_medico=$id",$conexion) or die (mysql_error());
+							choferes.id_chofer,
+							choferes.num_licencia,
+							choferes.id_trabajador,
+							(SELECT 
+								CONCAT(personas.nombre, ' ', personas.ap_paterno, ' ', personas.ap_materno)
+								FROM personas
+								WHERE personas.id_persona=trabajadores.id_persona
+							) as nombre,
+						choferes.activo
+						FROM choferes 
+						INNER JOIN trabajadores
+						ON trabajadores.id_trabajador=choferes.id_trabajador
+						WHERE id_chofer=$id",$conexion) or die (mysql_error());
 
 $row=mysql_fetch_row($consulta);
 
-$id         = $row[0];
-$cedula  = $row[1];
-$idTrabajador = $row[2];
-$trabajador   = $row[3];
-$especialista      = $row[4];
-$res=($especialista==1)?"Si":"No";
-// switch ($especialista) {
-// 	case '1':
-// 		$res = "Si";
-// 		break;
-// 	case '0':
-// 		$res = "No";
-// 		break;
-// 	default:
-// 		# code...
-// 		break;
-// }
-$idEspecialidad	    = $row[5];
-$Especialidad       = $row[6];
-
+$id=$row[0];
+$numLic=$row[1];
+$idTra=$row[2];
+$nomTra=$row[3];
 $opa="A";
 ?>
 <!DOCTYPE html>
@@ -82,63 +68,37 @@ $opa="A";
 			</div>
 			<div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 cont">
 			   <div class="titulo borde sombra">
-			        <h3 class="animated zoomIn tPrincipal">Editar Medico</h3>
+			        <h3 class="animated zoomIn tPrincipal">Editar chofer</h3>
 			   </div>	
 			   <div class="contenido borde sombra" style="padding-right:18px;">
 				   <div class="container-fluid">
 					<!-- Elementos -->
 					<div class="formulario animated  slideInUp">
-						<form role="form" class="interno" method="post" action="actualizar.php">
-
+						<form role="hidden" action="actualizar.php" method="post">
 							<div class="encabezado">
-								Medicos
+								Choferes
 							</div>
-							<input type="hidden" name="ide" value="<?php echo $id?>">
+
 							<div class="cuerpo">
 								<div class="row">
-									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 										<div class="form-group">
-											<label>Cedula :</label>
-											<input type="number" name="clave" class="form-control" required autofocus placeholder="# Cedula" value="<?php echo $cedula?>">
-										</div>
-									</div>
-									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-										<div class="form-group">
-											<label>Medico :</label>
-											<select disabled name="idTrabajador" class="form-control select2" style="width: 100%;">
-											<option value="<?php echo $idTrabajador?>" ><?php echo $trabajador?></option>
-											<?
-												for($i=0;$i<$num1;$i++) 
-												{
-												$id=mysql_result($combo1,$i,'idTrabajador');
-												$usuario=mysql_result($combo1,$i,'Persona');
-												echo "<option value=\"$id\" >$usuario</option>";
-												}
-											?> 
-											</select>
-										</div>
-									</div>
-									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-										<div class="form-group">
-											<label>Especialista :</label>
-											<select name="esp" class="form-control select2" style="width: 100%;">
-											<option value="<?php echo $especialista ?>"><?php echo $res ?></option>
-											 	<option value="1">SI</option>
-											 	<option value="0">No</option>
-											</select>
+											<label>Número Licencia:</label>
+											<input type="hidden" name="ide" value="<?php echo $id?>">
+											<input type="text" name="numLic" value="<?php echo $numLic?>" class="form-control" required autofocus placeholder="Escribe un nuevo número de licencia">
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 										<div class="form-group">
-											<label>Especialidad :</label>
-											<select name="idEspecialidad" class="form-control select2" style="width: 100%;">
-											<option value="<?php echo $idEspecialidad?>" ><?php echo $Especialidad?></option>
-											<?
-												for($i=0;$i<$num2;$i++) 
+											<label>Trabajador:</label>
+											<select disabled name="idTra" class="form-control select2" style="width: 100%;">
+											<option value="<?php echo $idTra?>" ><?php echo $nomTra?></option>
+											<?php
+												for($i=0;$i<$num1;$i++) 
 												{
-												$id=mysql_result($combo2,$i,'id_especialidad');
-												$usuario=mysql_result($combo2,$i,'nombre_especialidad');
-												echo "<option value=\"$id\" >$usuario</option>";
+													$id=mysql_result($combo1,$i,"idChofer");
+													$nomTra=mysql_result($combo1,$i,"persona");
+													echo "<option value=\"$id\" >$nomTra</option>";
 												}
 											?> 
 											</select>
@@ -181,6 +141,7 @@ $opa="A";
 	<script src="../js/precarga.js"></script>
 	<script src="../js/salir.js"></script>
 	<script src="../js/contra.js"></script>
+	
     <!-- Select2 -->
 	<script src="../plugins/select2/select2.full.min.js"></script>
 

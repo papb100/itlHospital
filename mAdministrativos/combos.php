@@ -6,17 +6,17 @@ mysql_query("SET NAMES utf8");
 $combo1 = mysql_query("SELECT
 							trabajadores.id_trabajador AS idTrabajador,
 							concat(personas.ap_paterno,' ',personas.ap_materno,' ',personas.nombre) AS Persona,
-							enfermeros.cedula
+							trabajadores.id_trabajador
 						FROM
 							trabajadores
-						LEFT JOIN enfermeros ON trabajadores.id_trabajador = enfermeros.id_trabajador
+						LEFT JOIN administrativos ON trabajadores.id_trabajador = 	administrativos.id_trabajador
 						INNER JOIN personas ON personas.id_persona = trabajadores.id_persona
 						WHERE
-							ISNULL(enfermeros.cedula)
+							trabajadores.funcion_trabajador = 'Administrativo'
 						AND trabajadores.activo = 1
-						AND trabajadores.funcion_trabajador = 'Enfermero'
-						ORDER BY
-							Persona",$conexion);
+						AND
+							ISNULL(administrativos.carrera)
+						ORDER BY Persona",$conexion);
 $num1=mysql_num_rows($combo1);
 //Combo especialidad
 

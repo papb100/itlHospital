@@ -9,43 +9,32 @@ include'../funciones/fechaEspanol.php';
 
 mysql_query("SET NAMES utf8");
 $consulta=mysql_query("SELECT
-                            id_trabajador,
-                            (SELECT CONCAT(trabajadores.funcion_trabajador,' - ',ap_paterno,' ',ap_materno,' ',nombre) FROM personas WHERE personas.id_persona=trabajadores.id_persona) as Trabajador,
-                            trabajadores.activo,
-                            clave_trabajador,
-                            puestos.nombre_puesto,
-                            departamentos.nombre_departamento,
-                            tipos_trabajador.descripcion,
-                            trabajadores.activo,
-                            trabajadores.fecha_registro,
-                            trabajadores.hora_registro,
-                            (SELECT CONCAT(nombre,' ',ap_paterno,' ',ap_materno) FROM personas where personas.id_persona=trabajadores.usuario_registro) as Registro,
-                            fecha_ingreso
-                        FROM
-                            trabajadores
-                            INNER JOIN puestos ON puestos.id_puesto=trabajadores.id_puesto
-                            INNER JOIN departamentos ON departamentos.id_departamento=trabajadores.id_departamento
-                            INNER JOIN tipos_trabajador ON tipos_trabajador.id_tipo_trabajador=trabajadores.id_tipo_trabajador
-                        WHERE
-                            id_trabajador = $id",$conexion) or die (mysql_error());
+                            choferes.num_licencia,
+                            (SELECT 
+                                    CONCAT(personas.nombre, ' ', personas.ap_paterno, ' ', personas.ap_materno)
+                                FROM trabajadores
+                                INNER JOIN personas
+                                ON personas.id_persona=trabajadores.id_persona
+                            ) as nombre,
+                            choferes.activo
+                        FROM choferes 
+                        INNER JOIN trabajadores
+                        ON trabajadores.id_trabajador=choferes.id_trabajador
+                        WHERE id_chofer=$id",$conexion) or die (mysql_error());
    
 //Descargamos el arreglo que arroja la consulta
 $n=1;
 $row=mysql_fetch_row($consulta);
 
-$cveTrabajador   = $row[3];
-$puesto          = $row[4];
-$departamento    = $row[5];
-$trabajador      = $row[1];
-$tTrabajador     = $row[6];
+$numLic          = $row[0];
+$nomTra             = $row[1];
 $status          = $row[2];
-$fechaRegistro   = $row[8];
+$fechaRegistro   = $row[3];
 $fechaCastellano = fechaCastellano($fechaRegistro);
-$horaRegistro    = $row[9];
-$personaRegistro = $row[10];
-$fechaIngreso    = $row[11];
+$horaRegistro    = $row[4];
+$personaRegistro = $row[5];
 
-$horaPmAM=date("g:i a",strtotime($horaRegistro ));
+$horaPmAM=date("g:i a",strtotime($horaRegistro));
 
 if($status==1){
     $imgStatus="../imagenes/arriba.png";
@@ -200,36 +189,26 @@ $fechai =date("d-m-Y");
 
     <tr >
         <td  colspan="10" class="titular">
-            Datos del Trabajador
+            Datos del chofer
         </td>
     </tr>   
 
-    <tr>
-        <td  colspan="10" class="subtitular">
-             <?php echo $trabajador ; ?>
-        </td>
-    </tr>  
-
     <tr >
         <td  colspan="2" class="subtitular">
-             <?php echo 'Clave - '.$cveTrabajador ; ?>
+            <strong>Número Lic.</strong> 
         </td>
-        <td  colspan="3" class="subtitular">
-             <?php echo $departamento ; ?>
+        <td  colspan="8" class="subtitular">
+            <strong>Trabajador</strong> 
         </td>
+    </tr>   
+    <tr >
         <td  colspan="2" class="subtitular">
-             <?php echo $puesto ; ?>
+             <?php echo $numLic; ?>
         </td>
-        <td  colspan="3" class="subtitular">
-             <?php echo $tTrabajador ; ?>
+        <td  colspan="8" class="subtitular">
+             <?php echo $nomTra; ?>
         </td>
-    </tr>  
-
-    <tr>
-        <td  colspan="10" class="subtitular">
-             <?php echo "Inicio en la Institución/Empresa - ".fechaCastellano($fechaIngreso) ; ?>
-        </td>
-    </tr>  
+    </tr>   
 
     <tr >
         <td  colspan="10" class="titular">

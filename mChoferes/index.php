@@ -1,6 +1,5 @@
 <?php
 include'../conexion/conexion.php';
-
 // variable que establece el menu activo.
 $opa="A";
 ?>
@@ -42,7 +41,7 @@ $opa="A";
 			</div>
 			<div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 cont">
 			   <div class="titulo borde sombra">
-			        <h3 class="animated zoomIn tPrincipal">Lista de trabajadores</h3>
+			        <h3 class="animated zoomIn tPrincipal">Lista de choferes</h3>
 			   </div>	
 			   <div class="contenido borde sombra" style="padding-right:18px;">
 				   <div class="container-fluid">
@@ -54,11 +53,8 @@ $opa="A";
 									<th>#</th>
 									<th>Ficha</th>
 									<th>Editar</th>
-									<th>Clave</th>
+									<th>Número Lic.</th>
 									<th>Trabajador</th>
-									<th>Puesto</th>
-									<th>Departamento</th>
-									<th>Función</th>
 									<th>Estatus</th>
 								</tr>
 							</thead>
@@ -66,33 +62,26 @@ $opa="A";
 							<?php
 							mysql_query("SET NAMES utf8");
 							$consulta=mysql_query("SELECT
-														id_trabajador,
-														(SELECT CONCAT(ap_paterno,' ',ap_materno,' ',nombre) FROM personas WHERE personas.id_persona=trabajadores.id_persona) as Trabajador,
-														trabajadores.activo,
-														clave_trabajador,
-														puestos.nombre_puesto,
-														departamentos.nombre_departamento,
-														trabajadores.funcion_trabajador
-													FROM
-														trabajadores
-													INNER JOIN puestos ON puestos.id_puesto=trabajadores.id_puesto
-													INNER JOIN departamentos ON departamentos.id_departamento=trabajadores.id_departamento
-													INNER JOIN tipos_trabajador ON tipos_trabajador.id_tipo_trabajador=trabajadores.id_tipo_trabajador
-													ORDER BY id_trabajador DESC",$conexion) or die (mysql_error());
+														choferes.num_licencia,
+														(SELECT 
+																CONCAT(personas.nombre, ' ', personas.ap_paterno, ' ', personas.ap_materno)
+															FROM personas
+															WHERE personas.id_persona=trabajadores.id_persona
+														) as nombre,
+														choferes.activo,
+														choferes.id_chofer
+													FROM choferes 
+													INNER JOIN trabajadores
+													ON trabajadores.id_trabajador=choferes.id_trabajador
+													ORDER BY id_chofer DESC",$conexion) or die (mysql_error());
 							$n=1;
 							while ($row=mysql_fetch_row($consulta))
 							{
 
 								$activo=$row[2];
-								$id=$row[0];
+								$id=$row[3];
 								$status=($row[2]==1)?"<i class='far fa-check-square fa-lg fasIco'></i>":"<i class='far fa-square fa-lg fasIco'></i>";
 								$desabilita=($row[2]==0)?"desactivado":"";
-								$cveTrabajador=$row[3];
-								$puesto=$row[4];
-								$departamento=$row[5];
-								$trabajador=$row[1];
-								$funcion=$row[6];
-
 							?>
 								<tr class="centrar">
 									<td>
@@ -109,23 +98,14 @@ $opa="A";
 										</a>
 									</td>
 									<td>
-										<p class="<?php echo $desabilita?>"><?php echo $cveTrabajador?></p>
+										<p class="<?php echo $desabilita?>"><?php echo $row[0]?></p>
 									</td>
 									<td>
-										<p class="<?php echo $desabilita?>"><?php echo $trabajador?></p>
-									</td>
-									<td>
-										<p class="<?php echo $desabilita?>"><?php echo $puesto?></p>
-									</td>
-									<td>
-										<p class="<?php echo $desabilita?>"><?php echo $departamento?></p>
-									</td>
-									<td>
-										<p class="<?php echo $desabilita?>"><?php echo $funcion?></p>
+										<p class="<?php echo $desabilita?>"><?php echo $row[1]?></p>
 									</td>
 									<td>
 										<a class="enlace" href="status.php?valor=<?php echo $activo?>&id=<?php echo $id?>">
-											<?php echo $status?>
+										 <?php echo $status?>
 										</a>	
 									</td>
 								</tr>
@@ -139,11 +119,8 @@ $opa="A";
 									<th>#</th>
 									<th>Ficha</th>
 									<th>Editar</th>
-									<th>Clave</th>
+									<th>Número Lic.</th>
 									<th>Trabajador</th>
-									<th>Puesto</th>
-									<th>Departamento</th>
-									<th>Función</th>
 									<th>Estatus</th>
 								</tr>
 							</tfoot>

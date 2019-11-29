@@ -5,20 +5,20 @@ $id=$_GET['id'];
 
 mysql_query("SET NAMES utf8");
 $consulta=mysql_query("SELECT
-							id_enfermero,
-							cedula,
+							id_administrativo,
+							carrera,
 							trabajadores.id_trabajador,
 							(SELECT CONCAT(ap_paterno,' ',ap_materno,' ',nombre) FROM personas WHERE 	personas.id_persona=trabajadores.id_persona) as Trabajador,
-							enfermeros.activo
+							administrativos.activo
 						FROM
-							enfermeros
-							INNER JOIN trabajadores ON trabajadores.id_trabajador=enfermeros.id_trabajador
-						WHERE id_enfermero=$id",$conexion) or die (mysql_error());
+							administrativos
+							INNER JOIN trabajadores ON trabajadores.id_trabajador=administrativos.id_trabajador
+						WHERE id_administrativo=$id",$conexion) or die (mysql_error());
 
 $row=mysql_fetch_row($consulta);
 
 $id            = $row[0];
-$cedula        = $row[1];
+$carrera        = $row[1];
 $idTrabajador  = $row[2];
 $nomtrabajador = $row[3];
 $activo        = $row[4];
@@ -65,7 +65,7 @@ $opa="A";
 			</div>
 			<div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 cont">
 			   <div class="titulo borde sombra">
-			        <h3 class="animated zoomIn tPrincipal">Editar Enfermero</h3>
+			        <h3 class="animated zoomIn tPrincipal">Editar Administrativo</h3>
 			   </div>	
 			   <div class="contenido borde sombra" style="padding-right:18px;">
 				   <div class="container-fluid">
@@ -74,7 +74,7 @@ $opa="A";
 						<form role="form" class="interno" method="post" action="actualizar.php">
 
 							<div class="encabezado">
-								Enfermeros
+								Administrativo
 							</div>
 
 							<input type="hidden" name="ide" value="<?php echo $id?>">
@@ -83,8 +83,8 @@ $opa="A";
 								<div class="row">
 									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-5">
 										<div class="form-group">
-											<label>Cedula :</label>
-											<input type="text" name="num_cedula" class="form-control" required autofocus placeholder="# Cedula" value="<?php echo $cedula?>">
+											<label>Carrera :</label>
+											<input type="text" name="carrera" class="form-control" required autofocus placeholder="# Cedula" value="<?php echo $carrera?>">
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-7">

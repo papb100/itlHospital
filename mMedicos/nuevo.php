@@ -62,7 +62,7 @@ $opa="B";
 									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
 											<label>Cedula :</label>
-											<input type="text" name="clave" class="form-control" required autofocus placeholder="# Cedula">
+											<input type="number" name="clave" class="form-control" required autofocus placeholder="# Cedula">
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">

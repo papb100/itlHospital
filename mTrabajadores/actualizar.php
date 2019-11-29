@@ -9,6 +9,7 @@ $clave=$_POST['clave'];
 $idTipo=$_POST['idTipoTrabajador'];
 $idDepa=$_POST['idDepartamento'];
 $idPuesto=$_POST['idPuesto'];
+$funcion          = $_POST['funcion'];
 
 $fecha=date("Y-m-d"); 
 $hora=date ("h:i:s");
@@ -26,7 +27,8 @@ $actualizar=mysql_query("UPDATE trabajadores
                                 id_puesto=$idPuesto,
                                 fecha_registro='$fecha',
                                 hora_registro='$hora',
-                                usuario_registro=$idPersona
+                                usuario_registro=$idPersona,
+                                funcion_trabajador='$funcion'
                         WHERE id_trabajador=$id",$conexion) or die (mysql_error());
 ?>
 <script>

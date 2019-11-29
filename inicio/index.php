@@ -93,6 +93,12 @@
 										</div>
 										<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
 											<div class="caja animated flipInX">
+												<i class="fas fa-user-shield"></i>
+												<p><a href="../mAdministrativos/index.php" class="cenlace">Administrativos</a></p>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+											<div class="caja animated flipInX">
 												<i class="fas fa-user-md"></i>
 												<p><a href="../mMedicos/index.php" class="cenlace">Médicos</a></p>
 											</div>

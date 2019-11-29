@@ -62,7 +62,7 @@ $opa="B";
 									<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
 										<div class="form-group">
 											<label>nhc :</label>
-											<input type="numeric" name="nhc" class="form-control" required autofocus placeholder="# nhc">
+											<input type="number" name="nhc" id="nhc" class="form-control" required autofocus placeholder="# nhc">
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
@@ -119,14 +119,23 @@ $opa="B";
 									<div class="col-xs-12 col-sm-12 col-md-4 col-lg-6">
 										<div class="form-group">
 											<label>Tipo de sangre :</label>
-											<input type="text" name="tsangre" class="form-control" required autofocus placeholder="# Tipo de sangre">
+											<select name="tsangre" class="form-control select2" style="width: 100%;">
+												<option value="O-">O-</option>
+												<option value="O+">O+</option>
+												<option value="A-">A-</option>
+												<option value="A+">A+</option>
+												<option value="B-">B-</option>
+												<option value="B+">B+</option>
+												<option value="AB-">AB-</option>
+												<option value="AB+">AB+</option>
+											</select>
 										</div>
 									</div>
 								</div>
 							</div>
 
 							<div class="pie">
-									<button type="submit" class="btn btn-form">Guardar Datos</button>
+									<button id="btnPaciente" type="submit" class="btn btn-form">Guardar Datos</button>
 							</div>
 
 						</form>
@@ -159,6 +168,7 @@ $opa="B";
 	<script src="../js/precarga.js"></script>
 	<script src="../js/salir.js"></script>
 	<script src="../js/contra.js"></script>
+	<script src="funciones.js"></script>
     <!-- Select2 -->
 	<script src="../plugins/select2/select2.full.min.js"></script>
 	

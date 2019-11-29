@@ -5,40 +5,23 @@ $id=$_GET['id'];
 
 mysql_query("SET NAMES utf8");
 $consulta=mysql_query("SELECT
-							id_medico,
-							cedula,
-							trabajadores.id_trabajador,
-							(SELECT CONCAT(ap_paterno,' ',ap_materno,' ',nombre) FROM personas WHERE 	personas.id_persona=trabajadores.id_persona) as Trabajador,
-							especialista,
-							especialidades.id_especialidad,
-							especialidades.nombre_especialidad
+							id_usuario,
+							nombre_usuario,
+							trabajadores.id_persona,
+							(SELECT CONCAT(ap_paterno,' ',ap_materno,' ',nombre) FROM personas WHERE personas.id_persona=trabajadores.id_persona) as Trabajador,
+							contra
 						FROM
-							medicos
-						INNER JOIN trabajadores ON trabajadores.id_trabajador=medicos.id_trabajador
-						INNER JOIN especialidades ON especialidades.id_especialidad=medicos.id_especialidad
-						WHERE id_medico=$id",$conexion) or die (mysql_error());
+							usuarios
+						INNER JOIN trabajadores ON trabajadores.id_trabajador=usuarios.id_trabajador
+						WHERE id_usuario=$id",$conexion) or die (mysql_error());
 
 $row=mysql_fetch_row($consulta);
 
 $id         = $row[0];
-$cedula  = $row[1];
-$idTrabajador = $row[2];
-$trabajador   = $row[3];
-$especialista      = $row[4];
-$res=($especialista==1)?"Si":"No";
-// switch ($especialista) {
-// 	case '1':
-// 		$res = "Si";
-// 		break;
-// 	case '0':
-// 		$res = "No";
-// 		break;
-// 	default:
-// 		# code...
-// 		break;
-// }
-$idEspecialidad	    = $row[5];
-$Especialidad       = $row[6];
+$nomUsuario = $row[1];
+$idPersona  = $row[2];
+$nomPersona = $row[3];
+$contra     = $row[4];
 
 $opa="A";
 ?>
@@ -82,7 +65,7 @@ $opa="A";
 			</div>
 			<div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 cont">
 			   <div class="titulo borde sombra">
-			        <h3 class="animated zoomIn tPrincipal">Editar Medico</h3>
+			        <h3 class="animated zoomIn tPrincipal">Editar Usuarios</h3>
 			   </div>	
 			   <div class="contenido borde sombra" style="padding-right:18px;">
 				   <div class="container-fluid">
@@ -91,22 +74,19 @@ $opa="A";
 						<form role="form" class="interno" method="post" action="actualizar.php">
 
 							<div class="encabezado">
-								Medicos
+								Usuarios
 							</div>
+
 							<input type="hidden" name="ide" value="<?php echo $id?>">
+							<input type="text" value="<?php echo $idPersona;?>">
+
 							<div class="cuerpo">
 								<div class="row">
 									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
-											<label>Cedula :</label>
-											<input type="number" name="clave" class="form-control" required autofocus placeholder="# Cedula" value="<?php echo $cedula?>">
-										</div>
-									</div>
-									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-										<div class="form-group">
-											<label>Medico :</label>
-											<select disabled name="idTrabajador" class="form-control select2" style="width: 100%;">
-											<option value="<?php echo $idTrabajador?>" ><?php echo $trabajador?></option>
+											<label>Persona :</label>
+											<select disabled name="idPersona" class="form-control select2" style="width: 100%;">
+											<option value="<?php echo $idPersona?>" ><?php echo $nomPersona?></option>
 											<?
 												for($i=0;$i<$num1;$i++) 
 												{
@@ -118,32 +98,23 @@ $opa="A";
 											</select>
 										</div>
 									</div>
-									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+									
+									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
 										<div class="form-group">
-											<label>Especialista :</label>
-											<select name="esp" class="form-control select2" style="width: 100%;">
-											<option value="<?php echo $especialista ?>"><?php echo $res ?></option>
-											 	<option value="1">SI</option>
-											 	<option value="0">No</option>
-											</select>
+											<label>Usuario :</label>
+											<input type="text" name="nomUsuario" class="form-control" required autofocus placeholder="Usuario..." value="<?php echo $nomUsuario?>">
 										</div>
 									</div>
-									<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
 										<div class="form-group">
-											<label>Especialidad :</label>
-											<select name="idEspecialidad" class="form-control select2" style="width: 100%;">
-											<option value="<?php echo $idEspecialidad?>" ><?php echo $Especialidad?></option>
-											<?
-												for($i=0;$i<$num2;$i++) 
-												{
-												$id=mysql_result($combo2,$i,'id_especialidad');
-												$usuario=mysql_result($combo2,$i,'nombre_especialidad');
-												echo "<option value=\"$id\" >$usuario</option>";
-												}
-											?> 
-											</select>
+											<label>Contraseña :</label>
+											<input type="text" name="clave" class="form-control" required autofocus placeholder="Contraseña..." value="<?php echo $contra?>">
 										</div>
 									</div>
+									
+									
+
 								</div>
 							</div>
 
@@ -181,9 +152,10 @@ $opa="A";
 	<script src="../js/precarga.js"></script>
 	<script src="../js/salir.js"></script>
 	<script src="../js/contra.js"></script>
+
     <!-- Select2 -->
 	<script src="../plugins/select2/select2.full.min.js"></script>
-
+	
 	<script>
 		$(function () {
 			$(".select2").select2();

@@ -8,6 +8,7 @@ $cveTrabajador    = $_POST['clave'];
 $idTipoTrabajador = $_POST['idTipoTrabajador'];
 $idDepartamento   = $_POST['idDepartamento'];
 $idPuesto         = $_POST['idPuesto'];
+$funcion          = $_POST['funcion'];
 
 $fecha=date("Y-m-d"); 
 $hora=date ("h:i:s");
@@ -27,7 +28,8 @@ $insertar=mysql_query("INSERT INTO trabajadores (
                             activo,
                             fecha_registro,
                             hora_registro,
-                            usuario_registro
+                            usuario_registro,
+                            funcion_trabajador
                         )
                         VALUES(
                             '$idPersonat',
@@ -39,7 +41,8 @@ $insertar=mysql_query("INSERT INTO trabajadores (
                             $activo,
                             '$fecha',
                             '$hora',
-                            $idPersona
+                            $idPersona,
+                            '$funcion'
                         )",$conexion) or die (mysql_error());
 ?>
 <script>

@@ -42,7 +42,7 @@ $opa="A";
 			</div>
 			<div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 cont">
 			   <div class="titulo borde sombra">
-			        <h3 class="animated zoomIn tPrincipal">Lista de trabajadores</h3>
+			        <h3 class="animated zoomIn tPrincipal">Lista de administrativos</h3>
 			   </div>	
 			   <div class="contenido borde sombra" style="padding-right:18px;">
 				   <div class="container-fluid">
@@ -54,11 +54,8 @@ $opa="A";
 									<th>#</th>
 									<th>Ficha</th>
 									<th>Editar</th>
-									<th>Clave</th>
-									<th>Trabajador</th>
-									<th>Puesto</th>
-									<th>Departamento</th>
-									<th>Función</th>
+									<th>Carrera</th>
+									<th>Nombre de trabajador</th>
 									<th>Estatus</th>
 								</tr>
 							</thead>
@@ -66,32 +63,26 @@ $opa="A";
 							<?php
 							mysql_query("SET NAMES utf8");
 							$consulta=mysql_query("SELECT
-														id_trabajador,
-														(SELECT CONCAT(ap_paterno,' ',ap_materno,' ',nombre) FROM personas WHERE personas.id_persona=trabajadores.id_persona) as Trabajador,
-														trabajadores.activo,
-														clave_trabajador,
-														puestos.nombre_puesto,
-														departamentos.nombre_departamento,
-														trabajadores.funcion_trabajador
-													FROM
-														trabajadores
-													INNER JOIN puestos ON puestos.id_puesto=trabajadores.id_puesto
-													INNER JOIN departamentos ON departamentos.id_departamento=trabajadores.id_departamento
-													INNER JOIN tipos_trabajador ON tipos_trabajador.id_tipo_trabajador=trabajadores.id_tipo_trabajador
-													ORDER BY id_trabajador DESC",$conexion) or die (mysql_error());
+													id_administrativo,
+							  						administrativos.carrera,
+													(SELECT CONCAT(ap_paterno,' ',ap_materno,' ',nombre) FROM personas WHERE personas.id_persona=trabajadores.id_persona) as Trabajador,
+							  						administrativos.activo,
+							  						administrativos.fecha_registro,
+							  						administrativos.hora_registro,
+							  						administrativos.usuario_registro
+												FROM
+													administrativos
+												INNER JOIN trabajadores ON trabajadores.id_trabajador=administrativos.id_trabajador
+												ORDER BY id_administrativo DESC",$conexion) or die (mysql_error());
 							$n=1;
 							while ($row=mysql_fetch_row($consulta))
 							{
-
-								$activo=$row[2];
+								$activo=$row[3];
 								$id=$row[0];
-								$status=($row[2]==1)?"<i class='far fa-check-square fa-lg fasIco'></i>":"<i class='far fa-square fa-lg fasIco'></i>";
-								$desabilita=($row[2]==0)?"desactivado":"";
-								$cveTrabajador=$row[3];
-								$puesto=$row[4];
-								$departamento=$row[5];
-								$trabajador=$row[1];
-								$funcion=$row[6];
+								$status=($row[3]==1)?"<i class='far fa-check-square fa-lg fasIco'></i>":"<i class='far fa-square fa-lg fasIco'></i>";
+								$desabilita=($row[3]==0)?"desactivado":"";
+								$carrera=$row[1];
+								$ntrabajador=$row[2];
 
 							?>
 								<tr class="centrar">
@@ -109,19 +100,10 @@ $opa="A";
 										</a>
 									</td>
 									<td>
-										<p class="<?php echo $desabilita?>"><?php echo $cveTrabajador?></p>
+										<p class="<?php echo $desabilita?>"><?php echo $carrera?></p>
 									</td>
 									<td>
-										<p class="<?php echo $desabilita?>"><?php echo $trabajador?></p>
-									</td>
-									<td>
-										<p class="<?php echo $desabilita?>"><?php echo $puesto?></p>
-									</td>
-									<td>
-										<p class="<?php echo $desabilita?>"><?php echo $departamento?></p>
-									</td>
-									<td>
-										<p class="<?php echo $desabilita?>"><?php echo $funcion?></p>
+										<p class="<?php echo $desabilita?>"><?php echo $ntrabajador?></p>
 									</td>
 									<td>
 										<a class="enlace" href="status.php?valor=<?php echo $activo?>&id=<?php echo $id?>">
@@ -139,11 +121,8 @@ $opa="A";
 									<th>#</th>
 									<th>Ficha</th>
 									<th>Editar</th>
-									<th>Clave</th>
-									<th>Trabajador</th>
-									<th>Puesto</th>
-									<th>Departamento</th>
-									<th>Función</th>
+									<th>Carrera</th>
+									<th>Nombre de Trabajador</th>
 									<th>Estatus</th>
 								</tr>
 							</tfoot>
@@ -158,6 +137,33 @@ $opa="A";
 	<footer class="fondo">
 	<?php include'../layout/pie.php';?>
 	</footer>
+
+	<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h3 class="modal-title  tPrincipal">Información de usuario</h3>
+				</div>
+				<div class="modal-body animated flipInX">
+						<img src="../imagenes/avatar.jpg" class="img-thumbnail mImg">
+						<h4 class="tPrincipal colorLetra centrar">
+							Plantilla base
+						</h4>
+
+						<h4 class="tPrincipal colorLetra centrar">
+							MGTI. Pablo Adrián Perez Briseño
+						</h4>
+
+						<h4 class="tPrincipal colorLetra centrar">
+							Empresa / Institución
+						</h4>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- SCRIPT JAVASCRIPT -->
 
@@ -176,7 +182,6 @@ $opa="A";
 	<script src="../js/menu.js"></script>
 	<script src="../js/precarga.js"></script>
 	<script src="../js/salir.js"></script>
-	<script src="../js/contra.js"></script>
 	<!-- DataTables -->
 	<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
 	<script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>

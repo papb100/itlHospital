@@ -8,20 +8,18 @@ include'../funciones/fechaEspanol.php';
 $n=1;
 mysql_query("SET NAMES utf8");
 $consulta=mysql_query("SELECT
-                            id_trabajador,
-                            (SELECT CONCAT(ap_paterno,' ',ap_materno,' ',nombre) FROM personas WHERE personas.id_persona=trabajadores.id_persona) as Trabajador,
-                            trabajadores.activo,
-                            clave_trabajador,
-                            puestos.nombre_puesto,
-                            departamentos.nombre_departamento,
-                            tipos_trabajador.descripcion,
-                            trabajadores.funcion_trabajador
-                        FROM
-                        trabajadores
-                            INNER JOIN puestos ON puestos.id_puesto=trabajadores.id_puesto
-                            INNER JOIN departamentos ON departamentos.id_departamento=trabajadores.id_departamento
-                            INNER JOIN tipos_trabajador ON tipos_trabajador.id_tipo_trabajador=trabajadores.id_tipo_trabajador
-                        ORDER BY id_trabajador DESC",$conexion) or die (mysql_error());
+                            choferes.num_licencia,
+                            (SELECT 
+                                    CONCAT(personas.nombre, ' ', personas.ap_paterno, ' ', personas.ap_materno)
+                                FROM personas
+                                WHERE personas.id_persona=trabajadores.id_persona
+                            ) as nombre,
+                            choferes.activo,
+                            choferes.id_chofer
+                        FROM choferes 
+                        INNER JOIN trabajadores
+                        ON trabajadores.id_trabajador=choferes.id_trabajador
+                        WHERE choferes.activo = 1",$conexion) or die (mysql_error());
 $fechai =date("d-m-Y");
 
  ?>
@@ -163,7 +161,7 @@ img{
 </table>
 
 <table border="0">
-    <col style="width: 4%">
+    <col style="width: 10%">
     <col style="width: 10%">
     <col style="width: 10%">
     <col style="width: 10%">
@@ -180,7 +178,7 @@ img{
 
     <tr >
         <td  colspan="10" class="titular">
-            Lista de Trabajadores activos
+            Lista de hospitales activos
         </td>
     </tr>   
 
@@ -189,22 +187,15 @@ img{
             <strong>#</strong> 
         </td>
 
-        <td  colspan="1" class="subtitular">
-            <u></u><strong>Clave</strong>
+        <td  colspan="2" class="subtitular">
+            <u></u><strong>Nombre</strong>
         </td>
         <td  colspan="3" class="subtitular">
-            <u></u><strong>Trabajador</strong>
+            <u></u><strong>Descripción</strong>
         </td>
-        <td  colspan="1" class="subtitular">
-            <u></u><strong>Puesto</strong>
+        <td  colspan="4" class="subtitular">
+            <u></u><strong>Teléfono</strong>
         </td>
-        <td  colspan="2" class="subtitular">
-            <u></u><strong>Departamento</strong>
-        </td>
-        <td  colspan="2" class="subtitular">
-            <u></u><strong>funcion</strong>
-        </td>
-
     </tr>  
 
     <?php 
@@ -217,36 +208,23 @@ img{
         }else{
             $claseColor="registro2";
         }
-
-        $cveTrabajador=$row[3];
-        $puesto=$row[4];
-        $departamento=$row[5];
-        $trabajador=$row[1];
-        $tTrabajador=$row[6];
-        $funcion=$row[7];
-
         ?>
         <tr >
             <td  colspan="1" class="<?php echo "$claseColor"; ?>">
                 <?php echo "$n"; ?>
             </td>
 
-            <td  colspan="1" class="<?php echo "$claseColor"; ?>">
-                <u></u> <?php echo $cveTrabajador; ?>
-            </td>
-            <td  colspan="3" class="<?php echo "$claseColor"; ?>">
-                <u></u> <?php echo $trabajador; ?>
-            </td>
-            <td  colspan="1" class="<?php echo "$claseColor"; ?>">
-                <u></u> <?php echo $puesto; ?>
-            </td>
             <td  colspan="2" class="<?php echo "$claseColor"; ?>">
-                <u></u> <?php echo $departamento; ?>
-            </td>
-            <td  colspan="2" class="<?php echo "$claseColor"; ?>">
-                <u></u> <?php echo $funcion; ?>
+                <u></u> <?php echo "$row[0]"; ?>
             </td>
 
+            <td  colspan="3" class="<?php echo "$claseColor"; ?>">
+                <u></u> <?php echo "$row[1]"; ?>
+            </td>
+
+            <td  colspan="4" class="<?php echo "$claseColor"; ?>">
+                <u></u> <?php echo "$row[2]"; ?>
+            </td>
         </tr>  
         <?php
         $n++;

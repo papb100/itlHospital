@@ -16,7 +16,8 @@ $consulta=mysql_query("SELECT
 							departamentos.nombre_departamento,
 							trabajadores.id_tipo_trabajador,
 							tipos_trabajador.descripcion,
-							fecha_ingreso
+							fecha_ingreso,
+							trabajadores.funcion_trabajador
 						FROM
 							trabajadores
 						INNER JOIN puestos ON puestos.id_puesto=trabajadores.id_puesto
@@ -39,6 +40,7 @@ $idDepa	    = $row[7];
 $nomDepa    = $row[8];
 $idPuesto	= $row[5];
 $nomPuesto  = $row[6];
+$funcion    = $row[12];
 
 $opa="A";
 ?>
@@ -98,7 +100,7 @@ $opa="A";
 
 							<div class="cuerpo">
 								<div class="row">
-									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-7">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-5">
 										<div class="form-group">
 											<label>Persona :</label>
 											<select disabled name="idPersona" class="form-control select2" style="width: 100%;">
@@ -114,19 +116,32 @@ $opa="A";
 											</select>
 										</div>
 									</div>
-									<div class="col-xs-12 col-sm-8 col-md-4 col-lg-5">
+									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
 										<div class="form-group">
 											<label>Fecha de Ingreso :</label>
 											<input type="date" name="fingreso" class="form-control" required value="<?php echo $fIngreso?>">
 										</div>
 									</div>
-									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+									<div class="col-xs-12 col-sm-5 col-md-4 col-lg-2">
+										<div class="form-group">
+											<label>Función :</label>
+											
+											<select name="funcion" class="form-control select2" style="width: 100%;">
+												<option value="<?php echo $funcion?>" ><?php echo $funcion?></option>
+												<option value="Administrativo">Administrativo</option>
+												<option value="Médico">Médico</option>
+												<option value="Enfermero">Enfermero</option>
+												<option value="Chofer">Chofer</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-3 col-md-4 col-lg-2">
 										<div class="form-group">
 											<label>Clave :</label>
 											<input type="text" name="clave" class="form-control" required autofocus placeholder="# Trabajador" value="<?php echo $clave?>">
 										</div>
 									</div>
-									<div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+									<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 										<div class="form-group">
 											<label>Tipo :</label>
 											<select name="idTipoTrabajador" class="form-control select2" style="width: 100%;">
@@ -142,7 +157,7 @@ $opa="A";
 											</select>
 										</div>
 									</div>
-									<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+									<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 										<div class="form-group">
 											<label>Departamento :</label>
 											<select name="idDepartamento" class="form-control select2" style="width: 100%;">
@@ -158,7 +173,7 @@ $opa="A";
 											</select>
 										</div>
 									</div>
-									<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+									<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 										<div class="form-group">
 											<label>Puesto :</label>
 											<select name="idPuesto" class="form-control select2" style="width: 100%;">

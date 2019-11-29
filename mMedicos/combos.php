@@ -14,6 +14,7 @@ $combo1 = mysql_query("SELECT
 						WHERE
 							ISNULL(medicos.cedula)
 						AND trabajadores.activo = 1
+						AND trabajadores.funcion_trabajador = 'Médico'
 						ORDER BY
 							trabajadores.id_trabajador",$conexion);
 $num1=mysql_num_rows($combo1);

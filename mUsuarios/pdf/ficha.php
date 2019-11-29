@@ -10,7 +10,7 @@ include'../funciones/fechaEspanol.php';
 mysql_query("SET NAMES utf8");
 $consulta=mysql_query("SELECT
                             id_trabajador,
-                            (SELECT CONCAT(trabajadores.funcion_trabajador,' - ',ap_paterno,' ',ap_materno,' ',nombre) FROM personas WHERE personas.id_persona=trabajadores.id_persona) as Trabajador,
+                            (SELECT CONCAT(ap_paterno,' ',ap_materno,' ',nombre) FROM personas WHERE personas.id_persona=trabajadores.id_persona) as Trabajador,
                             trabajadores.activo,
                             clave_trabajador,
                             puestos.nombre_puesto,

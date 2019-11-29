@@ -14,8 +14,7 @@ $consulta=mysql_query("SELECT
                             clave_trabajador,
                             puestos.nombre_puesto,
                             departamentos.nombre_departamento,
-                            tipos_trabajador.descripcion,
-                            trabajadores.funcion_trabajador
+                            tipos_trabajador.descripcion
                         FROM
                         trabajadores
                             INNER JOIN puestos ON puestos.id_puesto=trabajadores.id_puesto
@@ -202,9 +201,8 @@ img{
             <u></u><strong>Departamento</strong>
         </td>
         <td  colspan="2" class="subtitular">
-            <u></u><strong>funcion</strong>
+            <u></u><strong>Tipo</strong>
         </td>
-
     </tr>  
 
     <?php 
@@ -223,7 +221,6 @@ img{
         $departamento=$row[5];
         $trabajador=$row[1];
         $tTrabajador=$row[6];
-        $funcion=$row[7];
 
         ?>
         <tr >
@@ -244,9 +241,8 @@ img{
                 <u></u> <?php echo $departamento; ?>
             </td>
             <td  colspan="2" class="<?php echo "$claseColor"; ?>">
-                <u></u> <?php echo $funcion; ?>
+                <u></u> <?php echo $tTrabajador; ?>
             </td>
-
         </tr>  
         <?php
         $n++;

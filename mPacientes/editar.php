@@ -94,7 +94,7 @@ $opa="A";
 								<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
 										<div class="form-group">
 											<label>nhc :</label>
-											<input type="numeric" name="nhc" class="form-control" required autofocus placeholder="# nhc" value="<?php echo $nhc?>">
+											<input type="number" name="nhc" class="form-control" required autofocus placeholder="# nhc" value="<?php echo $nhc?>">
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
@@ -124,7 +124,7 @@ $opa="A";
 									<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 										<div class="form-group">
 											<label>Telefono :</label>
-											<input type="text" name="tel" class="form-control" required autofocus placeholder="# Telefono" value="<?php echo $tel?>">
+											<input type="number" name="tel" class="form-control" required autofocus placeholder="# Telefono" value="<?php echo $tel?>">
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
@@ -149,10 +149,20 @@ $opa="A";
 											</select>
 										</div>
 									</div>
-									<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<div class="col-xs-12 col-sm-12 col-md-4 col-lg-6">
 										<div class="form-group">
 											<label>Tipo de sangre :</label>
-											<input type="text" name="tsangre" class="form-control" required autofocus placeholder="# Tipo de sangre" value="<?php echo $tsangre?>">
+											<select name="tsangre" class="form-control select2" style="width: 100%;">
+											<option value="<?php echo $tsangre?>" ><?php echo $tsangre?></option>
+												<option value="O-">O-</option>
+												<option value="O+">O+</option>
+												<option value="A-">A-</option>
+												<option value="A+">A+</option>
+												<option value="B-">B-</option>
+												<option value="B+">B+</option>
+												<option value="AB-">AB-</option>
+												<option value="AB+">AB+</option>
+											</select>
 										</div>
 									</div>
 								</div>
