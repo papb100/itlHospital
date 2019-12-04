@@ -14,7 +14,7 @@ $fechaNac=$_POST['fNac'];
 $colonia=$_POST['col'];
 $calle=$_POST['street'];
 $nCasa=$_POST['numCasa'];
-$municipio=$_POST['mun'];
+$municipio=$_POST['municipio'];
 $estado=$_POST['estado'];
 
 $fecha=date("Y-m-d"); 

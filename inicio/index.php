@@ -49,7 +49,7 @@
 								</h4>
 							</div>
 
-							<div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
+							<div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
 						
 								<div class="panel-body">
 									<div class="row">
@@ -212,7 +212,7 @@
 								</h4>
 							</div>
 
-							<div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+							<div id="collapse4" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading4">
 						
 								<div class="panel-body">
 									<div class="row">
@@ -242,7 +242,7 @@
 										</div>
 										<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
 											<div class="caja animated flipInX">
-												<i class="fas fa-notes-medical"></i>
+												<i class="fas fa-file-alt"></i>
 												<p><a href="../mUrgReportes/index.php" class="cenlace">Reportes</a></p>
 											</div>
 										</div>
@@ -254,40 +254,162 @@
 						<!-- Fin item del acoordeon -->
 						<!-- Inicio item del acoordeon -->
 						<div class="panel panel-default">
-							<div class="panel-heading" role="tab" id="heading4">
+							<div class="panel-heading" role="tab" id="heading5">
 								<h4 class="panel-title">
-									<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="true" aria-controls="collapse4">
-										Módulos Especialidades
+									<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="true" aria-controls="collapse5">
+										Traslados
 									</a>
 								</h4>
 							</div>
 
-							<div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+							<div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
 						
 								<div class="panel-body">
 									<div class="row">
 										<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
 											<div class="caja animated flipInX">
+												<i class="fas fa-cart-plus"></i>
+												<p><a href="../mTrasRegistroTraslado/index.php" class="cenlace">Registrar Traslado</a></p>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+											<div class="caja animated flipInX">
+												<i class="fas fa-list-alt"></i>
+												<p><a href="../mTrasTraslados/index.php" class="cenlace">Traslados</a></p>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+											<div class="caja animated flipInX">
+												<i class="fas fa-file-alt"></i>
+												<p><a href="../mTrasReportes/index.php" class="cenlace">Reportes</a></p>
+											</div>
+										</div>
+
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<!-- Fin item del acoordeon -->
+						<!-- Inicio item del acoordeon -->
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="heading6">
+								<h4 class="panel-title">
+									<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="true" aria-controls="collapse6">
+										Agendas
+									</a>
+								</h4>
+							</div>
+
+							<div id="collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
+						
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+											<div class="caja animated flipInX">
+												<i class="fas fa-folder-plus"></i>
+												<p><a href="../mAgeRegistrarCita/index.php" class="cenlace">Registrar Cita</a></p>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+											<div class="caja animated flipInX">
 												<i class="fas fa-calendar-alt"></i>
-												<p><a href="../mAmbulancias/index.php" class="cenlace">Agendas</a></p>
+												<p><a href="../mAgeAgendas/index.php" class="cenlace">Agendas</a></p>
 											</div>
 										</div>
 										<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
 											<div class="caja animated flipInX">
-												<i class="fas fa-money-check-alt"></i>
-												<p><a href="../mCamas/index.php" class="cenlace">Descuentos</a></p>
+												<i class="fas fa-file-alt"></i>
+												<p><a href="../mAgeReportes/index.php" class="cenlace">Reportes</a></p>
+											</div>
+										</div>
+
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<!-- Fin item del acoordeon -->
+						<!-- Inicio item del acoordeon -->
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="heading7">
+								<h4 class="panel-title">
+									<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="true" aria-controls="collapse7">
+										Hospitalización
+									</a>
+								</h4>
+							</div>
+
+							<div id="collapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading7">
+						
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+											<div class="caja animated flipInX">
+												<i class="fas fa-laptop-medical"></i>
+												<p><a href="../mHospRegistrarPaciente/index.php" class="cenlace">Registrar Paciente</a></p>
 											</div>
 										</div>
 										<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
 											<div class="caja animated flipInX">
-												<i class="fas fa-procedures"></i>
-												<p><a href="../mConsultorios/index.php" class="cenlace">Hospitalizados</a></p>
+												<i class="fas fa-hospital-symbol"></i>
+												<p><a href="../mHospHospitalizados/index.php" class="cenlace">Hospitalizados</a></p>
 											</div>
 										</div>
 										<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
 											<div class="caja animated flipInX">
-												<i class="fas fa-truck-moving"></i>
-												<p><a href="../mDepartamentos/index.php" class="cenlace">Traslados</a></p>
+												<i class="fas fa-comment-medical"></i>
+												<p><a href="../mHospAtenderPaciente/index.php" class="cenlace">Atender Paciente</a></p>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+											<div class="caja animated flipInX">
+												<i class="fas fa-notes-medical"></i>
+												<p><a href="../mHospFicha/index.php" class="cenlace">Ficha de Alta</a></p>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+											<div class="caja animated flipInX">
+												<i class="fas fa-file-alt"></i>
+												<p><a href="../mHospReportes/index.php" class="cenlace">Reportes</a></p>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<!-- Fin item del acoordeon -->
+						<!-- Inicio item del acoordeon -->
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="heading8">
+								<h4 class="panel-title">
+									<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse8" aria-expanded="true" aria-controls="collapse8">
+										Trabajo Social
+									</a>
+								</h4>
+							</div>
+
+							<div id="collapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading8">
+						
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+											<div class="caja animated flipInX">
+												<i class="fas fa-laptop-medical"></i>
+												<p><a href="../mHospRegistrarPaciente/index.php" class="cenlace">Lista de pacientes con atenciones</a></p>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+											<div class="caja animated flipInX">
+												<i class="fas fa-hospital-symbol"></i>
+												<p><a href="../mHospHospitalizados/index.php" class="cenlace">Lista de pacientes con descuento aplicado</a></p>
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+											<div class="caja animated flipInX">
+												<i class="fas fa-comment-medical"></i>
+												<p><a href="../mHospAtenderPaciente/index.php" class="cenlace">Reportes de descuentos aplicados</a></p>
 											</div>
 										</div>
 									</div>

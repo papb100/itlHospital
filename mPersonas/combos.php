@@ -22,7 +22,7 @@ $combo2 = mysql_query("SELECT
 							id_municipio,
 							municipio
 						FROM
-							municipios",$conexion);
+							municipios ORDER BY municipio",$conexion);
 $num2=mysql_num_rows($combo2);
 //Combo tipo trabajador
 //Combo departamentos
@@ -30,7 +30,7 @@ $combo3 = mysql_query("SELECT
 							id_estado,
 							estado
 						FROM
-							estados",$conexion);
+							estados ORDER BY estado",$conexion);
 						$num3=mysql_num_rows($combo3);
 //Combo departamentos
 //Combo puestos

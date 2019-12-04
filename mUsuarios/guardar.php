@@ -2,10 +2,9 @@
 include'../conexion/conexion.php';
 include'../sesiones/verificar_sesion.php';
 
-
-$nomUsuario    = $_POST['nomUsuario'];
-$idTrabajador       = $_POST['idPersona'];
-$contra         = $_POST['contra'];
+$nomUsuario   = $_POST['nomUsuario'];
+$idTrabajador = $_POST['idTrabajador'];
+$contra       = $_POST['contra'];
 
 $fecha=date("Y-m-d"); 
 $hora=date ("h:i:s");
@@ -28,7 +27,7 @@ $insertar=mysql_query("INSERT INTO usuarios (
                             '$nomUsuario',
                             '$idTrabajador',
                             '$contra',
-                             $activo,
+                            $activo,
                             '$fecha',
                             '$hora',
                             $idPersona

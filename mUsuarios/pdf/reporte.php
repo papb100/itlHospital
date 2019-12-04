@@ -8,19 +8,15 @@ include'../funciones/fechaEspanol.php';
 $n=1;
 mysql_query("SET NAMES utf8");
 $consulta=mysql_query("SELECT
-                            id_trabajador,
+                            id_usuario,
+                            usuarios.nombre_usuario,
                             (SELECT CONCAT(ap_paterno,' ',ap_materno,' ',nombre) FROM personas WHERE personas.id_persona=trabajadores.id_persona) as Trabajador,
-                            trabajadores.activo,
-                            clave_trabajador,
-                            puestos.nombre_puesto,
-                            departamentos.nombre_departamento,
-                            tipos_trabajador.descripcion
+                            usuarios.contra,
+                            usuarios.activo
                         FROM
-                        trabajadores
-                            INNER JOIN puestos ON puestos.id_puesto=trabajadores.id_puesto
-                            INNER JOIN departamentos ON departamentos.id_departamento=trabajadores.id_departamento
-                            INNER JOIN tipos_trabajador ON tipos_trabajador.id_tipo_trabajador=trabajadores.id_tipo_trabajador
-                        ORDER BY id_trabajador DESC",$conexion) or die (mysql_error());
+                        usuarios
+                            INNER JOIN trabajadores ON trabajadores.id_trabajador=usuarios.id_trabajador
+                        ORDER BY id_usuario DESC",$conexion) or die (mysql_error());
 $fechai =date("d-m-Y");
 
  ?>
@@ -179,7 +175,7 @@ img{
 
     <tr >
         <td  colspan="10" class="titular">
-            Lista de Trabajadores activos
+            Lista de Usuarios activos
         </td>
     </tr>   
 
@@ -188,21 +184,13 @@ img{
             <strong>#</strong> 
         </td>
 
-        <td  colspan="1" class="subtitular">
-            <u></u><strong>Clave</strong>
+        <td  colspan="4" class="subtitular">
+            <u></u><strong>Nombre de Usuario</strong>
         </td>
-        <td  colspan="3" class="subtitular">
+        <td  colspan="5" class="subtitular">
             <u></u><strong>Trabajador</strong>
         </td>
-        <td  colspan="1" class="subtitular">
-            <u></u><strong>Puesto</strong>
-        </td>
-        <td  colspan="2" class="subtitular">
-            <u></u><strong>Departamento</strong>
-        </td>
-        <td  colspan="2" class="subtitular">
-            <u></u><strong>Tipo</strong>
-        </td>
+
     </tr>  
 
     <?php 
@@ -216,11 +204,10 @@ img{
             $claseColor="registro2";
         }
 
-        $cveTrabajador=$row[3];
-        $puesto=$row[4];
-        $departamento=$row[5];
-        $trabajador=$row[1];
-        $tTrabajador=$row[6];
+        $nomUsuario=$row[1];
+        $trabajador=$row[2];
+        $contra=$row[3];
+        $activo=$row[4];
 
         ?>
         <tr >
@@ -228,20 +215,13 @@ img{
                 <?php echo "$n"; ?>
             </td>
 
-            <td  colspan="1" class="<?php echo "$claseColor"; ?>">
-                <u></u> <?php echo $cveTrabajador; ?>
+            <td  colspan="4" class="<?php echo "$claseColor"; ?>">
+                <u></u> <?php echo $nomUsuario; ?>
             </td>
-            <td  colspan="3" class="<?php echo "$claseColor"; ?>">
+            <td  colspan="5" class="<?php echo "$claseColor"; ?>">
                 <u></u> <?php echo $trabajador; ?>
             </td>
-            <td  colspan="1" class="<?php echo "$claseColor"; ?>">
-                <u></u> <?php echo $puesto; ?>
-            </td>
-            <td  colspan="2" class="<?php echo "$claseColor"; ?>">
-                <u></u> <?php echo $departamento; ?>
-            </td>
-            <td  colspan="2" class="<?php echo "$claseColor"; ?>">
-                <u></u> <?php echo $tTrabajador; ?>
+
             </td>
         </tr>  
         <?php

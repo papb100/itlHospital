@@ -5,19 +5,27 @@ include'../funciones/funcionEspacios.php';
 include'../funciones/calcularEdad.php';
 include'../funciones/fechaEspanol.php';
 
+// Variables post
+$tAlta    = $_GET["tipoAlta"];
+$fInicial = $_GET["fechaInicial"];
+$fFinal   = $_GET["fechaFinal"];
+
 $n=1;
 mysql_query("SET NAMES utf8");
 $consulta=mysql_query("SELECT
-                            nombre_departamento,
-                            activo,
-                            fecha_registro,
-                            hora_registro,
-                            (SELECT CONCAT(nombre,' ',ap_paterno,' ',ap_materno) FROM personas where personas.id_persona=departamentos.usuario_registro) as Registro
+                            pacientes.nhc,
+                            CONCAT(pacientes.nombre,' ',pacientes.ap_paterno,' ',pacientes.ap_materno)  AS Paciente,
+                            (SELECT CONCAT(nombre,' ' ,ap_paterno) FROM medicos INNER JOIN trabajadores ON medicos.id_trabajador=trabajadores.id_trabajador
+                            INNER JOIN personas ON personas.id_persona=trabajadores.id_persona  WHERE medicos.id_medico=urgencias.id_medico) AS nombre_medico,
+                            urgencias.resultado_triage AS Emergencia
                         FROM
-                            departamentos
+                            urgencias INNER JOIN pacientes ON urgencias.nhc=pacientes.nhc
                         WHERE
-                            activo= 1",$conexion) or die (mysql_error());
+                            NOT ISNULL(alta)
+                            AND  fecha_alta BETWEEN '$fInicial' AND '$fFinal'
+                            AND alta='$tAlta'",$conexion) or die (mysql_error());
 $fechai =date("d-m-Y");
+
 
  ?>
 
@@ -175,7 +183,7 @@ img{
 
     <tr >
         <td  colspan="10" class="titular">
-            Lista de departamentos activos
+            Tipo de Alta - <?php echo $tAlta; ?>
         </td>
     </tr>   
 
@@ -184,9 +192,19 @@ img{
             <strong>#</strong> 
         </td>
 
-        <td  colspan="9" class="subtitular">
-            <u></u><strong>Departamento</strong>
+        <td  colspan="1" class="subtitular">
+            <u></u><strong>NHC</strong>
         </td>
+        <td  colspan="3" class="subtitular">
+            <u></u><strong>Paciente</strong>
+        </td>
+        <td  colspan="3" class="subtitular">
+            <u></u><strong>Medico</strong>
+        </td>
+        <td  colspan="2" class="subtitular">
+            <u></u><strong>Emergencia</strong>
+        </td>
+
     </tr>  
 
     <?php 
@@ -199,14 +217,33 @@ img{
         }else{
             $claseColor="registro2";
         }
+
+        // Descarga de Variables
+        $nhc        = $row[0];
+        $paciente   = $row[1];
+        $medico     = $row[2];
+        $emergencia = $row[3];
+
         ?>
         <tr >
             <td  colspan="1" class="<?php echo "$claseColor"; ?>">
                 <?php echo "$n"; ?>
             </td>
 
-            <td  colspan="9" class="<?php echo "$claseColor"; ?>">
-                <u></u> <?php echo "$row[0]"; ?>
+            <td  colspan="1" class="<?php echo "$claseColor"; ?>">
+                <u></u> <?php echo "$nhc"; ?>
+            </td>
+
+            <td  colspan="3" class="<?php echo "$claseColor"; ?>">
+                <u></u> <?php echo "$paciente"; ?>
+            </td>
+
+            <td  colspan="3" class="<?php echo "$claseColor"; ?>">
+                <u></u> <?php echo "$medico"; ?>
+            </td>
+
+            <td  colspan="2" class="<?php echo "$claseColor"; ?>">
+                <u></u> <?php echo "$emergencia"; ?>
             </td>
         </tr>  
         <?php

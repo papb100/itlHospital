@@ -56,7 +56,6 @@ $opa="A";
 									<th>Editar</th>
 									<th>Usuario</th>
 									<th>Trabajador</th>
-									<th>Contraseña</th>
 									<th>Reinicio</th>
 									<th>Estatus</th>
 								</tr>
@@ -68,7 +67,6 @@ $opa="A";
 											id_usuario,
 											usuarios.nombre_usuario,
 											(SELECT CONCAT(ap_paterno,' ',ap_materno,' ',nombre) FROM personas WHERE personas.id_persona=trabajadores.id_persona) as Trabajador,
-											usuarios.contra,
 											usuarios.activo
 										FROM
 											usuarios
@@ -78,13 +76,12 @@ $opa="A";
 							while ($row=mysql_fetch_row($consulta))
 							{
 
-								$activo=$row[4];
+								$activo=$row[3];
 								$id=$row[0];
-								$status=($row[4]==1)?"<i class='far fa-check-square fa-lg fasIco'></i>":"<i class='far fa-square fa-lg fasIco'></i>";
-								$desabilita=($row[4]==0)?"desactivado":"";
+								$status=($row[3]==1)?"<i class='far fa-check-square fa-lg fasIco'></i>":"<i class='far fa-square fa-lg fasIco'></i>";
+								$desabilita=($row[3]==0)?"desactivado":"";
 								$nomUsuario=$row[1];
 								$idTrabajador=$row[2];
-								$contra=$row[3];
 							?>
 								<tr class="centrar">
 									<td>
@@ -106,11 +103,10 @@ $opa="A";
 									<td>
 										<p class="<?php echo $desabilita?>"><?php echo $idTrabajador?></p>
 									</td>
+									
 									<td>
-										<p class="<?php echo $desabilita?>"><?php echo $contra?></p>
-									</td>
-									<td>
-										<p class="<?php echo $desabilita?>"><?php echo $departamento?></p>
+										<p class="<?php echo $desabilita?>">
+										<a class="enlace" href="../mUsuarios/reiniciarcontra.php?valor=<?php echo $contra?>&id=<?php echo $id?>"><i class="fas fa-sync fa-spin"></i></a></p>
 									</td>
 									
 									<td>
@@ -131,7 +127,6 @@ $opa="A";
 									<th>Editar</th>
 									<th>Usuario</th>
 									<th>Trabajador</th>
-									<th>Contraseña</th>
 									<th>Reinicio</th>
 									<th>Estatus</th>
 								</tr>

@@ -7,20 +7,20 @@ mysql_query("SET NAMES utf8");
 $consulta=mysql_query("SELECT
 							id_usuario,
 							nombre_usuario,
-							trabajadores.id_persona,
+							trabajadores.id_trabajador,
 							(SELECT CONCAT(ap_paterno,' ',ap_materno,' ',nombre) FROM personas WHERE personas.id_persona=trabajadores.id_persona) as Trabajador,
 							contra
 						FROM
 							usuarios
-						INNER JOIN trabajadores ON trabajadores.id_trabajador=usuarios.id_trabajador
+						INNER JOIN trabajadores ON 				trabajadores.id_trabajador=usuarios.id_trabajador
 						WHERE id_usuario=$id",$conexion) or die (mysql_error());
 
 $row=mysql_fetch_row($consulta);
 
 $id         = $row[0];
 $nomUsuario = $row[1];
-$idPersona  = $row[2];
-$nomPersona = $row[3];
+$idTrabajador  = $row[2];
+$nomTrabajador = $row[3];
 $contra     = $row[4];
 
 $opa="A";
@@ -78,15 +78,21 @@ $opa="A";
 							</div>
 
 							<input type="hidden" name="ide" value="<?php echo $id?>">
-							<input type="text" value="<?php echo $idPersona;?>">
 
 							<div class="cuerpo">
 								<div class="row">
-									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-6">
 										<div class="form-group">
-											<label>Persona :</label>
-											<select disabled name="idPersona" class="form-control select2" style="width: 100%;">
-											<option value="<?php echo $idPersona?>" ><?php echo $nomPersona?></option>
+											<label>Usuario :</label>
+											<input type="text" name="nomUsuario" class="form-control" required autofocus placeholder="Usuario..." value="<?php echo $nomUsuario?>">
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+										<div class="form-group">
+											<label>Trabajador :</label>
+											<select disabled name="idTrabajador" class="form-control select2" style="width: 100%;">
+											<option value="<?php echo $idTrabajador?>" ><?php echo $nomTrabajador?></option>
 											<?
 												for($i=0;$i<$num1;$i++) 
 												{
@@ -98,18 +104,10 @@ $opa="A";
 											</select>
 										</div>
 									</div>
-									
-									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-12">
 										<div class="form-group">
-											<label>Usuario :</label>
-											<input type="text" name="nomUsuario" class="form-control" required autofocus placeholder="Usuario..." value="<?php echo $nomUsuario?>">
-										</div>
-									</div>
-
-									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
-										<div class="form-group">
-											<label>Contraseña :</label>
-											<input type="text" name="clave" class="form-control" required autofocus placeholder="Contraseña..." value="<?php echo $contra?>">
+											<label hidden>Contraseña :</label>
+											<input  type="hidden" name="contra" class="form-control" required autofocus placeholder="Contraseña..." value="<?php echo $contra?>" >
 										</div>
 									</div>
 									

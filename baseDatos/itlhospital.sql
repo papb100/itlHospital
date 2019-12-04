@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50051
 File Encoding         : 65001
 
-Date: 2019-11-28 18:59:41
+Date: 2019-12-03 21:58:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -77,16 +77,38 @@ CREATE TABLE `ambulancias` (
 -- ----------------------------
 -- Records of ambulancias
 -- ----------------------------
-INSERT INTO `ambulancias` VALUES ('2', '1', 'Nissan X-Trail', 'Es roja', '1', '2019-11-27', '06:06:40', '1');
-INSERT INTO `ambulancias` VALUES ('3', '2', 'Nissan NP300 Frontier', 'Es roja', '1', '2019-11-27', '06:06:55', '1');
-INSERT INTO `ambulancias` VALUES ('4', '3', 'Nissan NV300', 'Es blanca', '1', '2019-11-27', '06:07:08', '1');
-INSERT INTO `ambulancias` VALUES ('5', '4', 'Nissan NV400', 'Es blanca', '1', '2019-11-27', '06:07:29', '1');
-INSERT INTO `ambulancias` VALUES ('6', '5', 'Nissan Armada', 'Es roja', '1', '2019-11-27', '06:08:35', '1');
-INSERT INTO `ambulancias` VALUES ('7', '6', 'Nissan X-Trail', 'Es blanca', '1', '2019-11-27', '06:08:46', '1');
-INSERT INTO `ambulancias` VALUES ('8', '7', 'Nissan NP300 Frontier', 'Es roja', '1', '2019-11-27', '06:09:02', '1');
-INSERT INTO `ambulancias` VALUES ('9', '8', 'Nissan NV400', 'Es roja', '1', '2019-11-27', '06:09:26', '1');
-INSERT INTO `ambulancias` VALUES ('10', '9', 'Nissan Armada', 'Es roja', '1', '2019-11-27', '06:10:00', '1');
-INSERT INTO `ambulancias` VALUES ('11', '10', 'Nissan Armada', 'Es blanca', '1', '2019-11-27', '06:10:10', '1');
+INSERT INTO `ambulancias` VALUES ('2', '101', 'Nissan X-Trail', 'Ambulancia de Alta Especialidad', '1', '2019-12-03', '09:13:18', '1');
+INSERT INTO `ambulancias` VALUES ('3', '365', 'Nissan NP300 Frontier', 'Oxigeno medicinal.', '1', '2019-12-03', '09:13:00', '1');
+INSERT INTO `ambulancias` VALUES ('4', '125', 'Nissan NV300', 'Ambulancia de Alta Especialidad', '1', '2019-12-03', '09:13:13', '1');
+INSERT INTO `ambulancias` VALUES ('5', '200', 'Nissan NV400', 'Bomba de Infusión.', '1', '2019-12-03', '09:12:20', '1');
+INSERT INTO `ambulancias` VALUES ('6', '805', 'Nissan Armada', 'Monitor de signos vitales.', '1', '2019-12-03', '09:12:39', '1');
+INSERT INTO `ambulancias` VALUES ('7', '105', 'Nissan X-Trail', 'Oxigeno medicinal.', '1', '2019-12-03', '09:13:05', '1');
+INSERT INTO `ambulancias` VALUES ('8', '789', 'Nissan NP300 Frontier', 'Monitor de signos vitales.', '1', '2019-12-03', '09:12:33', '1');
+INSERT INTO `ambulancias` VALUES ('9', '991', 'Nissan NV400', 'Bomba de Infusión', '1', '2019-12-03', '09:12:15', '1');
+INSERT INTO `ambulancias` VALUES ('10', '89', 'Nissan Armada', 'Ambulancia de Alta Especialidad', '1', '2019-12-03', '09:11:47', '1');
+INSERT INTO `ambulancias` VALUES ('11', '15', 'Nissan Armada', 'Ambulancia de Alta Especialidad', '1', '2019-12-03', '09:11:42', '1');
+
+-- ----------------------------
+-- Table structure for atenciones_paciente
+-- ----------------------------
+DROP TABLE IF EXISTS `atenciones_paciente`;
+CREATE TABLE `atenciones_paciente` (
+  `id_atencion_paciente` int(11) NOT NULL auto_increment,
+  `nhc` int(11) default NULL,
+  `fecha_atencion` date default NULL,
+  `hora_atencion` time default NULL,
+  `servicio` text COMMENT 'Urgencias, Consulta Externa, Hospitalizacion, Traslados',
+  `descripcion_atencion` text,
+  `costo_atencion` double default NULL,
+  `descuento` text COMMENT 'si - no',
+  `activo` int(11) default NULL,
+  `usuario_registro` int(255) default NULL,
+  PRIMARY KEY  (`id_atencion_paciente`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of atenciones_paciente
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for camas
@@ -106,16 +128,16 @@ CREATE TABLE `camas` (
 -- ----------------------------
 -- Records of camas
 -- ----------------------------
-INSERT INTO `camas` VALUES ('2', '2', '1', '1', '2019-11-27', '06:04:23', '1');
-INSERT INTO `camas` VALUES ('3', '3', '2', '1', '2019-11-27', '06:04:38', '1');
-INSERT INTO `camas` VALUES ('4', '4', '3', '1', '2019-11-27', '06:04:52', '1');
-INSERT INTO `camas` VALUES ('5', '6', '4', '1', '2019-11-27', '06:05:10', '1');
-INSERT INTO `camas` VALUES ('6', '5', '5', '1', '2019-11-27', '06:05:23', '1');
-INSERT INTO `camas` VALUES ('7', '8', '6', '1', '2019-11-27', '06:05:38', '1');
-INSERT INTO `camas` VALUES ('8', '7', '7', '1', '2019-11-27', '06:06:13', '1');
-INSERT INTO `camas` VALUES ('9', '9', '8', '1', '2019-11-27', '06:06:28', '1');
-INSERT INTO `camas` VALUES ('10', '9', '9', '1', '2019-11-27', '06:06:41', '1');
-INSERT INTO `camas` VALUES ('11', '11', '10', '1', '2019-11-27', '06:06:55', '1');
+INSERT INTO `camas` VALUES ('2', '2', '201', '1', '2019-11-27', '06:04:23', '1');
+INSERT INTO `camas` VALUES ('3', '3', '202', '1', '2019-11-27', '06:04:38', '1');
+INSERT INTO `camas` VALUES ('4', '4', '203', '1', '2019-11-27', '06:04:52', '1');
+INSERT INTO `camas` VALUES ('5', '6', '401', '1', '2019-11-27', '06:05:10', '1');
+INSERT INTO `camas` VALUES ('6', '5', '402', '1', '2019-11-27', '06:05:23', '1');
+INSERT INTO `camas` VALUES ('7', '8', '303', '1', '2019-11-27', '06:05:38', '1');
+INSERT INTO `camas` VALUES ('8', '7', '101', '1', '2019-11-27', '06:06:13', '1');
+INSERT INTO `camas` VALUES ('9', '9', '301', '1', '2019-11-27', '06:06:28', '1');
+INSERT INTO `camas` VALUES ('10', '9', '302', '1', '2019-11-27', '06:06:41', '1');
+INSERT INTO `camas` VALUES ('11', '0', '102', '1', '2019-12-03', '09:15:24', '1');
 
 -- ----------------------------
 -- Table structure for choferes
@@ -150,21 +172,22 @@ CREATE TABLE `consultorios` (
   `hora_registro` time default NULL,
   `usuario_registro` int(11) default NULL,
   PRIMARY KEY  (`id_consultorio`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of consultorios
 -- ----------------------------
-INSERT INTO `consultorios` VALUES ('1', 'Consultorio 1', 'Urgencias', '1', '2019-11-27', '06:05:07', '1');
-INSERT INTO `consultorios` VALUES ('2', 'Consultorio 2', 'Urgencias', '1', '2019-11-27', '06:05:12', '1');
-INSERT INTO `consultorios` VALUES ('3', 'Consultorio 3', 'Urgencias', '1', '2019-11-27', '06:05:17', '1');
-INSERT INTO `consultorios` VALUES ('4', 'Consultorio 4', 'Urgencias', '1', '2019-11-27', '06:05:42', '1');
-INSERT INTO `consultorios` VALUES ('5', 'Consultorio 5', 'Urgencias', '1', '2019-11-27', '06:05:50', '1');
-INSERT INTO `consultorios` VALUES ('6', 'Consultorio 6', 'Consulta Externa', '1', '2019-11-27', '06:06:07', '1');
-INSERT INTO `consultorios` VALUES ('7', 'Consultorio 7', 'Consulta Externa', '1', '2019-11-27', '06:06:16', '1');
-INSERT INTO `consultorios` VALUES ('8', 'Consultorio 8', 'Consulta Externa', '1', '2019-11-27', '06:06:24', '1');
-INSERT INTO `consultorios` VALUES ('9', 'Consultorio 9', 'Consulta Externa', '1', '2019-11-27', '06:06:31', '1');
-INSERT INTO `consultorios` VALUES ('10', 'Consultorio 10', 'Consulta Externa', '1', '2019-11-27', '06:06:41', '1');
+INSERT INTO `consultorios` VALUES ('1', 'Consultorio 1 - Pediatrico', 'Urgencias', '1', '2019-12-03', '09:05:17', '1');
+INSERT INTO `consultorios` VALUES ('2', 'Consultorio 2 - Labor y explusión', 'Urgencias', '1', '2019-12-03', '09:05:34', '1');
+INSERT INTO `consultorios` VALUES ('3', 'Consultorio 3 - Shock Trauma', 'Urgencias', '1', '2019-12-03', '09:05:47', '1');
+INSERT INTO `consultorios` VALUES ('4', 'Consultorio 4 - Observación', 'Urgencias', '1', '2019-12-03', '09:06:03', '1');
+INSERT INTO `consultorios` VALUES ('5', 'Consultorio 5 - Tratamiento de Heridas', 'Urgencias', '1', '2019-12-03', '09:06:23', '1');
+INSERT INTO `consultorios` VALUES ('6', 'Consultorio 1 - Ginecologia', 'Consulta Externa', '1', '2019-12-03', '09:07:04', '1');
+INSERT INTO `consultorios` VALUES ('7', 'Consultorio 2 - Traumatologia', 'Consulta Externa', '1', '2019-12-03', '09:07:15', '1');
+INSERT INTO `consultorios` VALUES ('8', 'Consultorio 3 - Medicina Interna', 'Consulta Externa', '1', '2019-12-03', '09:07:25', '1');
+INSERT INTO `consultorios` VALUES ('9', 'Consultorio 9 -Gineco-Obstrtricia', 'Consulta Externa', '1', '2019-12-03', '09:07:42', '1');
+INSERT INTO `consultorios` VALUES ('10', 'Consultorio 10 - Telemedicina', 'Consulta Externa', '1', '2019-12-03', '09:07:52', '1');
+INSERT INTO `consultorios` VALUES ('11', 'Consultorio 6 - Modulo si Mujer', 'Consulta Externa', '1', '2019-12-03', '09:08:16', '1');
 
 -- ----------------------------
 -- Table structure for departamentos
@@ -204,7 +227,8 @@ CREATE TABLE `descuentos` (
   `id_descuento` int(11) NOT NULL auto_increment,
   `nhc` int(11) default NULL,
   `fecha_descuento` date default NULL,
-  `atencion` text COMMENT 'hospitalizado,urgencias,consulta externa',
+  `cantidad_servicios` int(11) default NULL COMMENT 'hospitalizado,urgencias,consulta externa',
+  `motivo_descuento` text,
   `costo_total` double default NULL,
   `costo_descuento` double default NULL,
   `diferencia` double default NULL,
@@ -252,7 +276,7 @@ CREATE TABLE `especialidades` (
   `hora_registro` time default NULL,
   `usuario_registro` int(11) default NULL,
   PRIMARY KEY  (`id_especialidad`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of especialidades
@@ -267,6 +291,7 @@ INSERT INTO `especialidades` VALUES ('8', 'Ginecologo', '1', '2019-11-27', '06:0
 INSERT INTO `especialidades` VALUES ('9', 'Cirujano', '1', '2019-11-27', '06:05:53', '1');
 INSERT INTO `especialidades` VALUES ('10', 'Odontologo', '1', '2019-11-27', '06:06:16', '1');
 INSERT INTO `especialidades` VALUES ('11', 'Cirujano Plastico', '1', '2019-11-27', '06:06:32', '1');
+INSERT INTO `especialidades` VALUES ('12', 'Medicina General', '1', '2019-12-03', '21:25:23', '1');
 
 -- ----------------------------
 -- Table structure for estados
@@ -364,6 +389,7 @@ CREATE TABLE `hospitalizados` (
   `fecha_alta` date default NULL,
   `hora_alta` time default NULL,
   `id_medico_alta` int(11) default NULL,
+  `motivo_alta` text,
   `activo` int(11) default NULL,
   `fecha_registro` date default NULL,
   `hora_registro` time default NULL,
@@ -390,12 +416,15 @@ CREATE TABLE `medicos` (
   `hora_registro` time default NULL,
   `usuario_registro` int(11) default NULL,
   PRIMARY KEY  (`id_medico`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of medicos
 -- ----------------------------
 INSERT INTO `medicos` VALUES ('1', '557896', '10', '1', '4', '1', '2019-11-28', '05:03:44', '1');
+INSERT INTO `medicos` VALUES ('2', '45789', '11', '1', '3', '1', '2019-12-03', '09:24:48', '1');
+INSERT INTO `medicos` VALUES ('3', '78956', '20', '0', '12', '1', '2019-12-03', '09:25:39', '1');
+INSERT INTO `medicos` VALUES ('4', '456231', '15', '0', '12', '1', '2019-12-03', '09:25:55', '1');
 
 -- ----------------------------
 -- Table structure for municipios
@@ -2898,7 +2927,7 @@ CREATE TABLE `pacientes` (
   `hora_registro` time default NULL,
   `usuario_registro` int(11) default NULL,
   PRIMARY KEY  (`id_paciente`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=138 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pacientes
@@ -2907,12 +2936,139 @@ INSERT INTO `pacientes` VALUES ('1', '101', 'Enrique ', 'Lazcano', 'Calderon', '
 INSERT INTO `pacientes` VALUES ('2', '102', 'Jose Luis', 'Lopez', 'Sanchez', 'Gil de Leyva', '8261085051', 'joseluis@gmail.com', '5', 'o+', '1', '2019-11-27', '06:09:56', '1');
 INSERT INTO `pacientes` VALUES ('3', '103', 'Hipolito', 'Martines', 'De La Olla', 'Provileon', '8215986241', 'hipolito@gmail.com', '6', 'o+', '1', '2019-11-27', '06:11:04', '1');
 INSERT INTO `pacientes` VALUES ('4', '104', 'Dario', 'Lopez', 'Perez', 'Infonavit', '8215689534', 'dario@hotmail.com', '4', 'o+', '1', '2019-11-27', '06:11:54', '1');
-INSERT INTO `pacientes` VALUES ('5', '105', 'Ronaldo', 'Severiano', 'Reyes', 'Bugambilias', '8216987564', 'severiano@live.com', '3', 'o+', '1', '2019-11-27', '06:12:59', '1');
+INSERT INTO `pacientes` VALUES ('5', '105', 'Ronaldo', 'Severiano', 'Reyes', 'Bugambilias', '8216987564', 'severiano@live.com', '3', 'o+', '1', '2019-12-03', '06:01:09', '13');
 INSERT INTO `pacientes` VALUES ('6', '106', 'Jesus', 'Salvador', 'Plata', 'Rincon de las Huertas', '8116983564', 'chuy@outloock.com', '2', 'o+', '1', '2019-11-27', '06:13:55', '1');
 INSERT INTO `pacientes` VALUES ('7', '107', 'Adolfo', 'Escalona', 'Rodriguez', 'Independencia', '8116548964', 'adolfazo@gmail.com', '5', 'o+', '1', '2019-11-27', '06:14:46', '1');
 INSERT INTO `pacientes` VALUES ('8', '108', 'Maleny', 'Lopez ', 'Perez', 'Infonavit', '8261051672', 'maleny@gmail.com', '1', 'o+', '1', '2019-11-27', '06:16:13', '1');
 INSERT INTO `pacientes` VALUES ('9', '109', 'Alan', 'Sandoval', 'Villa', 'Gil de Leyva', '8261056047', 'alan@hotmail.com', '6', 'o+', '1', '2019-11-27', '06:17:07', '1');
 INSERT INTO `pacientes` VALUES ('10', '110', 'Esteban', 'Ramirez', 'Cardona', 'Provileon', '8264052953', 'esteban@gmail.om', '2', 'o+', '1', '2019-11-27', '06:18:00', '1');
+INSERT INTO `pacientes` VALUES ('11', '122', 'Alan ', 'Walker', 'Areondo', 'Fomerrey', '8212365945', 'pequenowalker@gmail.com', '5', 'B+', '1', '2019-12-03', '05:59:15', '13');
+INSERT INTO `pacientes` VALUES ('12', '159', 'Ramiro', 'Gallegos', 'Gallegos', 'Independencia', '2115648921568', 'gallegos@live.com', '4', 'A-', '1', '2019-12-03', '05:57:58', '12');
+INSERT INTO `pacientes` VALUES ('13', '155', 'Marco Antonio', 'Hipolito ', 'Zeveriano', 'Rincon de las Huertas', '8261552010', 'zeveriano@gmail.com', '6', 'B-', '1', '2019-12-03', '05:47:04', '1');
+INSERT INTO `pacientes` VALUES ('14', '170', 'Roberto ', 'Carlos', 'Rodriguez', 'Provileon', '8211901093', 'roberto@gmail.com', '4', 'A-', '1', '2019-12-03', '05:47:52', '10');
+INSERT INTO `pacientes` VALUES ('15', '188', 'Juventino', 'Barrera', 'Zerda', 'Colonia Centro', '8115689452', 'barrea@live.com', '4', 'B-', '1', '2019-12-03', '05:48:15', '1');
+INSERT INTO `pacientes` VALUES ('16', '555', 'Kalifa', 'Perez ', 'Alvarez', 'Infonavit', '8264625934', 'kalifa@gmail.com', '3', 'B-', '1', '2019-12-03', '05:57:45', '12');
+INSERT INTO `pacientes` VALUES ('17', '176', 'Ulises', 'Carreón', 'Villanueva', 'La Mendiola 504', '8211756723', 'ucarreon@hotmail.com', '10', 'AB-', '1', '2019-12-03', '05:49:50', '11');
+INSERT INTO `pacientes` VALUES ('18', '320', 'Ulises', 'Perez', 'Martinez', 'Fovisste', '8212347867', 'ulises@hotmail.com', '2', 'B-', '1', '2019-12-03', '05:49:58', '10');
+INSERT INTO `pacientes` VALUES ('19', '265', 'Enrique', 'Lazcano', 'Plata', 'Monte Real', '8216548965', 'plata@gmail.com', '8', 'O+', '1', '2019-12-03', '05:50:55', '1');
+INSERT INTO `pacientes` VALUES ('20', '859', 'Jose ', 'Plata', 'Santos', 'Los nogales', '8115698256', 'santos@outlook.com', '10', 'AB+', '1', '2019-12-03', '05:51:56', '1');
+INSERT INTO `pacientes` VALUES ('21', '420', 'Tania', 'Fernandez', 'Salazar', 'Bugambilias', '2126515', 'latania@hotmail.com', '5', 'O+', '1', '2019-12-03', '05:52:51', '10');
+INSERT INTO `pacientes` VALUES ('22', '889', 'Romario', 'Davila ', 'Pequeño', 'Bugambilias', '8115694536', 'davila@hotmail.com', '1', 'O-', '1', '2019-12-03', '05:57:28', '12');
+INSERT INTO `pacientes` VALUES ('23', '720', 'Kevin', 'Martinez', 'Camacho', 'Fomerrey', '8211116790', 'elkevin@gmail.com', '2', 'B-', '1', '2019-12-03', '05:54:47', '10');
+INSERT INTO `pacientes` VALUES ('24', '136', 'Belisario', 'Rodriguez', 'Moya', 'Bugambilias', '8215689562', 'belisaurio@gmail.com', '9', 'A+', '1', '2019-12-03', '05:58:32', '13');
+INSERT INTO `pacientes` VALUES ('25', '181', 'Rogger', 'Casas', 'Apolo', 'Camachito 302', '8111329012', 'apolo79@outlook.es', '4', 'A-', '1', '2019-12-03', '05:55:20', '11');
+INSERT INTO `pacientes` VALUES ('26', '510', 'Juan', 'Rodriguez', 'Gonzalez', 'La Petaca', '8267891208', 'juan@hotmail.com', '3', 'O-', '1', '2019-12-03', '05:55:54', '10');
+INSERT INTO `pacientes` VALUES ('27', '194', 'Guadalupe', 'Martines', 'Escalona', 'Fomerrey', '8215684562', 'guadalupe@gmail.com', '10', 'B+', '1', '2019-12-03', '05:57:19', '12');
+INSERT INTO `pacientes` VALUES ('28', '810', 'Gerardo', 'Martinez', 'Lopez', 'Fovisste', '8211007890', 'gerardo@hotmail.com', '1', 'O-', '1', '2019-12-03', '05:57:48', '8');
+INSERT INTO `pacientes` VALUES ('29', '856', 'José', 'Pérez', 'Cardona', 'Centro av. Hidalgo 703', '8268653895', 'josesito01@gmail', '11', 'B-', '1', '2019-12-03', '05:58:00', '11');
+INSERT INTO `pacientes` VALUES ('30', '217', 'Lesly', 'Doriga', 'Cedillo', 'San Antonio', '8211234332', 'lesly.dl@gmail.com', '1', 'A-', '1', '2019-12-03', '05:58:33', '7');
+INSERT INTO `pacientes` VALUES ('31', '990', 'Pedro', 'Rodrìguez', 'Oyervides', 'Sabinos', '8261512001', 'pedro@morelos.com', '1', 'O-', '1', '2019-12-03', '05:58:42', '17');
+INSERT INTO `pacientes` VALUES ('32', '658', 'Scarlett', 'Plata', 'Johansson', 'Hidalgo', '8263262222', 'scarlettbb@gmail.com', '2', 'A+', '1', '2019-12-03', '05:58:46', '20');
+INSERT INTO `pacientes` VALUES ('33', '901', 'Jesús', 'Plata', 'Escalona', 'Sabinos', '8261512003', 'chuy@sabinos.com', '2', 'A-', '1', '2019-12-03', '05:59:13', '17');
+INSERT INTO `pacientes` VALUES ('34', '678', 'Oscar', 'Gonzalez', 'Olan', 'Tepeyac', '8212347890', 'oscar1@gmail.com', '3', 'O+', '1', '2019-12-03', '05:59:47', '8');
+INSERT INTO `pacientes` VALUES ('35', '902', 'Pablo', 'Viera', 'Melendez', 'Morelos', '8261512004', 'pablo@gmail.com', '1', 'O-', '1', '2019-12-03', '05:59:44', '17');
+INSERT INTO `pacientes` VALUES ('36', '234', 'FRANCISCO', 'Lopez', 'Sanchez', 'Santa Cecilia', '8262345678', 'pacosanchez@gmail.com', '1', 'B+', '1', '2019-12-03', '06:00:18', '20');
+INSERT INTO `pacientes` VALUES ('37', '218', 'Manuel', 'Castillo ', 'Ruiz', 'Provileón', '2129878', 'manuel.cass@hotmail.com', '2', 'B+', '1', '2019-12-03', '06:00:21', '7');
+INSERT INTO `pacientes` VALUES ('38', '904', 'Luis', 'Villes', 'Esquivel', 'Laureles 487', '8211923546', 'luisvilles@outlook.es', '9', 'O+', '1', '2019-12-03', '06:00:39', '11');
+INSERT INTO `pacientes` VALUES ('39', '219', 'José', 'Rivera', 'Rivera', 'Petaca', '8211009888', 'jose.rr@gmail.com', '6', 'B-', '1', '2019-12-03', '06:01:08', '7');
+INSERT INTO `pacientes` VALUES ('40', '435', 'Maria Dolores', 'de la fuente', 'montes', 'paraguay #2', '3245678912', 'mariafuetnes@gmail.com', '1', 'O-', '1', '2019-12-03', '06:01:33', '20');
+INSERT INTO `pacientes` VALUES ('41', '536', 'Mariana', 'Acuña', 'López', 'Riveras 297', '8123250835', 'maral@hotmail.com', '6', 'AB+', '1', '2019-12-03', '06:02:24', '11');
+INSERT INTO `pacientes` VALUES ('42', '220', 'Alejandra', 'Soto', 'Ruiz', 'Villegas', '821193434', 'ale.soto@hotmail.com', '4', 'AB+', '1', '2019-12-03', '06:02:26', '7');
+INSERT INTO `pacientes` VALUES ('43', '903', 'Rodrigo', 'Salgado', 'lopez', 'mora 439', '8211082277', 'rodrisalga21@gmail.com', '1', 'B-', '1', '2019-12-03', '06:02:27', '21');
+INSERT INTO `pacientes` VALUES ('44', '902', 'Adolfo', 'Margarito', 'Fernandez', 'Sabinos', '8261512001', 'adolfo@gmail', '1', 'O-', '1', '2019-12-03', '06:02:44', '17');
+INSERT INTO `pacientes` VALUES ('45', '451', 'Luis', 'Hernandez', 'Nañez', 'Villaseca', '8268745680', 'kike@gmail.com', '5', 'B+', '1', '2019-12-03', '06:03:03', '8');
+INSERT INTO `pacientes` VALUES ('46', '973', 'Elias', 'Salgado', 'Mazedonio', 'lomas del aro', '8211079066', 'mazerodri98@gmail.com', '6', 'O-', '1', '2019-12-03', '06:03:16', '21');
+INSERT INTO `pacientes` VALUES ('47', '221', 'Marco', 'Solís', 'Río', 'Naranjos', '8211145454', 'marcoantonio.sr@hotmail.com', '5', 'AB-', '1', '2019-12-03', '06:03:22', '7');
+INSERT INTO `pacientes` VALUES ('48', '129', 'Maria Angeles', 'Pilar', 'Cantú', 'peru #122', '3456098723', 'mariapilacantu@gmail.com', '1', 'O-', '1', '2019-12-03', '06:03:33', '20');
+INSERT INTO `pacientes` VALUES ('49', '905', 'Jesús', 'Pérez', 'Sánchez', 'Linares', '8261512222', 'jesus@gmail.com', '1', 'O-', '1', '2019-12-03', '06:03:56', '17');
+INSERT INTO `pacientes` VALUES ('50', '541', 'Hugo', 'Lopez', 'Montaño', 'Hacienda de guadalupe', '8212345600', 'hugo@gmail.com', '1', 'O-', '1', '2019-12-03', '06:03:57', '8');
+INSERT INTO `pacientes` VALUES ('51', '222', 'Beatriz', 'Pérez', 'Martínez', 'Riveras de San Antonio', '821221133', 'bety.perez@gmail.com', '1', 'O-', '1', '2019-12-03', '06:04:25', '7');
+INSERT INTO `pacientes` VALUES ('52', '935', 'Adrián', 'Alfaro', 'Siqueiros', 'Villa Hermosa 065', '8125639816', 'adri@outlook.es', '5', 'B+', '1', '2019-12-03', '06:04:32', '11');
+INSERT INTO `pacientes` VALUES ('53', '222', 'PHP', 'Pérez', 'Solis', 'Camachito', '821200010', 'php@gmail.com', '1', 'O-', '1', '2019-12-03', '06:04:46', '17');
+INSERT INTO `pacientes` VALUES ('54', '198', 'Gustavo', 'Estrada', 'Rodriguez', 'Centro ', '8261360989', 'tavoman@hotmail.com', '1', 'O-', '1', '2019-12-03', '06:05:42', '8');
+INSERT INTO `pacientes` VALUES ('55', '765', 'Ana Lucia', 'Perez ', 'Cantú', 'Hidalgo #654', '1287367235', 'antiabb.@gmail.com', '1', 'O-', '1', '2019-12-03', '06:06:08', '20');
+INSERT INTO `pacientes` VALUES ('56', '735', 'Yuridia Viridiana', 'Argulies', 'Serdán', 'Hidalgo 308', '8111952645', 'yuriviriarser@outlook.es', '3', 'B+', '1', '2019-12-03', '06:06:11', '11');
+INSERT INTO `pacientes` VALUES ('57', '223', 'José ', 'López ', 'López', 'Centro ', '8112154111', 'jose.jose@gmail.com', '10', 'AB-', '1', '2019-12-03', '06:06:30', '7');
+INSERT INTO `pacientes` VALUES ('58', '224', 'José José', 'Rodriguez ', 'Ruffo', 'Camachito', '8211145412', 'josejose@hotmail.com', '11', 'B-', '1', '2019-12-03', '06:07:55', '7');
+INSERT INTO `pacientes` VALUES ('59', '652', 'Pere', 'Gil', 'De Los Santos', 'Colon #24', '8765432456', 'ppgil@gmail.com', '1', 'A+', '1', '2019-12-03', '06:07:57', '20');
+INSERT INTO `pacientes` VALUES ('60', '842', 'Adán', 'De la Rosa', 'Sánchez', 'Bugambilias 827', '8211786520', 'agoku@gmail.com', '8', 'O-', '1', '2019-12-03', '06:20:41', '11');
+INSERT INTO `pacientes` VALUES ('61', '225', 'Victoria', 'De la olla', 'Martínez', 'San Felipe', '8114510235', 'vicy.mtz@hotmail.com', '2', 'A+', '1', '2019-12-03', '06:09:11', '7');
+INSERT INTO `pacientes` VALUES ('62', '612', 'Alberto', 'Garza', 'Quiroz', 'Fovisste', '8269011290', 'alberto@gmail.com', '2', 'A-', '1', '2019-12-03', '06:09:51', '8');
+INSERT INTO `pacientes` VALUES ('63', '1234', 'Alan', 'Oyervides', 'Valadez', 'Masapan 666 Fomerrey', '8264587763', 'anastasio_oyerval@gmail.com', '5', 'A+', '1', '2019-12-03', '06:20:34', '6');
+INSERT INTO `pacientes` VALUES ('64', '872', 'Armando', 'Bronca', 'Segura', 'Av. Libertad #23', '4567129822', 'BroncaSegura@gmail.com', '1', 'AB-', '1', '2019-12-03', '06:10:01', '20');
+INSERT INTO `pacientes` VALUES ('65', '489', 'Paulo', 'Londra', 'Cortés', 'San Rafel 508', '8260086501', 'paulito69@outlook.es', '7', 'AB+', '1', '2019-12-03', '06:10:27', '11');
+INSERT INTO `pacientes` VALUES ('66', '227', 'María', 'González', 'González', 'Benito', '8211005412', 'maria.gzz@gmail.com', '4', 'A-', '1', '2019-12-03', '06:10:28', '7');
+INSERT INTO `pacientes` VALUES ('67', '586', 'Valentin ', 'Elizalde', 'Quintanilla', 'Gil de Leyva', '8265481265', 'valentin@gmail.com', '6', 'B-', '1', '2019-12-03', '06:11:39', '12');
+INSERT INTO `pacientes` VALUES ('68', '228', 'Luis de Jesús', 'Río', 'Castillo', 'Villegas', '8211024455', 'luis.rr@hotmail.com', '5', 'A+', '1', '2019-12-03', '06:11:46', '7');
+INSERT INTO `pacientes` VALUES ('69', '1111', 'Chope', 'Jackson', 'De la Rosa', 'Palma 222 Niños Heroes', '8211475869', 'chope.jackson@gmail.com', '3', 'B-', '1', '2019-12-03', '06:11:52', '6');
+INSERT INTO `pacientes` VALUES ('70', '888', 'Cristiano', 'Ronaldo', 'Hipólito', 'Gilde', '8262662020', 'cristi@ano.com', '1', 'O-', '1', '2019-12-03', '06:12:22', '17');
+INSERT INTO `pacientes` VALUES ('71', '458', 'Beto ', 'Quintanilla', 'Elizalde', 'Fomerrey', '8215684952', 'beto@gmail.com', '8', 'AB+', '1', '2019-12-03', '06:12:27', '12');
+INSERT INTO `pacientes` VALUES ('72', '401', 'Maria', 'Perez', 'Hernandez', 'Centro', '8261231234', 'mary97@hotmail.com', '1', 'A-', '1', '2019-12-03', '06:12:34', '13');
+INSERT INTO `pacientes` VALUES ('73', '229', 'Gloria', 'Pérez', 'Martínez', 'Villegas', '8211005578', 'gloria.pe@hotmail.com', '6', 'B+', '1', '2019-12-03', '06:12:59', '7');
+INSERT INTO `pacientes` VALUES ('74', '615', 'Margarita', 'Flores', 'Del Campo', 'Bolivar #76', '6512872312', 'Margaro@gmail.com', '1', 'B+', '1', '2019-12-03', '06:13:00', '20');
+INSERT INTO `pacientes` VALUES ('75', '514', 'Chope', 'Senku', 'Stone', 'Camachito', '8261512002', 'chopazo@gmail.com', '1', 'O-', '1', '2019-12-03', '06:13:09', '17');
+INSERT INTO `pacientes` VALUES ('76', '37', 'Benito', 'Benitez', 'Bolaños', 'San Gerardo 2076', '8211390678', 'bebebo@hotmail.com', '1', 'B-', '1', '2019-12-03', '06:13:37', '11');
+INSERT INTO `pacientes` VALUES ('77', '405', 'Berlanga', 'Hipolito', 'Martinez', 'Gil de leyva', '8260988990', 'ber97@gmail.com', '4', 'AB+', '1', '2019-12-03', '06:13:42', '13');
+INSERT INTO `pacientes` VALUES ('78', '164', 'Khalifa', 'Anastasio', 'López', 'Sabinos', '4685126565', 'khalifa@peres.com', '1', 'O-', '1', '2019-12-03', '06:13:46', '17');
+INSERT INTO `pacientes` VALUES ('79', '476', 'Tory', 'Te', 'Amo', 'Villegas', '8215126598', 'tory@fotografia.com', '1', 'O-', '1', '2019-12-03', '06:14:21', '17');
+INSERT INTO `pacientes` VALUES ('80', '1122', 'Romario Margarito', 'Niño', 'Pequeño', 'Provileon', '8216664878', 'romario_margaro@gmail.com', '10', 'O-', '1', '2019-12-03', '06:14:40', '6');
+INSERT INTO `pacientes` VALUES ('81', '455', 'Chuy', 'Rodriguez', 'Mendoza', 'Bugambilias', '8265678909', 'elchuta97@gmail.com', '1', 'B+', '1', '2019-12-03', '06:14:51', '13');
+INSERT INTO `pacientes` VALUES ('82', '568', 'Adan', 'Chalino', 'Sanchez', 'Rincon de las Huertas', '8264515987', 'adanchalinosanchez@gmail.com', '8', 'B+', '1', '2019-12-03', '06:14:54', '12');
+INSERT INTO `pacientes` VALUES ('83', '238', 'Jose Luis Margarito', 'Viejo ', 'Becerra', 'Melones #213', '8262331131', 'chops@gmail.com', '1', 'O-', '1', '2019-12-03', '06:23:34', '20');
+INSERT INTO `pacientes` VALUES ('84', '485', 'Julian', 'Garza', 'Luna', 'Independencia', '8214586547', 'juliangarza@gmail.com', '5', 'B+', '1', '2019-12-03', '06:16:18', '12');
+INSERT INTO `pacientes` VALUES ('85', '321', 'Enrique', 'Bernal', 'Mendoza', 'Santa Rosa', '8121034567', 'enrique@gmail.com', '2', 'O+', '1', '2019-12-03', '06:16:07', '8');
+INSERT INTO `pacientes` VALUES ('86', '459', 'David', 'Allende', 'Garza', 'Morelos 1', '8264563421', 'dav@hotmail.com', '1', 'AB-', '1', '2019-12-03', '06:16:25', '13');
+INSERT INTO `pacientes` VALUES ('87', '1592', 'Mauricio', 'Severiano', 'Plata', 'Los Naranjos', '8264455783', 'mauri_plata@gmail.com', '5', 'B+', '1', '2019-12-03', '06:16:40', '6');
+INSERT INTO `pacientes` VALUES ('88', '326', 'Ronaldo', 'Calavera', 'Calvo', 'Medrano #12', '8263221122', 'ronaldocalvo@gmail.com', '4', 'O-', '1', '2019-12-03', '06:19:35', '20');
+INSERT INTO `pacientes` VALUES ('89', '657', 'Jonatan', 'Bernal', 'Garcia', 'Las glorias', '8263456512', 'jona@hotmail.com', '3', 'A-', '1', '2019-12-03', '06:18:02', '8');
+INSERT INTO `pacientes` VALUES ('90', '3348', 'Melany', 'Perez', 'Lopez', 'Rodrigo Gomez', '8211593654', 'melany_perez@gmail.com', '9', 'A+', '1', '2019-12-03', '06:18:12', '6');
+INSERT INTO `pacientes` VALUES ('91', '1024', 'Federico', 'Cazarez', 'Avendaño', 'Provileon', '8189002334', 'fede.000@hotmail.com', '6', 'B+', '1', '2019-12-03', '06:18:33', '9');
+INSERT INTO `pacientes` VALUES ('92', '490', 'Jesus', 'Garza', 'Garcia', 'Centro', '8262345678', 'jesus50@gmail.com', '2', 'A+', '1', '2019-12-03', '06:18:40', '13');
+INSERT INTO `pacientes` VALUES ('93', '258', 'Espinoza', 'Paz', 'Pequeño', 'Sabinos', '8115654789', 'espinoza@gmail.com', '8', 'B+', '1', '2019-12-03', '06:19:01', '12');
+INSERT INTO `pacientes` VALUES ('94', '912', 'Josue', 'Ventura', 'Bernal', 'Foviste', '8211348909', 'karr@gmail.com', '3', 'A-', '1', '2019-12-03', '06:19:28', '8');
+INSERT INTO `pacientes` VALUES ('95', '2304', 'Talina', 'Fernandez', 'Castillo', 'Tepeyac', '8129002188', 'jelou.88@gmail.com', '1', 'B-', '1', '2019-12-03', '06:20:10', '9');
+INSERT INTO `pacientes` VALUES ('96', '777', 'Oscar', 'Rodriguez', 'Almendarez', 'Centro', '8147895522', 'oscar_ro@gmail.com', '6', 'B+', '1', '2019-12-03', '06:20:11', '6');
+INSERT INTO `pacientes` VALUES ('97', '781', 'Misael', 'Garcia', 'Prado', 'Bueno aires', '8129028909', 'misa@gmail.com', '1', 'O-', '1', '2019-12-03', '06:20:26', '8');
+INSERT INTO `pacientes` VALUES ('98', '423', 'Jose Luis ', 'Plata', 'Rodriguez', 'Monterreal', '8267891234', 'jose97@gmail.com', '1', 'AB-', '1', '2019-12-03', '06:20:51', '13');
+INSERT INTO `pacientes` VALUES ('99', '336', 'Pedro', 'Martinez', 'Ruvalcaba', 'Fomerrey', '8211198765', 'peder_12@hotmail.com', '9', 'A-', '1', '2019-12-03', '06:21:23', '9');
+INSERT INTO `pacientes` VALUES ('100', '654', 'Jaime', 'Rodriguez', 'Calderon', '154 Monterrey', '8245127836', 'elbronco@gmail.com', '1', 'O-', '1', '2019-12-03', '06:22:05', '6');
+INSERT INTO `pacientes` VALUES ('101', '400', 'Mario', 'Lopez', 'Gonzalez', 'San Gerardo', '8210927689', 'berto@hotmail.com', '4', 'A-', '1', '2019-12-03', '06:22:10', '10');
+INSERT INTO `pacientes` VALUES ('102', '256', 'Eunice', 'Charles', 'Marin', 'Real del Valle', '8264569853', 'eunice@gmail.com', '1', 'O-', '1', '2019-12-03', '06:22:24', '12');
+INSERT INTO `pacientes` VALUES ('103', '364', 'Alejandro', 'Lopez', 'Areondo', 'Real del Valle', '8263214567', 'alejandro27@hotmail.com', '9', 'B-', '1', '2019-12-03', '06:22:24', '13');
+INSERT INTO `pacientes` VALUES ('104', '999', 'Fernanda', 'Olivares', 'Duran', 'Hacienda Las Flores MTY', '8187772344', 'fer.90.2@hotmail.com', '3', 'O-', '1', '2019-12-03', '06:23:01', '9');
+INSERT INTO `pacientes` VALUES ('105', '669', 'Alfonso', 'Ruiz', 'Cardenas', '789 Fomerrey', '8211465832', 'alfonso_ruiz@gmail.com', '5', 'B+', '1', '2019-12-03', '06:24:05', '6');
+INSERT INTO `pacientes` VALUES ('106', '544', 'Jimena', 'Torres', 'Torres', 'Fracc. Nogalar', '8229993321', 'tititi@hotmail.com', '1', 'O-', '1', '2019-12-03', '06:24:16', '9');
+INSERT INTO `pacientes` VALUES ('107', '890', 'Laura', 'Lopez', 'Martinez', 'Infonavit', '8217811289', 'itl@hotmail.com', '2', 'B-', '1', '2019-12-03', '06:24:25', '10');
+INSERT INTO `pacientes` VALUES ('108', '239', 'Alex', 'Olan', 'Perez', 'Cerrito', '8770003476', 'francis.99@gmail.com', '4', 'A+', '1', '2019-12-03', '06:26:06', '9');
+INSERT INTO `pacientes` VALUES ('109', '251', 'Jonathan', 'Navarro', 'Cuevas', '478 Las Glorias', '8211115588', 'jony_navarro@gmail.com', '1', 'O-', '1', '2019-12-03', '06:26:27', '6');
+INSERT INTO `pacientes` VALUES ('110', '19', 'Damian', 'Lopez', 'Rodriguez', 'Centro', '8793331010', 'dam_4@hotmail.com', '11', 'O-', '1', '2019-12-03', '06:27:27', '9');
+INSERT INTO `pacientes` VALUES ('111', '369', 'Matias', 'Benitez', 'Campos', '951 Provileon', '8213214769', 'matias123@gmail.com', '10', 'AB+', '1', '2019-12-03', '06:27:49', '6');
+INSERT INTO `pacientes` VALUES ('112', '879', 'Francisca', 'Robles', 'De la Torre', 'Provileon', '8900013234', 'franfran@hotmail.com', '1', 'O-', '1', '2019-12-03', '06:28:34', '9');
+INSERT INTO `pacientes` VALUES ('113', '732', 'Jose', 'Torres', 'Lopez', 'La Petaca', '8260891289', 'pach@hotmail.com', '3', 'O+', '1', '2019-12-03', '06:28:47', '10');
+INSERT INTO `pacientes` VALUES ('114', '776', 'Alexander', 'Ramirez', 'Echartea', 'La Petaca', '8882349088', 'alexxxxxx@hotmail.com', '6', 'AB+', '1', '2019-12-03', '06:29:48', '9');
+INSERT INTO `pacientes` VALUES ('115', '761', 'Patricia', 'Ramirez', 'Ramirez', 'Fomerrey', '8210003322', 'tete91@hotmail.com', '9', 'O-', '1', '2019-12-03', '06:32:08', '9');
+INSERT INTO `pacientes` VALUES ('116', '979', 'Reynaldo', 'gamez', 'lopez', 'villa 98', '8211096888', 'reylopga@gmail.com', '7', 'O-', '1', '2019-12-03', '06:33:32', '21');
+INSERT INTO `pacientes` VALUES ('117', '679', 'Daniel', 'Avendaño', 'Gonzalez', 'San Antonio', '8261789081', 'daniel@gmail.com', '2', 'B-', '1', '2019-12-03', '06:33:43', '10');
+INSERT INTO `pacientes` VALUES ('118', '899', 'Justin', 'Grduño', 'Millan', 'cuerna 78', '82110982244', 'justingard@gmail.com', '1', 'O-', '1', '2019-12-03', '06:34:09', '21');
+INSERT INTO `pacientes` VALUES ('119', '896', 'Alejandro', 'Martinez', 'Lopez', 'del arco', '8211097999', 'alejmart@gmail.com', '4', 'O-', '1', '2019-12-03', '06:34:44', '21');
+INSERT INTO `pacientes` VALUES ('120', '46', 'Daniel', 'Velazquez', 'Llopez', 'pase 90', '8211038899', 'daniel989@gmail.com', '5', 'B-', '1', '2019-12-03', '06:35:24', '21');
+INSERT INTO `pacientes` VALUES ('121', '175', 'maria', 'del arco', 'pedraza', 'hidalgo 76', '8119085644', 'delarc@gmail.com', '1', 'O-', '1', '2019-12-03', '06:37:32', '21');
+INSERT INTO `pacientes` VALUES ('122', '906', 'irisol', 'frernandez', 'freitas', 'frida 676', '8211058800', 'freitas43@gmail.com', '1', 'O-', '1', '2019-12-03', '06:38:09', '21');
+INSERT INTO `pacientes` VALUES ('123', '898', 'caro', 'quintero', 'perez', 'pase 67', '8211076732', 'perezpase@gmail.com', '1', 'O-', '1', '2019-12-03', '06:38:40', '21');
+INSERT INTO `pacientes` VALUES ('124', '812', 'esteban', 'gonzales', 'milla', 'la petaca', '8211038832', 'milla43@gmail.com', '1', 'O-', '1', '2019-12-03', '06:39:14', '21');
+INSERT INTO `pacientes` VALUES ('125', '1267', 'Pedro', 'Juarez', 'Lopez', 'Fovisste', '8211234567', 'peter@hotmail.com', '1', 'O-', '1', '2019-12-03', '06:40:10', '10');
+INSERT INTO `pacientes` VALUES ('126', '323', 'Victoria Maleny', 'Rodriguez', 'Viera', 'linares petaca ', '8263321212', 'malenytory@gmail.com', '1', 'A+', '1', '2019-12-03', '06:50:36', '20');
+INSERT INTO `pacientes` VALUES ('127', '233', 'Jutin', 'Baiber', 'Gomez', 'Londes #234', '8262132112', 'saaa@gmail.com', '1', 'O-', '1', '2019-12-03', '06:52:09', '20');
+INSERT INTO `pacientes` VALUES ('128', '123', 'Diego', 'Vallejo', 'Davila', 'alvarado', '2123346', 'diego@gmail.com', '1', 'A+', '1', '2019-12-03', '06:54:24', '14');
+INSERT INTO `pacientes` VALUES ('129', '124', 'Gerardo', 'Ramirez', 'Hernandez', 'Fovissste', '2129633', 'gera@gmail.com.mx', '1', 'B-', '1', '2019-12-03', '06:55:21', '14');
+INSERT INTO `pacientes` VALUES ('130', '125', 'Carlos', 'Valladares', 'Duran', 'Zapata', '2121574', 'carlos@gmail.com.mx', '1', 'A+', '1', '2019-12-03', '06:56:19', '14');
+INSERT INTO `pacientes` VALUES ('131', '126', 'Rolando', 'Guerrero', 'Davila', 'Allende', '2121674', 'Roly@15gmail.com', '1', 'O+', '1', '2019-12-03', '06:57:21', '14');
+INSERT INTO `pacientes` VALUES ('132', '127', 'Luis', 'Elizondo', 'Ramirez', 'Apodaca', '2128080', 'Luis17@gmail.com', '1', 'B+', '1', '2019-12-03', '06:58:21', '14');
+INSERT INTO `pacientes` VALUES ('133', '915', 'Arnold', 'Martinez', 'Lopez', 'La petaca', '2124559', 'Arnold@gmail.com', '1', 'B+', '1', '2019-12-03', '07:00:26', '14');
+INSERT INTO `pacientes` VALUES ('134', '144', 'Mario', 'Patiño', 'Perez', 'Provileon', '2127569', 'Patiñus@gmail.com', '1', 'O-', '1', '2019-12-03', '07:01:56', '14');
+INSERT INTO `pacientes` VALUES ('135', '697', 'Ulises', 'Cano ', 'Cano', 'Guadalupe', '2129966', 'Tacuache@gmail.com', '1', 'A+', '1', '2019-12-03', '07:03:00', '14');
+INSERT INTO `pacientes` VALUES ('136', '222', 'Luis', 'Sanchez', 'Sanchez', 'Camacho', '2121010', 'Pepa@gamil.com', '4', 'B-', '1', '2019-12-03', '07:04:33', '14');
+INSERT INTO `pacientes` VALUES ('137', '333', 'Ulises', 'Rodríguez', 'Calderon', 'Galeana', '2125510', 'Chagui@gmail.com', '2', 'B+', '1', '2019-12-03', '07:05:58', '14');
 
 -- ----------------------------
 -- Table structure for personas
@@ -2944,7 +3100,7 @@ CREATE TABLE `personas` (
 -- ----------------------------
 -- Records of personas
 -- ----------------------------
-INSERT INTO `personas` VALUES ('1', 'Pablo Adrian', 'Pérez', 'Briseño', 'M', 'Casad@', '8211174899', 'PEBP840305BT0', 'paperez@itlinares.edu.mx', '1984-03-05', 'Provileon', 'Ahuehuete', '512', '', 'Nuevo Leon', '1', '2019-11-28', '05:41:02', '1');
+INSERT INTO `personas` VALUES ('1', 'Pablo Adrian', 'Pérez', 'Briseño', 'M', 'Casad@', '8211174899', 'PEBP840305BT0', 'paperez@itlinares.edu.mx', '1984-03-05', 'Provileon', 'Ahuehuete', '512', 'Abejones', 'Nuevo Leon', '1', '2019-11-29', '09:11:33', '1');
 INSERT INTO `personas` VALUES ('6', 'Adolfo', 'Viera', 'Meléndez', 'M', 'Solter@', '8211263434', 'VMA981109BT0', 'adolfo.98@live.com.mx', '1998-11-09', 'Provileon', 'Palma', '220', 'Linares', 'Nuevo León', '1', '2019-11-27', '05:47:19', '1');
 INSERT INTO `personas` VALUES ('7', 'Maleny Lizbeth', 'López', 'Pérez', 'F', 'Solter@', '8211020068', 'LPM981209VTC', 'maleny.loprez@hotmail.com', '1998-12-09', 'Riveras de San Antonio', 'Tito Guizar', '1108', 'Linares', 'Nuevo León', '1', '2019-11-27', '05:47:40', '1');
 INSERT INTO `personas` VALUES ('8', 'Dario Alfonso', 'Lopez', 'Estrada', 'M', 'Solter@', '8211003608', 'LOED1903HN', 'delgadobenito596@gmail.com', '1999-03-19', 'Fovisste', 'Cactus', '1260', '', 'Nuevo León', '1', '2019-11-27', '05:49:32', '1');
@@ -2961,7 +3117,7 @@ INSERT INTO `personas` VALUES ('18', 'Alejandro', 'de la Rosa', 'Ramirez', 'M', 
 INSERT INTO `personas` VALUES ('19', 'Alex', 'Lopez', 'Rodriguez', 'M', 'Casad@', '82145896', 'LORA124578BT0', 'aflopez@itlinares.edu.mx', '1980-02-14', 'Centro', 'Juarez', '201', 'Linares', 'Nuevo León', '1', '2019-11-28', '04:00:59', '1');
 INSERT INTO `personas` VALUES ('20', 'José Luis ', 'Plata', 'Santos', 'M', 'Solter@', '8261410729', 'JLPLSIJOISDJ', 'joseluis_plata9@outlook.com', '1998-04-09', 'Centro', 'Priv. Simon Bolviar', '3', '', 'Nuevo León', '1', '2019-11-28', '06:02:02', '20');
 INSERT INTO `personas` VALUES ('21', 'Ronaldo Severiano', 'Valdez', 'Alejandro', 'M', 'Solter@', '8211124451', 'RONA586451', 'roonivaldez@gmail.com', '1996-05-08', 'Alvarado', 'Zaragoza', '1053', 'Linares', 'Nuevo León', '1', '2019-11-28', '05:54:35', '1');
-INSERT INTO `personas` VALUES ('22', 'Romario', 'Davila', 'Pequeño', 'M', 'Solter@', '8211171455', 'DAVPQ990623', 'romariodavila6@gmail.com', '1999-06-23', 'Arboledas del Valle', 'Fresno', '312', 'Linares', 'Nuevo León', '1', '2019-11-28', '05:55:44', '1');
+INSERT INTO `personas` VALUES ('22', 'Romario', 'Davila', 'Pequeño', 'M', 'Solter@', '8211171455', 'DAVPQ990623', 'romariodavila6@gmail.com', '1999-06-23', 'Arboledas del Valle', 'Fresno', '312', 'Linares', 'Nuevo León', '1', '2019-11-29', '09:13:09', '1');
 
 -- ----------------------------
 -- Table structure for puestos
@@ -3097,11 +3253,17 @@ CREATE TABLE `traslados` (
   `id_hospital_traslado` int(11) default NULL,
   `id_chofer` int(11) default NULL COMMENT 'Persona que conducira la ambulancia',
   `id_ambulancia` int(11) default NULL,
-  `id_medico` int(11) default NULL COMMENT 'Medico que realiza la referencia del traslado',
+  `id_medico_refiere` int(11) default NULL COMMENT 'Medico que realiza la referencia del traslado',
+  `descripcion_traslado` text,
+  `enfermero_acompañante` text COMMENT 'si - no',
+  `id_enfermero` int(11) default NULL,
+  `servicio` text COMMENT 'Urgencias, Consulta Externa, Hospitalizacion',
+  `costo_traslado` double default NULL,
   `fecha_traslado` date default NULL,
   `hora_traslado` time default NULL,
   `id_especialidad` int(11) default NULL,
   `motivo` text,
+  `detalle_cancelacion` text,
   `activo` int(11) default NULL,
   `fecha_registro` date default NULL,
   `hora_registro` time default NULL,
@@ -3136,11 +3298,12 @@ CREATE TABLE `urgencias` (
   `activo` int(11) default NULL,
   `usuario_registro` int(11) default NULL,
   PRIMARY KEY  (`id_urgencia`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of urgencias
 -- ----------------------------
+INSERT INTO `urgencias` VALUES ('1', '127', '3', '3', 'Posible fractura en el femur', 'Diclofenaco cada 8 horas', '1', 'Nivel  - 1', 'Fractura', '450', 'Hospitalizacion', '2019-12-03', '00:00:19', '2019-12-03', '21:28:18', '1', '1');
 
 -- ----------------------------
 -- Table structure for usuarios
@@ -3156,7 +3319,7 @@ CREATE TABLE `usuarios` (
   `hora_registro` time default NULL,
   `usuario_registro` int(11) default NULL,
   PRIMARY KEY  (`id_usuario`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of usuarios
@@ -3173,4 +3336,5 @@ INSERT INTO `usuarios` VALUES ('9', 'maleny', '11', '202cb962ac59075b964b07152d2
 INSERT INTO `usuarios` VALUES ('10', 'chope_97', '12', '202cb962ac59075b964b07152d234b70', '1', '2019-11-28', '05:58:34', '1');
 INSERT INTO `usuarios` VALUES ('11', 'ronaldo', '21', '202cb962ac59075b964b07152d234b70', '1', '2019-11-28', '05:59:11', '1');
 INSERT INTO `usuarios` VALUES ('12', 'Romastar', '22', '202cb962ac59075b964b07152d234b70', '1', '2019-11-28', '05:59:42', '1');
-INSERT INTO `usuarios` VALUES ('13', 'Allan Sandoval', '16', '0192023a7bbd73250516f069df18b500', '1', '2019-11-28', '05:59:50', '1');
+INSERT INTO `usuarios` VALUES ('13', 'Allan Sandoval', '16', '827ccb0eea8a706c4c34a16891f84e7b', '1', '2019-11-28', '05:59:50', '1');
+INSERT INTO `usuarios` VALUES ('14', 'eunice', '6', '827ccb0eea8a706c4c34a16891f84e7b', '1', '2019-12-03', '06:05:43', '1');

@@ -56,7 +56,7 @@ $fechaSistema=date("Y-m-d");
 
 						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 							<div class="formulario animated  slideInUp">
-								<form role="form" class="interno" method="post" target="_blank" action="rptUrgTalta.php">
+								<form role="form" class="interno" method="get" target="_blank" action="pdfUrgTalta.php">
 
 									<div class="encabezado">
 										Alta de urgencias
@@ -103,7 +103,7 @@ $fechaSistema=date("Y-m-d");
 
 						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 							<div class="formulario animated  slideInUp">
-								<form role="form" class="interno" method="post" target="_blank" action="rptUrgNivel.php">
+								<form role="form" class="interno" method="get" target="_blank" action="pdfUrgNivel.php">
 
 									<div class="encabezado">
 										Triage
@@ -149,7 +149,7 @@ $fechaSistema=date("Y-m-d");
 
 						<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 							<div class="formulario animated  slideInUp">
-								<form role="form" class="interno" method="post" target="_blank" action="rptUrgGenero.php">
+								<form role="form" class="interno" method="get" target="_blank" action="pdfUrgGenero.php">
 
 									<div class="encabezado">
 										Genero del Paciente

@@ -2,14 +2,14 @@
 
 // get the HTML
 ob_start();
-include(dirname(__FILE__).'/pdf/reporte.php');
+include(dirname(__FILE__).'/pdf/rptUrgTalta.php');
 $content = ob_get_clean();
 
 // convert to PDF
 require_once(dirname(__FILE__).'/../plugins/html2pdf/html2pdf.class.php');
 try
 {
-    $html2pdf = new HTML2PDF('P', 'letter', 'fr');
+    $html2pdf = new HTML2PDF('L', 'letter', 'fr');
     $html2pdf->pdf->SetDisplayMode('fullpage');
     $html2pdf->writeHTML($content, isset($_GET['vuehtml']));
     $html2pdf->Output('Lista-Departamentos.pdf');

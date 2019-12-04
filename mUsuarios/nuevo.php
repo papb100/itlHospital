@@ -59,10 +59,18 @@ $opa="B";
 
 							<div class="cuerpo">
 								<div class="row">
+									
+									
+									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-12">
+										<div class="form-group">
+											<label>Nombre de usuario :</label>
+											<input type="text" name="nomUsuario" class="form-control" required autofocus placeholder="Usuario...">
+										</div>
+									</div>
 									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 										<div class="form-group">
 											<label>Trabajador :</label>
-											<select name="idPersona" class="form-control select2" style="width: 100%;">
+											<select name="idTrabajador" class="form-control select2" style="width: 100%;">
 											<?
 												for($i=0;$i<$num1;$i++) 
 												{
@@ -74,18 +82,10 @@ $opa="B";
 											</select>
 										</div>
 									</div>
-									
-									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-6">
-										<div class="form-group">
-											<label>Nombre de usuario :</label>
-											<input type="text" name="nomUsuario" class="form-control" required autofocus placeholder="Usuario...">
-										</div>
-									</div>
-
-									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-6">
+									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-12">
 										<div class="form-group">
 											<label>Contraseña :</label>
-											<input type="text" name="contra" class="form-control" required autofocus placeholder="Contraseña...">
+											<input type="password" name="contra" class="form-control" required autofocus placeholder="Contraseña...">
 										</div>
 									</div>
 									
